@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "f4WrjVkIaWatngTUczBx5SQe+t/vTO5rnkeQgoC5tMDWkiMyoIc9FFUCprW6hoEoAonO9fcADeqCbF4MKxgvIQ==",
+  "dgSpecHash": "xc5zjPAmkln9TacJQcAv3ncwmsPvvFldu1MJRDVjo6k9o6Q2tSSblc9/fK1Ygan5RD+4UCIsAsH3dyDtzTTkVg==",
   "success": true,
   "projectFilePath": "D:\\Magisterka\\recipely\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\janiu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.0-rc.1.20451.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.0-rc.1.20451.17.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.0-rc.1.20451.13\\microsoft.data.sqlite.core.5.0.0-rc.1.20451.13.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
@@ -26,6 +27,11 @@
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0-rc.1.20451.14\\microsoft.extensions.logging.abstractions.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.extensions.options\\5.0.0-rc.1.20451.14\\microsoft.extensions.options.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0-rc.1.20451.14\\microsoft.extensions.primitives.5.0.0-rc.1.20451.14.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.7.1\\microsoft.identitymodel.jsonwebtokens.6.7.1.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\microsoft.identitymodel.logging\\6.7.1\\microsoft.identitymodel.logging.6.7.1.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.7.1\\microsoft.identitymodel.protocols.6.7.1.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.7.1\\microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.7.1\\microsoft.identitymodel.tokens.6.7.1.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.3\\sqlitepclraw.bundle_e_sqlite3.2.0.3.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\sqlitepclraw.core\\2.0.3\\sqlitepclraw.core.2.0.3.nupkg.sha512",
@@ -38,7 +44,9 @@
     "C:\\Users\\janiu\\.nuget\\packages\\system.collections.immutable\\5.0.0-rc.1.20451.14\\system.collections.immutable.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0-rc.1.20451.14\\system.componentmodel.annotations.5.0.0-rc.1.20451.14.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0-rc.1.20451.14\\system.diagnostics.diagnosticsource.5.0.0-rc.1.20451.14.nupkg.sha512",
-    "C:\\Users\\janiu\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "C:\\Users\\janiu\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
