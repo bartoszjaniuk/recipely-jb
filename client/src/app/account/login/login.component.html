@@ -1,0 +1,14 @@
+ <form class="p-5 col-md-5 col-sm-8 formShadow">
+        <p class="h4 mb-4">Sign in</p>
+        <input type="text" class="form-control mb-4" name="username" placeholder="Username">
+        <input type="password" class="form-control mb-4" name="password" placeholder="Password">
+        <div class="d-flex justify-content-around">
+            <div>
+                <a href="">Forgot password?</a>
+            </div>
+        </div>
+        <button class="btn btn-outline-dark btn-block my-4" type="submit">Sign in</button>
+        <p>Not a member?
+            <a (click)="registerToggle()">Register</a>
+        </p>
+    </form>

@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'recipely';
   users: any;
 
-  constructor(private accountService: AccountService) {}
+  constructor(public accountService: AccountService) {}
 
   ngOnInit() {
     this.setCurrentUser();
