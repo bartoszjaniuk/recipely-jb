@@ -14,15 +14,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  login() {
-    this.accountService.login(this.model)
-      .subscribe(response => {
-        console.log(response);
-      }, error => {
-        console.log(error);
-      })
-  }
-
   logOut() {
     this.accountService.logOut();
   }

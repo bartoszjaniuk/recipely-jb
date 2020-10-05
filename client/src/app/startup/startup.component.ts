@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AccountService } from '../account/account.service';
 @Component({
   selector: 'app-startup',
   templateUrl: './startup.component.html',
@@ -9,6 +10,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class StartupComponent implements OnInit {
   registerMode:boolean;
   
+  constructor(public accountService: AccountService) {}
+
   ngOnInit() {}
   
   recieveToggle(event){
@@ -33,14 +36,14 @@ export class StartupComponent implements OnInit {
   myParams: object = {
     "particles": {
       "number": {
-        "value": 80,
+        "value": 160,
         "density": {
           "enable": true,
           "value_area": 800
         }
       },
       "color": {
-        "value": "#278fc8"
+        "value": "#000000"
       },
       "shape": {
         "type": "circle",
@@ -58,22 +61,22 @@ export class StartupComponent implements OnInit {
         }
       },
       "opacity": {
-        "value": 0.5,
-        "random": false,
+        "value": 1,
+        "random": true,
         "anim": {
-          "enable": false,
+          "enable": true,
           "speed": 1,
-          "opacity_min": 0.1,
+          "opacity_min": 0,
           "sync": false
         }
       },
       "size": {
-        "value": 10,
+        "value": 3,
         "random": true,
         "anim": {
           "enable": false,
-          "speed": 40,
-          "size_min": 0.1,
+          "speed": 4,
+          "size_min": 0.3,
           "sync": false
         }
       },
@@ -86,29 +89,29 @@ export class StartupComponent implements OnInit {
       },
       "move": {
         "enable": true,
-        "speed": 6,
+        "speed": 1,
         "direction": "none",
-        "random": false,
+        "random": true,
         "straight": false,
         "out_mode": "out",
         "bounce": false,
         "attract": {
           "enable": false,
           "rotateX": 600,
-          "rotateY": 1200
+          "rotateY": 600
         }
       }
     },
     "interactivity": {
-      "detect_on": "window",
+      "detect_on": "canvas",
       "events": {
         "onhover": {
-          "enable": false,
-          "mode": "grab"
+          "enable": true,
+          "mode": "bubble"
         },
         "onclick": {
           "enable": true,
-          "mode": "push"
+          "mode": "repulse"
         },
         "resize": true
       },
@@ -120,14 +123,14 @@ export class StartupComponent implements OnInit {
           }
         },
         "bubble": {
-          "distance": 400,
-          "size": 40,
+          "distance": 250,
+          "size": 0,
           "duration": 2,
-          "opacity": 8,
+          "opacity": 0,
           "speed": 3
         },
         "repulse": {
-          "distance": 200,
+          "distance": 400,
           "duration": 0.4
         },
         "push": {

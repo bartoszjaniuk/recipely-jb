@@ -1,3 +1,5 @@
+<ng-container *ngIf="(accountService.currentUser$ | async) === null">
+
 <particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
 
 <div *ngIf="!registerMode" class="container h-100">
@@ -8,3 +10,4 @@
     <app-register class="row h-100 justify-content-center align-items-center text-center"
         (cancelRegister)="cancelRegisterMode($event)"></app-register>
 </div>
+</ng-container>
