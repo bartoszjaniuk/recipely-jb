@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { LikeListsComponent } from './lists/like-lists/like-lists.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
@@ -11,23 +12,23 @@ import { StartupComponent } from './startup/startup.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: StartupComponent},
+  {path: '', component: RecipeListComponent},
   {
     path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      {path: 'members', component: MemberListComponent},
-      {path: 'members/:id', component: MemberDetailComponent},
       {path: 'likes', component: LikeListsComponent},
       {path: 'messages', component: MessagesComponent},
-      {path: 'recipes', component: RecipeListComponent},
-      {path: 'recipes/:id', component: RecipeDetailComponent},
-      {path: 'recipes/add-recipe', component: RecipeAddComponent},
-      // TODO
+      {path: 'recipe-add', component: RecipeAddComponent}    // TODO
     ]
   },
-  {path: '**', redirectTo: '', pathMatch: 'full'}
+  {path: 'recipes', component: RecipeListComponent},
+  {path: 'recipes/:id', component: RecipeDetailComponent},
+  {path: 'members', component: MemberListComponent},
+  {path: 'members/:id', component: MemberDetailComponent},
+  {path: 'startup', component: StartupComponent},
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
