@@ -30,16 +30,10 @@ export class LoginComponent implements OnInit {
           this.toastr.success('Success!')
       }, error => {
         console.log(error);
-        this.toastr.error(error.error);
+        
 
       })
   }
-
-  logOut() {
-    this.accountService.logOut();
-    this.router.navigate(['/']);
-  }
-
 }
 
 
