@@ -1,5 +1,4 @@
 using System.Linq;
-using API.Dto;
 using API.Dto.User;
 using API.Entities;
 using API.Extensions;
@@ -12,12 +11,13 @@ namespace API.Helpers
         public AutoMapperProfiles()
         {
             // <MapFrom, MapTo>
-            CreateMap<AppUser, UserToReturnDto>()
+            CreateMap<AppUser, MemberDto>()
                 .ForMember(destination => destination.PhotoUrl, options => options.MapFrom(source => source.UserPhotos
                 .FirstOrDefault(p => p.IsMain).Url))
                 .ForMember(destination => destination.Age, options => options.MapFrom(source => source.DateOfBirth.CalculateAge()));
                 
             CreateMap<UserPhoto, UserPhotoDto>();
+            CreateMap<MemberUpdateDto, AppUser>();
         }
     }
 }

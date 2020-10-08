@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Dto.User;
 using API.Entities;
 using API.Interfaces.IRepositories;
 using AutoMapper;
@@ -19,18 +20,18 @@ namespace API.Data.Repositories
             _context = context;
         }
 
-        public async Task<UserToReturnDto> GetMemberAsync(string username)
+        public async Task<MemberDto> GetMemberAsync(string username)
         {
             return await _context.Users
             .Where(u => u.UserName == username)
-            .ProjectTo<UserToReturnDto>(_autoMapper.ConfigurationProvider)
+            .ProjectTo<MemberDto>(_autoMapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<UserToReturnDto>> GetMembersAsync()
+        public async Task<IEnumerable<MemberDto>> GetMembersAsync()
         {
             return await _context.Users
-            .ProjectTo<UserToReturnDto>(_autoMapper.ConfigurationProvider)
+            .ProjectTo<MemberDto>(_autoMapper.ConfigurationProvider)
             .ToListAsync();
         }
 

@@ -4,7 +4,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ParticlesModule } from 'angular-particle';
 import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs'
-import { NgxGalleryModule } from '@kolkov/ngx-gallery/lib/ngx-gallery.module';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 
 
