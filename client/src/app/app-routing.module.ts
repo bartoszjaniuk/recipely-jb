@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'recipes', component: RecipeListComponent},
   {path: 'recipes/:id', component: RecipeDetailComponent},
   {path: 'members', component: MemberListComponent},
-  {path: 'members/:id', component: MemberDetailComponent},
+  {path: 'members/:username', component: MemberDetailComponent},
   {path: 'startup', component: StartupComponent},
   {path: 'errors', component: TestErrorsComponent},
   {path: 'not-found', component: NotFoundComponent},
