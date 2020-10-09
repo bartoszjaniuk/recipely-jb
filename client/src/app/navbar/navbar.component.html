@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light border">
+<nav class="navbar navbar-expand-md navbar-light  bg-light border ">
   <div class="container">
     <!-- <a class="navbar-brand" [routerLink]="['/recipes']" ><img src="../../../assets/cookhat.png" alt=""></a> -->
     <a class="navbar-brand" routerLink='/'>Recipely.</a>
@@ -22,27 +22,26 @@
     </ul>
 
     <ul class="navbar-nav">
-      <li class="nav-item">
+      <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/startup']">Sign in</a>
+        </li>
+      </ng-container>
+
+      
+      <li class="nav-item" *ngIf="(accountService.currentUser$ | async) as user">
         <div class="dropdown" dropdown>
-          <a dropdownToggle class="nav-link"><i class="fa fa-user"></i> My account</a>
+          <div dropdownToggle class="nav-link navbar-image">
+            <img class="rounded-circle" src="{{user.photoUrl}}" alt="{{user.username}}">
+          </div>
           <div class="dropdown-menu mt-4" *dropdownMenu>
-            
-            <ng-container *ngIf="(accountService.currentUser$ | async) === null">
-              <a class="dropdown-item" [routerLink]="['/startup']"> <i class="fa fa-key"></i>Sign in</a>
-            
-            </ng-container>
-            
-
-            <ng-container *ngIf="accountService.currentUser$ | async">
-              <a class="dropdown-item" [routerLink]="['/member/edit']"> <i class="fa fa-user"></i>Edit Profile</a>
+              <a class="dropdown-item mb-3" [routerLink]="['/member/edit']"> <i class="fa fa-user-circle fa-lg"></i> Edit Profile</a>
+              
+              <a class="dropdown-item mb-3" [routerLink]="['/recipe-add']"> <i class="fa fa-book fa-lg"></i> Add Recipe</a>
+              
+              <a class="dropdown-item" [routerLink]="['/messages']"> <i class="fa fa-comment fa-lg"></i> Messages</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" [routerLink]="['/recipe-add']"> <i class="fa fa-book"></i>Add Recipe</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" [routerLink]="['/messages']"> <i class="fa fa-comment"></i>Messages</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="logOut()"><i class="fa fa-sign-out"></i>Logout</a>
-            </ng-container>
-
+              <a class="dropdown-item" (click)="logOut()"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
           </div>
         </div>
       </li>

@@ -5,6 +5,7 @@ import { ParticlesModule } from 'angular-particle';
 import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from 'ngx-bootstrap/tabs'
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -18,7 +19,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
       positionClass: 'toast-bottom-right'
     }),
     TabsModule.forRoot(),
-    NgxGalleryModule 
+    NgxGalleryModule,
+    FileUploadModule 
   ],
 
   exports: [
@@ -26,7 +28,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
     ParticlesModule,
     ToastrModule,
     TabsModule,
-    NgxGalleryModule 
+    NgxGalleryModule,
+    FileUploadModule
 
   ]
 })
