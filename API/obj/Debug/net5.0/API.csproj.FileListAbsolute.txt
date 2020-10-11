@@ -61,3 +61,5 @@ D:\Magisterka\recipely\API\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.Op
 D:\Magisterka\recipely\API\bin\Debug\net5.0\Data\SeedData\AppUserSeedData.json
 D:\Magisterka\recipely\API\bin\Debug\net5.0\AutoMapper.dll
 D:\Magisterka\recipely\API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Magisterka\recipely\API\bin\Debug\net5.0\CloudinaryDotNet.dll
+D:\Magisterka\recipely\API\bin\Debug\net5.0\Newtonsoft.Json.dll

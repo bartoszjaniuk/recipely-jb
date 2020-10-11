@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "QX3RJ80DYNkh8ehbFuLV5+Y3tzlPiN07l/MQ0seVygJqsKST63w4TWXuulxlJYmRP0YaAxC9u1E1oslOMd5B9g==",
+  "dgSpecHash": "ue6ymSbOuuGMFvLqaBVVaSc0+mH6zznT/jeRPpEVom1gbsQaRPys7+FkoTGM29275M4sQC0RhB68HD2wvTdr7A==",
   "success": true,
   "projectFilePath": "D:\\Magisterka\\recipely\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\janiu\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\cloudinarydotnet\\1.11.0\\cloudinarydotnet.1.11.0.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.0-rc.1.20451.17\\microsoft.aspnetcore.authentication.jwtbearer.5.0.0-rc.1.20451.17.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -35,6 +36,7 @@
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.7.1\\microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.7.1\\microsoft.identitymodel.tokens.6.7.1.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
+    "C:\\Users\\janiu\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.3\\sqlitepclraw.bundle_e_sqlite3.2.0.3.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\sqlitepclraw.core\\2.0.3\\sqlitepclraw.core.2.0.3.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.3\\sqlitepclraw.lib.e_sqlite3.2.0.3.nupkg.sha512",

@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -5,6 +6,7 @@ using API.Data;
 using API.Dto;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +16,10 @@ namespace API.Controllers
     {
         private readonly DataContext _context;
         private readonly ITokenService _tokenService;
-        public AccountController(DataContext context, ITokenService tokenService)
+        private readonly IMapper _autoMapper;
+        public AccountController(DataContext context, ITokenService tokenService, IMapper autoMapper)
         {
+            _autoMapper = autoMapper;
             _tokenService = tokenService;
             _context = context;
         }
@@ -25,14 +29,16 @@ namespace API.Controllers
         {
             if (await UserExists(registerDto.Username)) return BadRequest("Username is taken");
 
+            var user = _autoMapper.Map<AppUser>(registerDto);
+
             using var hmac = new HMACSHA512();
 
-            var user = new AppUser
-            {
-                UserName = registerDto.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key
-            };
+
+
+            user.UserName = registerDto.Username.ToLower();
+            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
+            user.PasswordSalt = hmac.Key;
+
 
             _context.Users.Add(user); // here is tracking
 
@@ -41,7 +47,8 @@ namespace API.Controllers
             return new UserLoginToReturnDto
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                KnownAs = user.KnownAs
             };
 
         }
@@ -49,6 +56,7 @@ namespace API.Controllers
         public async Task<ActionResult<UserLoginToReturnDto>> Login(LoginDto loginDto)
         {
             var user = await _context.Users
+            .Include(p => p.UserPhotos)
             .SingleOrDefaultAsync(u => u.UserName == loginDto.Username);
 
             if (user == null) return Unauthorized("Invalid username");
@@ -62,10 +70,12 @@ namespace API.Controllers
                 if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
             }
 
-             return new UserLoginToReturnDto
+            return new UserLoginToReturnDto
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user)
+                Token = _tokenService.CreateToken(user),
+                PhotoUrl = user.UserPhotos.FirstOrDefault(p => p.IsMain)?.Url,
+                KnownAs = user.KnownAs
             };
         }
 

@@ -32,7 +32,7 @@
       <li class="nav-item" *ngIf="(accountService.currentUser$ | async) as user">
         <div class="dropdown" dropdown>
           <div dropdownToggle class="nav-link navbar-image">
-            <img class="rounded-circle" src="{{user.photoUrl}}" alt="{{user.username}}">
+            <img class="rounded-circle" src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
           </div>
           <div class="dropdown-menu mt-4" *dropdownMenu>
               <a class="dropdown-item mb-3" [routerLink]="['/member/edit']"> <i class="fa fa-user-circle fa-lg"></i> Edit Profile</a>
