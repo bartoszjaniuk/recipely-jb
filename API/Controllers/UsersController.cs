@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using API.Dto.Recipe;
 using API.Dto.User;
 using API.Entities;
 using API.Extensions;
@@ -21,8 +22,10 @@ namespace API.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IMapper _autoMapper;
         private readonly IPhotoService _photoService;
-        public UsersController(IUserRepository userRepository, IMapper autoMapper, IPhotoService photoService)
+        private readonly IRecipeRepository _recipeRepository;
+        public UsersController(IUserRepository userRepository, IMapper autoMapper, IPhotoService photoService, IRecipeRepository recipeRepository)
         {
+            _recipeRepository = recipeRepository;
             _photoService = photoService;
             _autoMapper = autoMapper;
             _userRepository = userRepository;
@@ -35,14 +38,6 @@ namespace API.Controllers
             return Ok(users);
 
         }
-
-        // [HttpGet("{id}")]
-        // public async Task <ActionResult<AppUser>> GetUser(int id)
-        // {
-        //     var user = await _userRepository.GetUserByIdAsync(id);
-        //     return Ok(user);
-
-        // }
 
         [HttpGet("{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
@@ -115,20 +110,40 @@ namespace API.Controllers
             return BadRequest("Problem adding photo");
         }
 
+
+        [HttpPost("add-recipe")]
+        public async Task<IActionResult> AddNewRecipe([FromBody] RecipeForCreateDto recipeForCreateDto)
+        {
+            var userFromRepo = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+
+            recipeForCreateDto.Name = recipeForCreateDto.Name.ToLower();
+
+            if (await _recipeRepository.RecipeExists(recipeForCreateDto.Name))
+                return BadRequest("Recipe with that name already exists!");
+
+            var recipeToCreate = _autoMapper.Map<Recipe>(recipeForCreateDto);
+
+            var createdRecipe = await _recipeRepository.AddNewRecipe(recipeToCreate);
+
+
+            return CreatedAtRoute("GetRecipe", new { controller = "Recipes", id = createdRecipe.Id }, createdRecipe);
+        }
+
+
         [HttpDelete("delete-photo/{photoId}")]
-        public async Task<ActionResult> DeletePhoto (int photoId)
+        public async Task<ActionResult> DeletePhoto(int photoId)
         {
             var username = User.GetUsername();
             var user = await _userRepository.GetUserByUsernameAsync(username);
 
             var photo = user.UserPhotos.FirstOrDefault(p => p.Id == photoId);
 
-            if(photo.IsMain) return BadRequest("You cannot delete your main photo");
+            if (photo.IsMain) return BadRequest("You cannot delete your main photo");
 
             if (photo.PublicId != null)
             {
                 var result = await _photoService.DeletePhotoAsync(photo.PublicId);
-                if(result.Error != null) return BadRequest(result.Error.Message);
+                if (result.Error != null) return BadRequest(result.Error.Message);
             }
 
             user.UserPhotos.Remove(photo);

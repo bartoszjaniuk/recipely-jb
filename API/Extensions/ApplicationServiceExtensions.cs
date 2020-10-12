@@ -33,6 +33,7 @@ namespace API.Extensions
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IPhotoService, PhotoService>();
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
             
 
             return services;
