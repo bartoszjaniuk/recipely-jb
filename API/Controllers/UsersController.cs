@@ -112,7 +112,7 @@ namespace API.Controllers
 
 
         [HttpPost("add-recipe")]
-        public async Task<IActionResult> AddNewRecipe([FromBody] RecipeForCreateDto recipeForCreateDto)
+        public async Task<ActionResult> AddNewRecipe(RecipeForCreateDto recipeForCreateDto)
         {
             var userFromRepo = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
@@ -123,10 +123,16 @@ namespace API.Controllers
 
             var recipeToCreate = _autoMapper.Map<Recipe>(recipeForCreateDto);
 
+            recipeToCreate.AppUserId = userFromRepo.Id;
+
             var createdRecipe = await _recipeRepository.AddNewRecipe(recipeToCreate);
 
+            var recipeToReturn = _autoMapper.Map<RecipeForDetailDto>(createdRecipe);
 
-            return CreatedAtRoute("GetRecipe", new { controller = "Recipes", id = createdRecipe.Id }, createdRecipe);
+            recipeToReturn.CategoryId = createdRecipe.CategoryId;
+            recipeToReturn.KitchenOriginId = createdRecipe.KitchenOriginId;
+
+            return CreatedAtRoute("GetRecipe", new { controller = "Recipes", id = createdRecipe.Id}, recipeToReturn);
         }
 
 

@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace API.Dto.Recipe
 {
     public class RecipeForListDto
@@ -8,5 +11,8 @@ namespace API.Dto.Recipe
         public int NumberOfCalories { get; set; }
         public string PhotoUrl { get; set; }
         public string Category { get; set; }
+        public string KitchenOrigin { get; set; }
+        public DateTime DateAdded { get; set; }
+        public ICollection<IngredientDto> Ingredients { get; set; }
     }
 }

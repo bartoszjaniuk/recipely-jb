@@ -13,12 +13,12 @@ namespace API.Dto.Recipe
         public int NumberOfCalories { get; set; }
         public string Description { get; set; }
         public string PhotoUrl { get; set; }
-        public string Category { get; set; }
-        public string Author{ get; set; } 
-        public string KitchenOrigin{ get; set; }
+        public int CategoryId { get; set; }
+        public int AuthorId{ get; set; } 
+        public int KitchenOriginId{ get; set; }
         public DateTime DateAdded { get; set; }
         public ICollection<RecipePhotoForDetailDto> RecipePhotos { get; set; }
-        public ICollection<Ingredient> Ingredients { get; set; }
+        public ICollection<IngredientDto> Ingredients { get; set; }
 
     }
 }
