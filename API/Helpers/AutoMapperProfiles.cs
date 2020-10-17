@@ -54,13 +54,6 @@ namespace API.Helpers
 
             CreateMap<RecipeForCreateDto, Recipe>();
 
-
-
-
-
-           
-
-
             CreateMap<RecipePhoto, RecipePhotoForDetailDto>();
 
 
