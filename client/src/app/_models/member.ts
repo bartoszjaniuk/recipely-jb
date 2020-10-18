@@ -1,4 +1,5 @@
-import { IUserPhoto } from './userPhoto';
+import { IPhoto } from './photo';
+import { IRecipe } from './recipe';
 
 export interface IMember {
     id: number;
@@ -12,5 +13,6 @@ export interface IMember {
     city: string;
     country: string;
     introduction?: string;
-    userPhotos?: IUserPhoto[];
+    userPhotos?: IPhoto[];
+    recipes: IRecipe[];
 }

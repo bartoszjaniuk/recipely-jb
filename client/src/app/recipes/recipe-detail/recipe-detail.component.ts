@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
+import { ToastrService } from 'ngx-toastr';
+import { IRecipe } from 'src/app/_models/recipe';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -6,10 +11,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-detail.component.css']
 })
 export class RecipeDetailComponent implements OnInit {
+  recipe: IRecipe;
+  galleryOptions: NgxGalleryOptions[] = [];
+  galleryImages: NgxGalleryImage[] = [];
 
-  constructor() { }
+  constructor(private recipeService: RecipeService, private toastr: ToastrService,
+     private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+     ngOnInit(): void {
+      this.loadRecipe();
+  
+      this.galleryOptions = [
+        {
+          width: '500px',
+          height: '500px',
+          imagePercent: 100,
+          thumbnailsColumns: 4,
+          imageAnimation: NgxGalleryAnimation.Slide,
+          preview: false
+        }
+      ]
+    }
+  
+    getImages(): NgxGalleryImage[] {
+      const imageUrls = [];
+      for (const photo of this.recipe.recipePhotos) {
+        imageUrls.push({
+          small: photo?.url,
+          medium: photo?.url,
+          big: photo?.url
+        })
+      }
+      return imageUrls;
+    }
+  
+    loadRecipe() {
+      this.recipeService.getRecipe(this.route.snapshot.params.id).subscribe(recipe => {
+        this.recipe = recipe;
+        this.galleryImages = this.getImages();
+      })
+    }
+  
   }
-
-}

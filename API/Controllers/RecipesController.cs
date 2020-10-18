@@ -18,7 +18,7 @@ namespace API.Controllers
         }
 
         [HttpGet] // Pobieranie wartości
-        public async Task<ActionResult<IEnumerable<RecipeForListDto>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<RecipeForListDto>>> GetRecipes()
         {
 
             var recipes = await _recipeRepository.GetRecipesAsync();
@@ -29,11 +29,27 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetRecipe")]
-        public async Task<ActionResult<RecipeForDetailDto>> GetUser(int id)
+        public async Task<ActionResult<RecipeForDetailDto>> GetRecipe(int id)
         {
-            var user = await _recipeRepository.GetRecipeAsync(id);
-            return user;
+            var recipe = await _recipeRepository.GetRecipeAsync(id);
+            return recipe;
 
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteRecipe(int id)
+        {
+            var recipeFromRepo = await _recipeRepository.GetRecipeAsync(id);
+
+            if(recipeFromRepo == null) return NotFound("Recipe with that id does not exist");
+
+            await _recipeRepository.DeleteRecipe(id);
+
+            if (await _recipeRepository.SaveAllAsync())
+                return Ok();
+
+            return BadRequest("Failed to delete the recipe");
+        }
     }
+
 }

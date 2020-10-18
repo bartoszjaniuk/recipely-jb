@@ -3,8 +3,8 @@ import { FileUploader } from 'ng2-file-upload';
 import { take } from 'rxjs/operators';
 import { AccountService } from 'src/app/account/account.service';
 import { IMember } from 'src/app/_models/member';
+import { IPhoto } from 'src/app/_models/photo';
 import { IUser } from 'src/app/_models/user';
-import { IUserPhoto } from 'src/app/_models/userPhoto';
 import { environment } from 'src/environments/environment';
 import { MembersService } from '../members.service';
 
@@ -32,7 +32,7 @@ export class PhotoEditorComponent implements OnInit {
     this.hasBaseDropzoneOver = e;
   }
 
-  setMainPhoto(photo: IUserPhoto) {
+  setMainPhoto(photo: IPhoto) {
     this.memberService.setMainPhoto(photo.id).subscribe(() => {
       this.user.photoUrl = photo.url;
       this.accountService.setCurrentUser(this.user);
@@ -66,7 +66,7 @@ export class PhotoEditorComponent implements OnInit {
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response) {
-        const photo : IUserPhoto = JSON.parse(response);
+        const photo : IPhoto = JSON.parse(response);
         this.member.userPhotos.push(photo);
         if (photo.isMain) {
           this.user.photoUrl = photo.url;

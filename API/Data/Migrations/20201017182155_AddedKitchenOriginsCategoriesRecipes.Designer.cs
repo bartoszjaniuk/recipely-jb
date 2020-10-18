@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201011201327_AddedKitchenOriginsCategoriesRecipes")]
+    [Migration("20201017182155_AddedKitchenOriginsCategoriesRecipes")]
     partial class AddedKitchenOriginsCategoriesRecipes
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,12 +158,6 @@ namespace API.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DateAdded")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
 
                     b.Property<bool>("IsMain")
                         .HasColumnType("INTEGER");

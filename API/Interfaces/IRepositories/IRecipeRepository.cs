@@ -7,6 +7,8 @@ namespace API.Interfaces.IRepositories
 {
     public interface IRecipeRepository
     {
+        
+        Task<bool> DeleteRecipe(int recipeId);
         void Update(Recipe recipe);
         Task<bool> SaveAllAsync();
         Task<IEnumerable<RecipeForListDto>> GetRecipesAsync();

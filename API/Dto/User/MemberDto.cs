@@ -17,6 +17,5 @@ namespace API.Dto.User
         public string City { get; set; }
         public string Country { get; set; }
         public ICollection<UserPhotoDto> UserPhotos { get; set; }
-        // public ICollection<Recipe> Recipes { get; set; }
     }
 }

@@ -1,1 +1,50 @@
-<p>recipe-detail works!</p>
+<div class="container mt-4 border" *ngIf="recipe">
+    
+    <div class="row">
+      <div class="col col-sm-6 ">
+        <h5 class="text-center">{{recipe.name}}</h5>
+      </div>
+      <div class="col col-sm-4">
+        <h5>
+           Date added: {{recipe.dateAdded | date}}
+        </h5>
+        </div>
+        <div class="col col-sm-1">
+          <h5>
+            <i class="fa fa-clock-o"></i>{{recipe.preparationTime}}
+          </h5>
+          </div>
+          <div class="col col-sm-1">
+            <div class="pointer">
+            <h5>
+               <i class="fa fa-print">Print</i>
+            </h5>
+          </div>
+            </div>
+    </div>
+    
+    <div class="row border">
+        <div class="col-sm-6 border">
+          <img src="{{recipe.photoUrl || '../../../../../../assets/image.png'}}" class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-sm-6 border">
+          <h4 class="text-center">Ingredients:</h4>
+           <ul>
+             <li *ngFor="let ingredient of recipe.ingredients">
+               {{ingredient.name}} ({{ingredient.amount}})
+             </li>
+           </ul>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <h4 class="text-center">Description:</h4> 
+        <p class="description">{{recipe.description}}</p>
+      </div>
+    </div>
+    <div class="mb-5">
+    <h2 class="text-center">Photos</h2>
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages" style="display: inline-block; margin-bottom: 20px;"></ngx-gallery>
+      </div>
+      
+  </div>

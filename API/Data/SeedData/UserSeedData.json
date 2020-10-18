@@ -26,8 +26,15 @@
         "RecipePhotos": [
           {
             "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
-            "IsMain": true,
-            "Description": "Sit aliquip deserunt duis id."
+            "IsMain": true
+          },
+          {
+            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
+            "IsMain": true
+          },
+          {
+            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
+            "IsMain": true
           }
         ],
         "CategoryId": 2,
@@ -68,8 +75,7 @@
         "RecipePhotos": [
           {
             "Url": "https://poradyfit.pl/wp-content/uploads/2017/08/elk-kebab-hejt.jpeg",
-            "IsMain": true,
-            "Description": "Fugiat minim consectetur amet nostrud cillum proident aliquip incididunt excepteur ad ad."
+            "IsMain": true
           }
         ],
         "CategoryId": 5,

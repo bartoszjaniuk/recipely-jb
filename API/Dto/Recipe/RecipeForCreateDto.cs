@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using API.Dto.Recipe.RecipePhoto;
 
 namespace API.Dto.Recipe
 {
@@ -25,7 +26,6 @@ namespace API.Dto.Recipe
 
         [Required]
         public ICollection<IngredientDto> Ingredients { get; set; }
-
         public DateTime DateAdded { get; set; }
         public int AppUserId { get; set; }
         public int AuthorId { get; set; }

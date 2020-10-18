@@ -101,8 +101,6 @@ namespace API.Data.Migrations
                     Url = table.Column<string>(type: "TEXT", nullable: true),
                     IsMain = table.Column<bool>(type: "INTEGER", nullable: false),
                     PublicId = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
-                    DateAdded = table.Column<DateTime>(type: "TEXT", nullable: false),
                     RecipeId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

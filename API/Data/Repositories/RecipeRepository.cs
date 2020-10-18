@@ -20,10 +20,6 @@ namespace API.Data.Repositories
             _context = context;
         }
 
-         public void Add<T>(T entity) where T : class
-        {
-            _context.Add(entity);
-        }
         public async Task<RecipeForDetailDto> GetRecipeAsync(int id)
         {
             return await _context.Recipes.Where(r => r.Id == id)
@@ -62,5 +58,17 @@ namespace API.Data.Repositories
 
             return recipe;
         }
+        // TEMP
+       public async Task<bool> DeleteRecipe(int recipeId)
+    {
+        var recipe = await _context.Recipes.
+        FirstOrDefaultAsync(e => e.Id == recipeId);
+        if (recipe != null)
+        {
+            _context.Recipes.Remove(recipe);
+            return true;
+        }
+        return false;
+    }
     }
 }
