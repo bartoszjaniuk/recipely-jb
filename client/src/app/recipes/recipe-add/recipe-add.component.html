@@ -1,19 +1,23 @@
 <div class="container">
-    <form class="p-5 col-md-5 col-sm-8 formShadow" [formGroup]='recipeForm' (ngSubmit)="recipeForm.valid && addRecipe()"
+
+    <form class=" justify-content-between p-5 mt-5 formShadow" [formGroup]='recipeForm' (ngSubmit)="recipeForm.valid && addRecipe()"
         autocomplete="off">
         <p class="h4 mb-4">Add new recipe</p>
         <app-text-input [formControl]='recipeForm.controls["name"]' [label]='"Name"'></app-text-input>
 
-        <app-text-input [formControl]='recipeForm.controls["preparationTime"]' [label]='"Preparation Time"' [type]='"number"'>
+        <app-text-input [formControl]='recipeForm.controls["preparationTime"]' [label]='"Preparation Time"'
+            [type]='"number"'>
         </app-text-input>
 
         <app-text-input [formControl]='recipeForm.controls["description"]' [label]='"Description"'></app-text-input>
 
-        <app-text-input [formControl]='recipeForm.controls["numberOfCalories"]' [label]='"Number of calories"' [type]='"number"'>
+        <app-text-input [formControl]='recipeForm.controls["numberOfCalories"]' [label]='"Number of calories"'
+            [type]='"number"'>
         </app-text-input>
 
         <div class="form-group">
-            <select class="form-control" formControlName="categoryId" placeholder="Category">
+            <select class="form-control size" formControlName="categoryId" placeholder="Category">
+                <option value="" disabled selected>Category</option>
                 <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
             </select>
             <div class="invalid-feedback"
@@ -23,7 +27,8 @@
         </div>
 
         <div class="form-group">
-            <select class="form-control" formControlName="kitchenOriginId" placeholder="KitchenOrigin">
+            <select class="form-control size" formControlName="kitchenOriginId" placeholder="Kitchen Origin">
+                <option value="" disabled selected>Kitchen Origin</option>
                 <option *ngFor="let kitchenOrigin of kitchenOrigins" [value]="kitchenOrigin.id">{{kitchenOrigin.name}}
                 </option>
             </select>
@@ -39,10 +44,30 @@
                 </li>
             </ul>
         </div>
+        <div formArrayName="ingredients"
+            *ngFor="let ingredient of recipeForm.get('ingredients')['controls']; let i = index;">
+            <div formGroupName={{i}} class="row">
+                <div class="form-group col-6">
+                    <!-- <app-text-input [formControl]='recipeForm.controls["name"]' [label]='"Name"'></app-text-input> -->
+                    <app-text-input formControlName="name" [label]='"Name"'></app-text-input>
+                </div>
+                <div class="form-group col-6">
+                    <!-- <input formControlName="amount" placeholder="Amount" class="form-control mb-2 mr-sm-2"
+                        type="number"> -->
+                        <app-text-input formControlName="amount" [label]='"Amount"' [type]="'number'"></app-text-input>
+                </div>
+            </div>
 
+        </div>
+            <button type="button" class="btn btn-primary" (click)="addIngredient()">
+                New Ingredient
+            </button>
 
+            <ng-container *ngFor="let ingredient of ingredients">
+                {{ingredient.name}}
+            </ng-container>
         <div class="form-group text-center">
-            <button [disabled]="!recipeForm.valid" class="btn btn-outline-dark mr-2" type="submit">Register</button>
+            <button [disabled]="!recipeForm.valid" class="btn btn-outline-dark mr-2" type="submit">Add</button>
             <button class="btn outline-light mr-2" (click)="cancel()">Cancel</button>
         </div>
     </form>

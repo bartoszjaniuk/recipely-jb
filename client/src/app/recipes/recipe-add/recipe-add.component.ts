@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Form, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ICategory } from 'src/app/_models/category';
@@ -19,19 +19,27 @@ export class RecipeAddComponent implements OnInit {
   kitchenOrigins: IKitchenOrigin[];
   member: IMember;
   recipe: IRecipe;
+
   recipeForm: FormGroup;
+  ingredients: FormArray;
+
+
+
+  ingredientForm: FormGroup;
   validationErrors: string[] = [];
 
   constructor(private recipeService: RecipeService,
-    private toastr: ToastrService, private fb: FormBuilder, private router: Router) { }
+    private toastr: ToastrService, private fb: FormBuilder, private router: Router) {
+
+  }
 
   ngOnInit(): void {
-    this.intitializeForm();
+    this.intitializeRecipeForm();
     this.getCategories();
     this.getKitchenOrigins();
   }
 
-  intitializeForm() {
+  intitializeRecipeForm() {
     this.recipeForm = this.fb.group({
       name: ['', Validators.required],
       preparationTime: ['', Validators.required],
@@ -39,9 +47,36 @@ export class RecipeAddComponent implements OnInit {
       numberOfCalories: ['', Validators.required],
       categoryId: ['', Validators.required],
       kitchenOriginId: ['', Validators.required],
-      ingredients: ['', Validators.required]
+      ingredients: this.fb.array([this.createIngredient()])
     });
   }
+
+
+  createIngredient(): FormGroup {
+    return this.fb.group({
+      name: ['', Validators.required],
+      amount: ['', Validators.required],
+    });
+  }
+
+  addIngredient(): void {
+    this.ingredients = this.recipeForm.get('ingredients') as FormArray;
+    this.ingredients.push(this.createIngredient());
+  }
+
+  
+  onSubmit() {
+    console.log(this.recipeForm.value);
+  }
+
+
+
+
+
+ removeIngredient(i:number) {
+  this.ingredients.removeAt(i);
+}
+
 
   addRecipe() {
     this.recipeService.addNewRecipe(this.recipeForm.value).subscribe(response => {
@@ -50,6 +85,7 @@ export class RecipeAddComponent implements OnInit {
       this.validationErrors = error;
     })
   }
+
 
   getCategories() {
     this.recipeService.getCategories().subscribe(response => {
@@ -72,5 +108,5 @@ export class RecipeAddComponent implements OnInit {
   }
 
 
-  
+
 }

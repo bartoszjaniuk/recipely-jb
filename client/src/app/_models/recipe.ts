@@ -13,5 +13,5 @@ export interface IRecipe {
     kitchenOriginId: number;
     dateAdded: Date;
     recipePhotos?: IPhoto[];
-    ingredients: IIngredient[];
+    ingredients?: IIngredient[];
 }
