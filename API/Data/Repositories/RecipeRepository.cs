@@ -70,5 +70,39 @@ namespace API.Data.Repositories
         }
         return false;
     }
+
+        public async Task<Recipe> GetRecipe(int id)
+        {
+             return await _context.Recipes.FindAsync(id);
+        }
+
+        public async Task<IEnumerable<CategoryDto>> GetCategoriesAsync()
+        {
+             return await _context.Categories
+            .ProjectTo<CategoryDto>(_autoMapper.ConfigurationProvider)
+            .ToListAsync();
+        }
+
+         public async Task<CategoryDto> GetCategoryAsync(int id)
+        {
+             return await _context.Categories.Where(r => r.Id == id)
+            .ProjectTo<CategoryDto>(_autoMapper.ConfigurationProvider)
+            .FirstOrDefaultAsync();
+        }
+
+
+          public async Task<IEnumerable<KitchenOriginDto>> GetKitchenOriginsAsync()
+        {
+             return await _context.KitchenOrigins
+            .ProjectTo<KitchenOriginDto>(_autoMapper.ConfigurationProvider)
+            .ToListAsync();
+        }
+
+         public async Task<KitchenOriginDto> GetKitchenOriginAsync(int id)
+        {
+             return await _context.KitchenOrigins.Where(r => r.Id == id)
+            .ProjectTo<KitchenOriginDto>(_autoMapper.ConfigurationProvider)
+            .FirstOrDefaultAsync();
+        }
     }
 }

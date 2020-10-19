@@ -1,1 +1,49 @@
-<p>recipe-add works!</p>
+<div class="container">
+    <form class="p-5 col-md-5 col-sm-8 formShadow" [formGroup]='recipeForm' (ngSubmit)="recipeForm.valid && addRecipe()"
+        autocomplete="off">
+        <p class="h4 mb-4">Add new recipe</p>
+        <app-text-input [formControl]='recipeForm.controls["name"]' [label]='"Name"'></app-text-input>
+
+        <app-text-input [formControl]='recipeForm.controls["preparationTime"]' [label]='"Preparation Time"' [type]='"number"'>
+        </app-text-input>
+
+        <app-text-input [formControl]='recipeForm.controls["description"]' [label]='"Description"'></app-text-input>
+
+        <app-text-input [formControl]='recipeForm.controls["numberOfCalories"]' [label]='"Number of calories"' [type]='"number"'>
+        </app-text-input>
+
+        <div class="form-group">
+            <select class="form-control" formControlName="categoryId" placeholder="Category">
+                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+            </select>
+            <div class="invalid-feedback"
+                *ngIf="recipeForm.get('categoryId').touched && recipeForm.get('categoryId').hasError('required')"> You
+                must select category
+            </div>
+        </div>
+
+        <div class="form-group">
+            <select class="form-control" formControlName="kitchenOriginId" placeholder="KitchenOrigin">
+                <option *ngFor="let kitchenOrigin of kitchenOrigins" [value]="kitchenOrigin.id">{{kitchenOrigin.name}}
+                </option>
+            </select>
+            <div class="invalid-feedback"
+                *ngIf="recipeForm.get('kitchenOriginId').touched && recipeForm.get('kitchenOriginId').hasError('required')">
+                You must select kitchen origin
+            </div>
+        </div>
+        <div class="row mt-5" *ngIf="validationErrors.length > 0">
+            <ul class="text-danger">
+                <li *ngFor="let error of validationErrors">
+                    {{error}}
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="form-group text-center">
+            <button [disabled]="!recipeForm.valid" class="btn btn-outline-dark mr-2" type="submit">Register</button>
+            <button class="btn outline-light mr-2" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

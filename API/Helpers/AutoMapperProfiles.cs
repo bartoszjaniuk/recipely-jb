@@ -53,7 +53,16 @@ namespace API.Helpers
             CreateMap<IngredientDto, Ingredient>();
 
             CreateMap<RecipeForCreateDto, Recipe>();
+
             CreateMap<RecipeForUpdateDto, Recipe>();
+
+
+            CreateMap<Category, CategoryDto>();
+            CreateMap<KitchenOrigin, KitchenOriginDto>();
+
+
+
+            
 
 
             

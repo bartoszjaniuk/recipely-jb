@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ICategory } from '../_models/category';
+import { IKitchenOrigin } from '../_models/kitchenOrigin';
 import { IRecipe } from '../_models/recipe';
 
 @Injectable({
@@ -25,21 +26,23 @@ export class RecipeService {
     )
   }
 
-
   getRecipe(id: number) {
+    const recipe = this.recipes.find(x => x.id === id);
+    if (recipe !== undefined) return of(recipe);
     return this.http.get<IRecipe>(this.baseUrl + 'recipes/' + id);
   }
 
+  addNewRecipe(recipe: IRecipe) {
+    return this.http.post(this.baseUrl + 'users/' + 'add-recipe', recipe);
+  }
 
-  // getMember(id: number) {
-  //   const recipe = this.recipes.find(x => x.id === id);
-  //   if (recipe !== undefined) return of(recipe);
-  //   return this.http.get<IRecipe>(this.baseUrl + 'recipes/' + id);
-  // }
+  deleteRecipe(id: number) {
+    return this.http.delete(this.baseUrl + 'recipes/' + id);
+  }
 
 
-  updateMember(recipe: IRecipe) {
-    return this.http.put(this.baseUrl + 'recipes', recipe).pipe(
+  editRecipe(id: number, recipe: IRecipe) {
+    return this.http.put(this.baseUrl + 'recipes/' + id, recipe).pipe(
       map(() => {
         const index = this.recipes.indexOf(recipe);
         this.recipes[index] = recipe;
@@ -47,9 +50,10 @@ export class RecipeService {
     )
   }
 
+
   getCategories() {
     if (this.categories.length > 0) return of(this.categories);
-    return this.http.get<ICategory[]>(this.baseUrl + 'recipes' + '/categories').pipe(
+    return this.http.get<ICategory[]>(this.baseUrl + 'types/' + 'categories').pipe(
       map(categories => {
         this.categories = categories;
         return categories;
@@ -57,6 +61,16 @@ export class RecipeService {
     )
   }
 
-
-  // TODO delete recipe
+  getKitchenOrigins() {
+    if (this.categories.length > 0) return of(this.categories);
+    return this.http.get<IKitchenOrigin[]>(this.baseUrl + 'types/' + 'kitchen-origins').pipe(
+      map(categories => {
+        this.categories = categories;
+        return categories;
+      })
+    )
+  }
+  // TODO deletePhoto
+  // TODO setMainPhoto
+  // TODO changeRecipePhoto
 }
