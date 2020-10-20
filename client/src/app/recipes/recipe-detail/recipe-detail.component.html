@@ -39,7 +39,9 @@
     <div class="row mt-5">
       <div class="col">
         <h4 class="text-center">Description:</h4> 
-        <p class="description">{{recipe.description}}</p>
+        <!-- <p class="description">{{recipe.description}}</p> -->
+        <div [innerHTML]="recipe.description"></div>
+        <!-- <p class="description">{{recipe.description}}</p> -->
       </div>
     </div>
     <div class="mb-5">

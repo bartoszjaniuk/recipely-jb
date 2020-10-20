@@ -1,15 +1,16 @@
 <div class="container">
 
-    <form class=" justify-content-between p-5 mt-5 formShadow" [formGroup]='recipeForm' (ngSubmit)="recipeForm.valid && addRecipe()"
-        autocomplete="off">
+    <form class=" justify-content-between p-5 mt-5 formShadow" [formGroup]='recipeForm'
+        (ngSubmit)="recipeForm.valid && addRecipe()" autocomplete="off">
         <p class="h4 mb-4">Add new recipe</p>
         <app-text-input [formControl]='recipeForm.controls["name"]' [label]='"Name"'></app-text-input>
 
         <app-text-input [formControl]='recipeForm.controls["preparationTime"]' [label]='"Preparation Time"'
             [type]='"number"'>
         </app-text-input>
-
-        <app-text-input [formControl]='recipeForm.controls["description"]' [label]='"Description"'></app-text-input>
+        <div class="form-group">
+            <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+        </div>
 
         <app-text-input [formControl]='recipeForm.controls["numberOfCalories"]' [label]='"Number of calories"'
             [type]='"number"'>
@@ -54,18 +55,18 @@
                 <div class="form-group col-6">
                     <!-- <input formControlName="amount" placeholder="Amount" class="form-control mb-2 mr-sm-2"
                         type="number"> -->
-                        <app-text-input formControlName="amount" [label]='"Amount"' [type]="'number'"></app-text-input>
+                    <app-text-input formControlName="amount" [label]='"Amount"' [type]="'number'"></app-text-input>
                 </div>
             </div>
 
         </div>
-            <button type="button" class="btn btn-primary" (click)="addIngredient()">
-                New Ingredient
-            </button>
+        <button type="button" class="btn btn-primary" (click)="addIngredient()">
+            New Ingredient
+        </button>
 
-            <ng-container *ngFor="let ingredient of ingredients">
-                {{ingredient.name}}
-            </ng-container>
+        <ng-container *ngFor="let ingredient of ingredients">
+            {{ingredient.name}}
+        </ng-container>
         <div class="form-group text-center">
             <button [disabled]="!recipeForm.valid" class="btn btn-outline-dark mr-2" type="submit">Add</button>
             <button class="btn outline-light mr-2" (click)="cancel()">Cancel</button>
