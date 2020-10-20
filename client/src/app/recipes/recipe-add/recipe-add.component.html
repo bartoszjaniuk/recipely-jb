@@ -9,7 +9,7 @@
             [type]='"number"'>
         </app-text-input>
         <div class="form-group">
-            <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+            <app-editor-input [formControl]='recipeForm.controls["description"]' [label]='"Description"' ></app-editor-input>
         </div>
 
         <app-text-input [formControl]='recipeForm.controls["numberOfCalories"]' [label]='"Number of calories"'

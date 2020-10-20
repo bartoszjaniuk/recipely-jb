@@ -35,6 +35,7 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { RecipeEditorComponent } from './members/recipe-editor/recipe-editor.component';
+import { EditorInputComponent } from './_forms/editor-input/editor-input.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { RecipeEditorComponent } from './members/recipe-editor/recipe-editor.com
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
-    RecipeEditorComponent
+    RecipeEditorComponent,
+    EditorInputComponent
   ],
   imports: [
     BrowserModule,
