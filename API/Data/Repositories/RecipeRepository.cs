@@ -27,6 +27,13 @@ namespace API.Data.Repositories
             .FirstOrDefaultAsync();
         }
 
+         public async Task<RecipeWithPhotosDto> GetRecipeWithPhotos(int id)
+        {
+            return await _context.Recipes.Where(r => r.Id == id)
+            .ProjectTo<RecipeWithPhotosDto>(_autoMapper.ConfigurationProvider)
+            .FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<RecipeForListDto>> GetRecipesAsync()
         {
             return await _context.Recipes
@@ -73,8 +80,6 @@ namespace API.Data.Repositories
 
         public async Task<Recipe> GetRecipe(int id)
         {
-            //  return await _context.Recipes.FindAsync(id);
-
              return await _context.Recipes
             .Include(u => u.RecipePhotos)
             .SingleOrDefaultAsync(u => u.Id == id);

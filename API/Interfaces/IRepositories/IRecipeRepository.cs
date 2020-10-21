@@ -15,6 +15,7 @@ namespace API.Interfaces.IRepositories
         Task<IEnumerable<RecipeForListDto>> GetRecipesAsync();
         Task<RecipeForDetailDto> GetRecipeAsync(int id);
         Task<Recipe> GetRecipe(int id);
+        Task<RecipeWithPhotosDto> GetRecipeWithPhotos(int id);
         Task<Recipe> AddNewRecipe(Recipe recipe);
         Task<bool> RecipeExists(string name);
 

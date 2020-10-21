@@ -33,6 +33,9 @@ namespace API.Helpers
             .ForMember(dest => dest.KitchenOrigin, opt => opt
            .MapFrom(src => src.KitchenOrigin.Name));
 
+            CreateMap<Recipe, RecipeWithPhotosDto>();
+
+
 
             CreateMap<Recipe, RecipeForDetailDto>()
            .ForMember(dest => dest.PhotoUrl, opt => opt
@@ -69,7 +72,6 @@ namespace API.Helpers
 
             CreateMap<RecipePhoto, RecipePhotoForDetailDto>();
 
-            CreateMap<PhotoForCreationDto, RecipePhoto>();
 
 
 

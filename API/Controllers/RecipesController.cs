@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.Dto.Recipe;
 using API.Dto.Recipe.RecipePhoto;
@@ -68,6 +69,30 @@ namespace API.Controllers
             return BadRequest("Failed to update user");
         }
 
+        [HttpPut("{recipeId}/set-main-photo/{id}")]
+        public async Task<ActionResult> SetMainPhoto(int id, int recipeId)
+        {
+
+            var recipeFromRepo = await _recipeRepository.GetRecipe(recipeId);
+
+            var photo = recipeFromRepo.RecipePhotos.FirstOrDefault(p => p.Id == id);
+
+            if (photo.IsMain) return BadRequest("This is already your main photo");
+
+            var currentMain = recipeFromRepo.RecipePhotos.FirstOrDefault(p => p.IsMain);
+
+            if (currentMain != null) currentMain.IsMain = false;
+            photo.IsMain = true;
+            
+
+            if (await _recipeRepository.SaveAllAsync())
+            {
+                return NoContent();
+            }
+
+            return BadRequest("Failed to set main photo");
+        }
+
         
 
         [HttpPost("{id}/add-photo")]
@@ -98,15 +123,27 @@ namespace API.Controllers
             return BadRequest("Problem adding photo");
         }
 
+        [HttpDelete("{id}/delete-photo/{photoId}")]
+        public async Task<ActionResult> DeletePhoto(int id, int photoId)
+        {
+            var recipeFromRepo = await _recipeRepository.GetRecipe(id);
 
+            var photo = recipeFromRepo.RecipePhotos.FirstOrDefault(p => p.Id == photoId);
 
+            if (photo.IsMain) return BadRequest("You cannot delete your main photo");
 
+            if (photo.PublicId != null)
+            {
+                var result = await _photoService.DeletePhotoAsync(photo.PublicId);
+                if (result.Error != null) return BadRequest(result.Error.Message);
+            }
 
+            recipeFromRepo.RecipePhotos.Remove(photo);
 
-        // TODO
-        // addPhoto
-        // setMainPhoto
-        // deletePhoto
+            if (await _recipeRepository.SaveAllAsync()) return Ok();
+
+            return BadRequest("Failed to delete the photo");
+        }
     }
 
 }
