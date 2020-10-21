@@ -28,4 +28,13 @@ export class RecipeEditorComponent implements OnInit {
   //   });
   // }
 
+  deleteRecipe(id: number) {
+    this.recipeService.deleteRecipe(id).subscribe(() => {
+      this.recipes.splice(this.recipes.findIndex(p => p.id === id), 1);
+      this.toastr.success('Recipe has been deleted');
+    }, error => {
+      this.toastr.error('Deleting recipe has failed')
+    })
+  }
+
 }

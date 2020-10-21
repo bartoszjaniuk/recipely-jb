@@ -40,8 +40,7 @@
             <tab heading ="Edit Profile">
               <form #editForm="ngForm" id="editForm" (ngSubmit)="updateMember()" >
                 <h5 class=" text-center mt-4">Description</h5>
-                <textarea name="introduction"  cols=100% rows="6" class="form-contorl mt-2" 
-                  [(ngModel)]="member.introduction"></textarea>
+                  <angular-editor cols=100% rows="6" [placeholder]="'Your description'" [(ngModel)]="member.introduction"  name="introduction"></angular-editor>
                   <h5 class=" text-center mt-2">Location Details:</h5>
                   <div class="form-group mt-3">
                     <label for="city">City</label>
@@ -58,7 +57,7 @@
           </tab>
   
           <tab heading ="Edit Recipes">
-            <!-- <app-recipe-editor [recipes] = "user.recipes"></app-recipe-editor> -->
+            <app-recipe-editor [recipes] = "member.recipes"></app-recipe-editor>
           </tab>
           </tabset>
         </div>

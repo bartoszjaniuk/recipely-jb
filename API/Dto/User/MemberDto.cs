@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using API.Dto.Recipe;
 
 namespace API.Dto.User
 {
@@ -17,5 +18,6 @@ namespace API.Dto.User
         public string City { get; set; }
         public string Country { get; set; }
         public ICollection<UserPhotoDto> UserPhotos { get; set; }
+        public ICollection<RecipeForListDto> Recipes { get; set; }
     }
 }

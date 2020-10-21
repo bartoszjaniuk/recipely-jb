@@ -73,7 +73,11 @@ namespace API.Data.Repositories
 
         public async Task<Recipe> GetRecipe(int id)
         {
-             return await _context.Recipes.FindAsync(id);
+            //  return await _context.Recipes.FindAsync(id);
+
+             return await _context.Recipes
+            .Include(u => u.RecipePhotos)
+            .SingleOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<IEnumerable<CategoryDto>> GetCategoriesAsync()
