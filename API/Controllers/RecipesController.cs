@@ -55,6 +55,21 @@ namespace API.Controllers
             return BadRequest("Failed to delete the recipe");
         }
 
+        [HttpDelete("ingredients/{ingredientId}")]
+        public async Task<ActionResult> DeleteIngredient(int ingredientId)
+        {
+            var ingredientFromRepo = await _recipeRepository.GetIngredient(ingredientId);
+
+            if (ingredientFromRepo == null) return NotFound("Recipe with that id does not exist");
+
+            await _recipeRepository.DeleteIngredient(ingredientId);
+
+            if (await _recipeRepository.SaveAllAsync())
+                return Ok();
+
+            return BadRequest("Failed to delete the ingredient");
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateRecipe(int id, RecipeForUpdateDto recipeForUpdateDto)
         {
@@ -83,7 +98,7 @@ namespace API.Controllers
 
             if (currentMain != null) currentMain.IsMain = false;
             photo.IsMain = true;
-            
+
 
             if (await _recipeRepository.SaveAllAsync())
             {
@@ -93,11 +108,11 @@ namespace API.Controllers
             return BadRequest("Failed to set main photo");
         }
 
-        
+
 
         [HttpPost("{id}/add-photo")]
         public async Task<ActionResult<RecipePhotoForDetailDto>> AddPhoto(IFormFile file, int id)
-        {    
+        {
             var recipe = await _recipeRepository.GetRecipe(id);
 
             var result = await _photoService.AddPhotoAsync(file);
@@ -145,5 +160,8 @@ namespace API.Controllers
             return BadRequest("Failed to delete the photo");
         }
     }
+
+
+
 
 }

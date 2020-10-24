@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Magisterka\\recipely\\api\\API.csproj": {}
+    "D:\\Magisterka\\recipely\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\Magisterka\\recipely\\api\\API.csproj": {
+    "D:\\Magisterka\\recipely\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Magisterka\\recipely\\api\\API.csproj",
+        "projectUniqueName": "D:\\Magisterka\\recipely\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\Magisterka\\recipely\\api\\API.csproj",
+        "projectPath": "D:\\Magisterka\\recipely\\API\\API.csproj",
         "packagesPath": "C:\\Users\\janiu\\.nuget\\packages\\",
-        "outputPath": "D:\\Magisterka\\recipely\\api\\obj\\",
+        "outputPath": "D:\\Magisterka\\recipely\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\janiu\\AppData\\Roaming\\NuGet\\NuGet.Config"

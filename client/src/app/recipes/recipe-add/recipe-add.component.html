@@ -45,21 +45,23 @@
                 </li>
             </ul>
         </div>
-        <div formArrayName="ingredients"
-            *ngFor="let ingredient of recipeForm.get('ingredients')['controls']; let i = index;">
+        <div formArrayName="ingredients">
+        
+        <div *ngFor="let ingredient of recipeForm.get('ingredients')['controls']; let i = index;">
             <div formGroupName={{i}} class="row">
                 <div class="form-group col-6">
-                    <!-- <app-text-input [formControl]='recipeForm.controls["name"]' [label]='"Name"'></app-text-input> -->
                     <app-text-input formControlName="name" [label]='"Name"'></app-text-input>
                 </div>
                 <div class="form-group col-6">
-                    <!-- <input formControlName="amount" placeholder="Amount" class="form-control mb-2 mr-sm-2"
-                        type="number"> -->
                     <app-text-input formControlName="amount" [label]='"Amount"' [type]="'number'"></app-text-input>
                 </div>
             </div>
+            <button *ngIf="i" type="button" class="btn btn-sm btn-danger" 
+        (click)="removeIngredient(ingredient.id)" 
+         ><i class="fa fa-trash-o"></i></button>
 
         </div>
+    </div> 
         <button type="button" class="btn btn-primary" (click)="addIngredient()">
             New Ingredient
         </button>

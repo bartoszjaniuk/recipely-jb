@@ -1,0 +1,16 @@
+<div class="row mb-5">
+  <div class="col-sm-4" *ngFor="let ingredient of ingredients; let i = index">
+    <div class="card" style="max-width: 15rem;">
+      <div class="card-header">Ingredient {{i + 1}}</div>
+      <div class="card-body text-dark">
+        <div class="row">
+          <div class="col">Name: {{ingredient.name}}</div>
+          <div class="col">Amount: {{ingredient.amount}}</div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-danger" (click)="deleteIngredient(ingredient.id)"><i
+        class="fa fa-trash-o"></i></button>
+    </div>
+
+  </div>
+</div>

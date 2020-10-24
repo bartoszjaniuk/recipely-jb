@@ -14,19 +14,7 @@ export class RecipeEditorComponent implements OnInit {
   constructor(private toastr: ToastrService, private recipeService: RecipeService,
      private accountService: AccountService) { }
 
-  ngOnInit(): void {
-  }
-
-  // deleteRecipe(id: number) {
-  //   this.alertify.confirm('Are you sure you want to delete this recipe?', () => {
-  //     this.recipeService.deleteRecipe(this.authService.decodedToken.nameid, id).subscribe(() => {
-  //       this.recipes.splice(this.recipes.findIndex(p => p.id === id), 1);
-  //       this.alertify.success('Recipe has been deleted');
-  //     }, error => {
-  //       this.alertify.error('Failed to delete the recipe');
-  //     });
-  //   });
-  // }
+  ngOnInit(): void {}
 
   deleteRecipe(id: number) {
     this.recipeService.deleteRecipe(id).subscribe(() => {

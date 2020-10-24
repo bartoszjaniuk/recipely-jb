@@ -27,7 +27,7 @@ namespace API.Data.Repositories
             .FirstOrDefaultAsync();
         }
 
-         public async Task<RecipeWithPhotosDto> GetRecipeWithPhotos(int id)
+        public async Task<RecipeWithPhotosDto> GetRecipeWithPhotos(int id)
         {
             return await _context.Recipes.Where(r => r.Id == id)
             .ProjectTo<RecipeWithPhotosDto>(_autoMapper.ConfigurationProvider)
@@ -66,52 +66,68 @@ namespace API.Data.Repositories
             return recipe;
         }
         // TEMP
-       public async Task<bool> DeleteRecipe(int recipeId)
-    {
-        var recipe = await _context.Recipes.
-        FirstOrDefaultAsync(e => e.Id == recipeId);
-        if (recipe != null)
+        public async Task<bool> DeleteRecipe(int recipeId)
         {
-            _context.Recipes.Remove(recipe);
-            return true;
+            var recipe = await _context.Recipes.
+            FirstOrDefaultAsync(e => e.Id == recipeId);
+            if (recipe != null)
+            {
+                _context.Recipes.Remove(recipe);
+                return true;
+            }
+            return false;
         }
-        return false;
-    }
 
         public async Task<Recipe> GetRecipe(int id)
         {
-             return await _context.Recipes
-            .Include(u => u.RecipePhotos)
-            .SingleOrDefaultAsync(u => u.Id == id);
+            return await _context.Recipes
+           .Include(u => u.RecipePhotos)
+           .SingleOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task<IEnumerable<CategoryDto>> GetCategoriesAsync()
         {
-             return await _context.Categories
-            .ProjectTo<CategoryDto>(_autoMapper.ConfigurationProvider)
-            .ToListAsync();
+            return await _context.Categories
+           .ProjectTo<CategoryDto>(_autoMapper.ConfigurationProvider)
+           .ToListAsync();
         }
 
-         public async Task<CategoryDto> GetCategoryAsync(int id)
+        public async Task<CategoryDto> GetCategoryAsync(int id)
         {
-             return await _context.Categories.Where(r => r.Id == id)
-            .ProjectTo<CategoryDto>(_autoMapper.ConfigurationProvider)
-            .FirstOrDefaultAsync();
+            return await _context.Categories.Where(r => r.Id == id)
+           .ProjectTo<CategoryDto>(_autoMapper.ConfigurationProvider)
+           .FirstOrDefaultAsync();
         }
 
 
-          public async Task<IEnumerable<KitchenOriginDto>> GetKitchenOriginsAsync()
+        public async Task<IEnumerable<KitchenOriginDto>> GetKitchenOriginsAsync()
         {
-             return await _context.KitchenOrigins
-            .ProjectTo<KitchenOriginDto>(_autoMapper.ConfigurationProvider)
-            .ToListAsync();
+            return await _context.KitchenOrigins
+           .ProjectTo<KitchenOriginDto>(_autoMapper.ConfigurationProvider)
+           .ToListAsync();
         }
 
-         public async Task<KitchenOriginDto> GetKitchenOriginAsync(int id)
+        public async Task<KitchenOriginDto> GetKitchenOriginAsync(int id)
         {
-             return await _context.KitchenOrigins.Where(r => r.Id == id)
-            .ProjectTo<KitchenOriginDto>(_autoMapper.ConfigurationProvider)
-            .FirstOrDefaultAsync();
+            return await _context.KitchenOrigins.Where(r => r.Id == id)
+           .ProjectTo<KitchenOriginDto>(_autoMapper.ConfigurationProvider)
+           .FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> DeleteIngredient(int ingredientId)
+        {
+            var ingredient = await _context.Ingredients.FirstOrDefaultAsync(e => e.Id == ingredientId);
+            if (ingredient != null)
+            {
+                _context.Ingredients.Remove(ingredient);
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<Ingredient> GetIngredient(int id)
+        {
+            return await _context.Ingredients.SingleOrDefaultAsync(u => u.Id == id);
         }
     }
 }

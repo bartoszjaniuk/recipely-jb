@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HTNJMzgtHKV5uRZRpPc4ul8VepGqI+4VILG9wa1f2rtS/g3GVhNIHOxVuVY2sUSTxREgls53/9k5kbEOdfIT7Q==",
+  "dgSpecHash": "7xvzDVUCrbjJgtKL367YwGESxlMsZWwnXvvmTCPShV1b66KCoIB8hxUqqEA6jyCNmLxpmanOHLPZdWnxS1PjbA==",
   "success": true,
-  "projectFilePath": "D:\\Magisterka\\recipely\\api\\API.csproj",
+  "projectFilePath": "D:\\Magisterka\\recipely\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\janiu\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\janiu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",

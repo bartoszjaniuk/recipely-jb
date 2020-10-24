@@ -10,6 +10,7 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import { MessagesComponent } from './messages/messages/messages.component';
 import { RecipeAddComponent } from './recipes/recipe-add/recipe-add.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { StartupComponent } from './startup/startup.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -29,6 +30,7 @@ const routes: Routes = [
   },
   {path: 'recipes', component: RecipeListComponent},
   {path: 'recipes/:id', component: RecipeDetailComponent},
+  {path: 'member/edit/recipes/:id/edit', component: RecipeEditComponent},
   {path: 'members', component: MemberListComponent},
   {path: 'members/:username', component: MemberDetailComponent},
   {path: 'member/edit', component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},

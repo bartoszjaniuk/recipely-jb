@@ -45,10 +45,5 @@ export class MemberEditComponent implements OnInit {
     }, error => {
       this.toastr.error(error);
     })
-    
-    
   }
-
-  
-
 }

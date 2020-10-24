@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ICategory } from '../_models/category';
@@ -11,9 +11,15 @@ import { IRecipe } from '../_models/recipe';
   providedIn: 'root'
 })
 export class RecipeService {
-  baseUrl = environment.apiUrl;
+  
   recipes: IRecipe[] = [];
   categories: ICategory[] = [];
+
+
+  currentRecipe: IRecipe;
+  photoUrl = new BehaviorSubject<string> ('./assets/not-found.jpg');
+  currentPhotoUrl = this.photoUrl.asObservable();
+  baseUrl = environment.apiUrl;
   constructor(private http: HttpClient, private recipeService: RecipeService) { }
 
   getRecipes() {
@@ -38,6 +44,10 @@ export class RecipeService {
 
   deleteRecipe(id: number) {
     return this.http.delete(this.baseUrl + 'recipes/' + id);
+  }
+
+  deleteIngredient(id: number) {
+    return this.http.delete(this.baseUrl + 'recipes/ingredients/' + id);
   }
 
 
@@ -70,7 +80,17 @@ export class RecipeService {
       })
     )
   }
-  // TODO deletePhoto
-  // TODO setMainPhoto
-  // TODO changeRecipePhoto
+
+  deletePhoto(recipeId: number, id: number) {
+    return this.http.delete(this.baseUrl + 'recipes/' + recipeId + '/delete-photo/' + id);
+  }
+
+  setMainPhoto(recipeId: number, id: number) {
+    return this.http.put(this.baseUrl + 'recipes/' + recipeId + '/set-main-photo/'  + id, {});
+  }
+
+  changeRecipePhoto(photoUrl: string) {
+    this.photoUrl.next(photoUrl);
+  }
+  
 }

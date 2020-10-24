@@ -24,8 +24,6 @@ export class RecipeAddComponent implements OnInit {
   ingredients: FormArray;
 
 
-
-  ingredientForm: FormGroup;
   validationErrors: string[] = [];
 
 
@@ -64,14 +62,6 @@ export class RecipeAddComponent implements OnInit {
     this.ingredients = this.recipeForm.get('ingredients') as FormArray;
     this.ingredients.push(this.createIngredient());
   }
-
-  
-  onSubmit() {
-    console.log(this.recipeForm.value);
-  }
-
-
-
 
 
  removeIngredient(i:number) {

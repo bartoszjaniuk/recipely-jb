@@ -9,12 +9,13 @@ namespace API.Interfaces.IRepositories
     {
 
         Task<bool> DeleteRecipe(int recipeId);
+        Task<bool> DeleteIngredient(int ingredientId);
         void Update(Recipe recipe);
-        // void Update(RecipeForUpdateDto recipe);
         Task<bool> SaveAllAsync();
         Task<IEnumerable<RecipeForListDto>> GetRecipesAsync();
         Task<RecipeForDetailDto> GetRecipeAsync(int id);
         Task<Recipe> GetRecipe(int id);
+        Task<Ingredient> GetIngredient(int id);
         Task<RecipeWithPhotosDto> GetRecipeWithPhotos(int id);
         Task<Recipe> AddNewRecipe(Recipe recipe);
         Task<bool> RecipeExists(string name);
