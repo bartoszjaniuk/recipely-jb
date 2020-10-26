@@ -34,6 +34,8 @@ namespace API.Extensions
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<LogUserActivity>();
             
 
             return services;

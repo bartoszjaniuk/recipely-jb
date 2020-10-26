@@ -97,6 +97,7 @@ export class RecipeEditComponent implements OnInit {
   updateRecipe(id: number) {
     this.recipeService.editRecipe(id, this.recipe).subscribe(next => {
       this.toastr.success('Recipe updated successfully');
+      this.editForm.reset(this.recipe);
     }, error => {
       this.toastr.error(error);
     });

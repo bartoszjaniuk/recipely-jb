@@ -16,7 +16,8 @@
             <div class="col text-center border" >Posts: </div>
             <div class="col text-center border" >Followers:</div>
             <div class="col text-center border" >Following:</div>
-            <div class="col text-center border" >Last active: 69 mins ago</div>
+            <div class="col text-center border" >Last active: {{member.lastActive | timeago}}</div>
+            <div class="col text-center border" >Member since: {{member.created | date: 'dd MMM yyyy'}}</div>
           </div>
           <p class="text-center" [innerHTML]="member.introduction"></p>
         </div>

@@ -1,8 +1,45 @@
 <div class="container mt-5">
+    <div class="row justify-content-center mb-2">
+        <div class="">
+            <div class="btn-group">
+                <button 
+                    type="button"
+                    class="btn btn-primary" 
+                    name='orderBy' 
+                    (click)="loadMembers()"
+                    btnRadio='lastActive'
+                    [(ngModel)]="userParams.orderBy">Last Active</button>
+    
+                <button 
+                    type="button"
+                    class="btn btn-primary" 
+                    name='orderBy' 
+                    (click)="loadMembers()"
+                    btnRadio='created'
+                    [(ngModel)]="userParams.orderBy">Newest Members</button>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row">
-        <div class="col-3" *ngFor="let member of members$ | async">
+        <div class="col-3" *ngFor="let member of members">
             <app-member-card [member]="member"></app-member-card>
         </div>
     </div>
 </div>
 
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination 
+    [boundaryLinks]="true" 
+    [totalItems]="pagination.totalItems" 
+    [itemsPerPage]="pagination.itemsPerPage" 
+    [(ngModel)]="pagination.currentPage"
+    (pageChanged)="pageChanged($event)"
+    previousText="&lsaquo;" 
+    nextText="&rsaquo;" 
+    firstText="&laquo;"
+        lastText="&raquo;">
+
+    </pagination>
+</div>

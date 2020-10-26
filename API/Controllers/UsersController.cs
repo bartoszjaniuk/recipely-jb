@@ -5,6 +5,7 @@ using API.Dto.Recipe;
 using API.Dto.User;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using API.Interfaces.IRepositories;
 using AutoMapper;
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     public class UsersController : BaseApiController
     {
@@ -31,9 +33,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
         {
-            var users = await _userRepository.GetMembersAsync();
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            
+            userParams.CurrentUsername = user.UserName;
+            
+            var users = await _userRepository.GetMembersAsync(userParams);
+
+            Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCountInQuery, users.TotalNumberOfPages);
+
             return Ok(users);
 
         }
