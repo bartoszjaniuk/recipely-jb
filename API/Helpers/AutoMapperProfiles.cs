@@ -64,6 +64,9 @@ namespace API.Helpers
             CreateMap<KitchenOrigin, KitchenOriginDto>();
 
 
+            CreateMap<UserLike, LikeDto>();
+
+
 
             
 
