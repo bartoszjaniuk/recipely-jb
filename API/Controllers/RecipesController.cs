@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using API.Dto.Recipe;
 using API.Dto.Recipe.RecipePhoto;
 using API.Entities;
+using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using API.Interfaces.IRepositories;
 using AutoMapper;
@@ -25,10 +27,13 @@ namespace API.Controllers
         }
 
         [HttpGet] // Pobieranie wartości
-        public async Task<ActionResult<IEnumerable<RecipeForListDto>>> GetRecipes()
+        public async Task<ActionResult<IEnumerable<RecipeForListDto>>> GetRecipes([FromQuery]RecipeParams recipeParams)
         {
 
-            var recipes = await _recipeRepository.GetRecipesAsync();
+            var recipes = await _recipeRepository.GetRecipesAsync(recipeParams);
+            
+            Response.AddPaginationHeader(recipes.CurrentPage, recipes.PageSize, recipes.TotalCountInQuery, recipes.TotalNumberOfPages);
+            
             return Ok(recipes);
         }
 

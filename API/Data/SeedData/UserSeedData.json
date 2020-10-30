@@ -37,8 +37,8 @@
             "IsMain": true
           }
         ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
+        "CategoryId": 3,
+        "KitchenOriginId": 3,
         "Ingredients": [
           {
             "Name": "paprika",
@@ -72,7 +72,7 @@
     "Recipes": [
       {
         "Name": "Kebab",
-        "PreparationTime": 90,
+        "PreparationTime": 30,
         "Description": "Dolore cupidatat in duis non ex excepteur commodo anim duis quis proident. Labore officia id voluptate fugiat deserunt aliquip. Cillum sint velit adipisicing aliquip nostrud mollit dolore veniam. Voluptate ad eiusmod aliqua qui. Sit nisi velit nostrud duis nostrud qui dolore veniam.\r\n",
         "NumberOfCalories": 1000,
         "DateAdded": "2017-04-03",
@@ -83,7 +83,7 @@
           }
         ],
         "CategoryId": 5,
-        "KitchenOriginId": 1,
+        "KitchenOriginId": 2,
         "Ingredients": [
           {
             "Name": "chicken",
@@ -117,7 +117,7 @@
     "Recipes": [
       {
         "Name": "Burger",
-        "PreparationTime": 90,
+        "PreparationTime": 40,
         "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
         "NumberOfCalories": 500,
         "DateAdded": "2017-08-11",
@@ -135,7 +135,7 @@
             "IsMain": true
           }
         ],
-        "CategoryId": 2,
+        "CategoryId": 6,
         "KitchenOriginId": 1,
         "Ingredients": [
           {
@@ -170,7 +170,7 @@
     "Recipes": [
       {
         "Name": "Pasta",
-        "PreparationTime": 90,
+        "PreparationTime": 35,
         "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
         "NumberOfCalories": 500,
         "DateAdded": "2017-08-11",
@@ -222,8 +222,8 @@
     ],
     "Recipes": [
       {
-        "Name": "Ramen",
-        "PreparationTime": 90,
+        "Name": "Rameno",
+        "PreparationTime": 170,
         "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
         "NumberOfCalories": 500,
         "DateAdded": "2017-08-11",
@@ -275,8 +275,8 @@
     ],
     "Recipes": [
       {
-        "Name": "Ramen",
-        "PreparationTime": 90,
+        "Name": "Akatsuki",
+        "PreparationTime": 1,
         "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
         "NumberOfCalories": 500,
         "DateAdded": "2017-08-11",

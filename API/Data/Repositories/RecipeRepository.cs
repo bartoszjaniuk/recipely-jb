@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Dto.Recipe;
 using API.Entities;
+using API.Helpers;
 using API.Interfaces.IRepositories;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -34,12 +35,46 @@ namespace API.Data.Repositories
             .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<RecipeForListDto>> GetRecipesAsync()
+        public async Task<PagedList<RecipeForListDto>> GetRecipesAsync(RecipeParams recipeParams)
         {
-            return await _context.Recipes
+            var query = _context.Recipes.AsQueryable();
+
+            if (!string.IsNullOrEmpty(recipeParams.KitchenOriginId.ToString()))
+            {
+                query = query.Where(u => u.KitchenOrigin.Id == recipeParams.KitchenOriginId);
+            }
+
+            if (!string.IsNullOrEmpty(recipeParams.CategoryId.ToString()))
+            {
+                query = query.Where(u => u.Category.Id == recipeParams.CategoryId);
+            }
+
+
+            if (!string.IsNullOrEmpty(recipeParams.Search))
+            {
+                query = query.Where(s => s.Name.Contains(recipeParams.Search)
+                                       || s.Category.Name.Contains(recipeParams.Search)
+                                       || s.Ingredients.Select(s=> s.Name).Contains(recipeParams.Search)
+                                       );
+            }
+
+            query = recipeParams.OrderBy switch
+            {
+                "maxTime" => query.OrderByDescending(u => u.PreparationTime), // break is no need anymore
+                "minTime" => query.OrderBy(u => u.PreparationTime),
+                _ => query.OrderBy(u => u.Name)
+            };
+
+            return await PagedList<RecipeForListDto>
+            .CreateAsync(query
             .ProjectTo<RecipeForListDto>(_autoMapper.ConfigurationProvider)
-            .ToListAsync();
+            .AsNoTracking(), recipeParams.PageNumber, recipeParams.PageSize);
+
         }
+
+
+
+
 
         public async Task<bool> RecipeExists(string name)
         {

@@ -37,6 +37,7 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { RecipeEditorComponent } from './members/recipe-editor/recipe-editor.component';
 import { EditorInputComponent } from './_forms/editor-input/editor-input.component';
 import { IngredientEditorComponent } from './recipes/ingredient-editor/ingredient-editor.component';
+import { PagingHeaderComponent } from './recipes/paging-header/paging-header.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { IngredientEditorComponent } from './recipes/ingredient-editor/ingredien
     DateInputComponent,
     RecipeEditorComponent,
     EditorInputComponent,
-    IngredientEditorComponent
+    IngredientEditorComponent,
+    PagingHeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ICategory } from '../_models/category';
 import { IKitchenOrigin } from '../_models/kitchenOrigin';
+import { PaginatedResult } from '../_models/pagination';
 import { IRecipe } from '../_models/recipe';
+import { RecipeParams } from '../_models/recipeParams';
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +16,69 @@ export class RecipeService {
   
   recipes: IRecipe[] = [];
   categories: ICategory[] = [];
+  paginatedResult: PaginatedResult<IRecipe[]> = new PaginatedResult<IRecipe[]>();
 
 
   currentRecipe: IRecipe;
   photoUrl = new BehaviorSubject<string> ('./assets/not-found.jpg');
   currentPhotoUrl = this.photoUrl.asObservable();
   baseUrl = environment.apiUrl;
+  memberCache = new Map();
   constructor(private http: HttpClient, private recipeService: RecipeService) { }
 
-  getRecipes() {
-    if (this.recipes.length > 0) return of(this.recipes);
-    return this.http.get<IRecipe[]>(this.baseUrl + 'recipes').pipe(
-      map(recipes => {
-        this.recipes = recipes;
-        return recipes;
-      })
-    )
+  getRecipes(recipeParams: RecipeParams) {
+    var response = this.memberCache.get(Object.values(recipeParams).join('-'))
+    if(response) {
+      return of(response);
+    }
+    let params = this.getPaginationHeaders(recipeParams.pageNumber, recipeParams.pageSize);
+
+    if (recipeParams.categoryId !== 0) {
+      params = params.append('categoryId', recipeParams.categoryId.toString());
+     }
+ 
+     if (recipeParams.kitchenOriginId !== 0) {
+      params = params.append('kitchenOriginId', recipeParams.kitchenOriginId.toString());
+     }
+ 
+     if (recipeParams.orderBy) {
+       params = params.append('orderBy', recipeParams.orderBy);
+      }
+
+     if (recipeParams.search) {
+       params = params.append('search', recipeParams.search);
+     }
+    return this.getPaginatedResult<IRecipe[]>(this.baseUrl + 'recipes', params)
+    .pipe(map(response => {
+      this.memberCache.set(Object.values(recipeParams).join('-'), response);
+      return response;
+    }))
   }
+
+  private getPaginatedResult<T>(url, params) {
+    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
+    return this.http.get<T>(url, { observe: 'response', params }).pipe(
+      map(response => {
+        paginatedResult.result = response.body;
+        if (response.headers.get('Pagination') !== null) {
+          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+        }
+        return paginatedResult;
+      })
+    );
+  }
+
+  private getPaginationHeaders(pageNumber: number, pageSize: number) {
+    let params = new HttpParams();
+
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
+    
+
+    return params;
+
+  }
+
 
   getRecipe(id: number) {
     const recipe = this.recipes.find(x => x.id === id);

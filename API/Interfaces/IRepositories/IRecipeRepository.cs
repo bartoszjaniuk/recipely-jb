@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Dto.Recipe;
 using API.Entities;
+using API.Helpers;
 
 namespace API.Interfaces.IRepositories
 {
@@ -12,7 +13,7 @@ namespace API.Interfaces.IRepositories
         Task<bool> DeleteIngredient(int ingredientId);
         void Update(Recipe recipe);
         Task<bool> SaveAllAsync();
-        Task<IEnumerable<RecipeForListDto>> GetRecipesAsync();
+        Task<PagedList<RecipeForListDto>> GetRecipesAsync(RecipeParams recipeParams);
         Task<RecipeForDetailDto> GetRecipeAsync(int id);
         Task<Recipe> GetRecipe(int id);
         Task<Ingredient> GetIngredient(int id);
