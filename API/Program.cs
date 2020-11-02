@@ -2,7 +2,9 @@ using System;
 using System.Threading.Tasks;
 using API.Data;
 using API.Data.SeedData;
+using API.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,11 +22,13 @@ namespace API
             try
             {
                 var context = services.GetRequiredService<DataContext>();
+                var userManager = services.GetRequiredService<UserManager<AppUser>>();
                 //Asynchronously applies any pending migrations for the context to the database. Will create the database if it does not already exist.
                 await context.Database.MigrateAsync();
+                var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
                 await Seed.SeedKitchenOrigins(context);
                 await Seed.SeedCategories(context);
-                await Seed.SeedUsers(context);
+                await Seed.SeedUsers(userManager, roleManager);
             }
             catch (Exception ex)
             {

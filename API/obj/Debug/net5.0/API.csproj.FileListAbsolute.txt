@@ -69,3 +69,4 @@ D:\Magisterka\recipely\api\bin\Debug\net5.0\Data\SeedData\UserSeedData.json
 D:\Magisterka\recipely\API\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\Magisterka\recipely\API\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 D:\Magisterka\recipely\API\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\Magisterka\recipely\API\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

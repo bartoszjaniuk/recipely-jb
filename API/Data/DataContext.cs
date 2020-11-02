@@ -1,15 +1,23 @@
 using API.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<AppUser,
+      AppRole, 
+      int, 
+      IdentityUserClaim<int>,
+      AppUserRole,
+      IdentityUserLogin<int>,
+      IdentityRoleClaim<int>,
+      IdentityUserToken<int>>
     {
         public DataContext(DbContextOptions options) : base(options)
         {
         }
 
-        public DbSet<AppUser> Users { get; set; }
         public DbSet<KitchenOrigin> KitchenOrigins { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
@@ -19,6 +27,19 @@ namespace API.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<AppUser>()
+            .HasMany(userRoles => userRoles.UserRoles)
+            .WithOne(user => user.User)
+            .HasForeignKey(userRoles => userRoles.UserId)
+            .IsRequired();
+
+            builder.Entity<AppRole>()
+            .HasMany(userRoles => userRoles.UserRoles)
+            .WithOne(user => user.Role)
+            .HasForeignKey(userRoles => userRoles.RoleId)
+            .IsRequired();
+
 
             builder.Entity<UserLike>()
             .HasKey(k => new {k.SourceUserId, k.LikedUserId});

@@ -16,8 +16,11 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/my-fav-recipes']">Favourite Recipes</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li *appHasRole='["Admin", "Moderator"]' class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/errors']">Errors</a>
+      </li>
+      <li *appHasRole='["Admin", "Moderator"]' class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
       </li>
     </ul>
 

@@ -1,12 +1,10 @@
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
-using API.Data;
 using API.Dto;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,14 +12,19 @@ namespace API.Controllers
 {
     public class AccountController : BaseApiController
     {
-        private readonly DataContext _context;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly IMapper _autoMapper;
-        public AccountController(DataContext context, ITokenService tokenService, IMapper autoMapper)
+        public AccountController(UserManager<AppUser> userManager,
+            SignInManager<AppUser> signInManager,
+            ITokenService tokenService,
+            IMapper autoMapper)
         {
             _autoMapper = autoMapper;
+            _userManager = userManager;
+            _signInManager = signInManager;
             _tokenService = tokenService;
-            _context = context;
         }
 
         [HttpPost("register")]
@@ -31,23 +34,20 @@ namespace API.Controllers
 
             var user = _autoMapper.Map<AppUser>(registerDto);
 
-            using var hmac = new HMACSHA512();
-
-
-
             user.UserName = registerDto.Username.ToLower();
-            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
-            user.PasswordSalt = hmac.Key;
 
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
 
-            _context.Users.Add(user); // here is tracking
+            if (!result.Succeeded) return BadRequest(result.Errors);
 
-            await _context.SaveChangesAsync(); // here is adding
+            var roleResult = await _userManager.AddToRoleAsync(user, "Member");
+
+            if(!roleResult.Succeeded) return BadRequest(result.Errors);
 
             return new UserLoginToReturnDto
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user),
+                Token = await _tokenService.CreateToken(user),
                 KnownAs = user.KnownAs
             };
 
@@ -55,25 +55,22 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserLoginToReturnDto>> Login(LoginDto loginDto)
         {
-            var user = await _context.Users
+            var user = await _userManager.Users
             .Include(p => p.UserPhotos)
-            .SingleOrDefaultAsync(u => u.UserName == loginDto.Username);
+            .SingleOrDefaultAsync(u => u.UserName == loginDto.Username.ToLower());
 
             if (user == null) return Unauthorized("Invalid username");
 
-            using var hmac = new HMACSHA512(user.PasswordSalt);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
 
-            var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+            if (!result.Succeeded) return Unauthorized();
 
-            for (int i = 0; i < computedHash.Length; i++)
-            {
-                if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
-            }
+
 
             return new UserLoginToReturnDto
             {
                 Username = user.UserName,
-                Token = _tokenService.CreateToken(user),
+                Token = await _tokenService.CreateToken(user),
                 PhotoUrl = user.UserPhotos.FirstOrDefault(p => p.IsMain)?.Url,
                 KnownAs = user.KnownAs
             };
@@ -81,7 +78,7 @@ namespace API.Controllers
 
         private async Task<bool> UserExists(string username)
         {
-            return await _context.Users.AnyAsync(u => u.UserName == username.ToLower());
+            return await _userManager.Users.AnyAsync(u => u.UserName == username.ToLower());
         }
     }
 }

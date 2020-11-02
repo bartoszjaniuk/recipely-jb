@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
@@ -13,6 +14,7 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { StartupComponent } from './startup/startup.component';
+import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { MemberDetailResolver } from './_resolvers/member-detailed.resolver';
@@ -26,7 +28,8 @@ const routes: Routes = [
     children: [
       {path: 'likes', component: LikeListsComponent},
       {path: 'messages', component: MessagesComponent},
-      {path: 'recipe-add', component: RecipeAddComponent}    // TODO
+      {path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard]},
+      {path: 'recipe-add', component: RecipeAddComponent}    
     ]
   },
   {path: 'recipes', component: RecipeListComponent},

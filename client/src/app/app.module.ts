@@ -39,6 +39,11 @@ import { EditorInputComponent } from './_forms/editor-input/editor-input.compone
 import { IngredientEditorComponent } from './recipes/ingredient-editor/ingredient-editor.component';
 import { PagingHeaderComponent } from './recipes/paging-header/paging-header.component';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 
 
 @NgModule({
@@ -70,7 +75,12 @@ import { MemberMessagesComponent } from './members/member-messages/member-messag
     EditorInputComponent,
     IngredientEditorComponent,
     PagingHeaderComponent,
-    MemberMessagesComponent
+    MemberMessagesComponent,
+    AdminPanelComponent,
+    HasRoleDirective,
+    UserManagementComponent,
+    PhotoManagementComponent,
+    RolesModalComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +98,8 @@ import { MemberMessagesComponent } from './members/member-messages/member-messag
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [RolesModalComponent],
+  
 })
 export class AppModule { }
