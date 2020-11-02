@@ -54,26 +54,20 @@ namespace API.Helpers
 
             CreateMap<Ingredient, IngredientDto>();
             CreateMap<IngredientDto, Ingredient>();
-
             CreateMap<RecipeForCreateDto, Recipe>();
-
             CreateMap<RecipeForUpdateDto, Recipe>();
-
-
             CreateMap<Category, CategoryDto>();
             CreateMap<KitchenOrigin, KitchenOriginDto>();
-
-
             CreateMap<UserLike, LikeDto>();
-
-
-
-            
-
-
-            
-
             CreateMap<RecipePhoto, RecipePhotoForDetailDto>();
+
+            CreateMap<Message, MessageDto>()
+                .ForMember(dest => dest.SenderPhotoUrl, opt =>
+                 opt.MapFrom(src => src.Sender.UserPhotos
+                .FirstOrDefault(photo => photo.IsMain).Url))
+                .ForMember(dest => dest.RecipientPhotoUrl, opt =>
+                 opt.MapFrom(src => src.Recipient.UserPhotos
+                .FirstOrDefault(photo => photo.IsMain).Url));
 
 
 

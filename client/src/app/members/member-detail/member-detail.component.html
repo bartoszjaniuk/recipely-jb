@@ -2,7 +2,7 @@
     <!-- Control the column width, and how they should appear on different devices -->
     
   
-    <div class="row" *ngIf="member">
+    <div class="row">
         <div class="col-sm-4 justify-content-center text-center border">
           <img src="{{member.photoUrl || '../../../assets/user.png'}}" class="img-fluid rounded-circle" alt="Responsive image">
         </div>
@@ -37,7 +37,7 @@
             </div>
         </tab>
         <tab heading ="Messages">
-          <!-- <app-member-messages [recipientId]="user.id"></app-member-messages> -->
+          <app-member-messages [username]="member.username"></app-member-messages>
         </tab>
         </tabset>
       </div>

@@ -38,6 +38,7 @@ import { RecipeEditorComponent } from './members/recipe-editor/recipe-editor.com
 import { EditorInputComponent } from './_forms/editor-input/editor-input.component';
 import { IngredientEditorComponent } from './recipes/ingredient-editor/ingredient-editor.component';
 import { PagingHeaderComponent } from './recipes/paging-header/paging-header.component';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { PagingHeaderComponent } from './recipes/paging-header/paging-header.com
     RecipeEditorComponent,
     EditorInputComponent,
     IngredientEditorComponent,
-    PagingHeaderComponent
+    PagingHeaderComponent,
+    MemberMessagesComponent
   ],
   imports: [
     BrowserModule,

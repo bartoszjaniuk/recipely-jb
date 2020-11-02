@@ -15,6 +15,7 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
 import { StartupComponent } from './startup/startup.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
+import { MemberDetailResolver } from './_resolvers/member-detailed.resolver';
 
 const routes: Routes = [
   {path: '', component: RecipeListComponent},
@@ -32,7 +33,7 @@ const routes: Routes = [
   {path: 'recipes/:id', component: RecipeDetailComponent},
   {path: 'member/edit/recipes/:id/edit', component: RecipeEditComponent},
   {path: 'members', component: MemberListComponent},
-  {path: 'members/:username', component: MemberDetailComponent},
+  {path: 'members/:username', component: MemberDetailComponent, resolve: {member: MemberDetailResolver}},
   {path: 'member/edit', component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
   {path: 'startup', component: StartupComponent},
   {path: 'errors', component: TestErrorsComponent},

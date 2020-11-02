@@ -1,8 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { getPaginatedResult, getPaginationHeaders } from '../_helpers/paginationHelper';
 import { ICategory } from '../_models/category';
 import { IKitchenOrigin } from '../_models/kitchenOrigin';
 import { PaginatedResult } from '../_models/pagination';
@@ -31,7 +32,7 @@ export class RecipeService {
     if(response) {
       return of(response);
     }
-    let params = this.getPaginationHeaders(recipeParams.pageNumber, recipeParams.pageSize);
+    let params = getPaginationHeaders(recipeParams.pageNumber, recipeParams.pageSize);
 
     if (recipeParams.categoryId !== 0) {
       params = params.append('categoryId', recipeParams.categoryId.toString());
@@ -48,35 +49,11 @@ export class RecipeService {
      if (recipeParams.search) {
        params = params.append('search', recipeParams.search);
      }
-    return this.getPaginatedResult<IRecipe[]>(this.baseUrl + 'recipes', params)
+    return getPaginatedResult<IRecipe[]>(this.baseUrl + 'recipes', params, this.http)
     .pipe(map(response => {
       this.memberCache.set(Object.values(recipeParams).join('-'), response);
       return response;
     }))
-  }
-
-  private getPaginatedResult<T>(url, params) {
-    const paginatedResult: PaginatedResult<T> = new PaginatedResult<T>();
-    return this.http.get<T>(url, { observe: 'response', params }).pipe(
-      map(response => {
-        paginatedResult.result = response.body;
-        if (response.headers.get('Pagination') !== null) {
-          paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
-        }
-        return paginatedResult;
-      })
-    );
-  }
-
-  private getPaginationHeaders(pageNumber: number, pageSize: number) {
-    let params = new HttpParams();
-
-    params = params.append('pageNumber', pageNumber.toString());
-    params = params.append('pageSize', pageSize.toString());
-    
-
-    return params;
-
   }
 
 
