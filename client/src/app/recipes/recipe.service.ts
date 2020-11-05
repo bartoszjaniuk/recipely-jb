@@ -87,7 +87,7 @@ export class RecipeService {
 
 
   getCategories() {
-    if (this.categories.length > 0) return of(this.categories);
+    
     return this.http.get<ICategory[]>(this.baseUrl + 'types/' + 'categories').pipe(
       map(categories => {
         this.categories = categories;
@@ -97,7 +97,7 @@ export class RecipeService {
   }
 
   getKitchenOrigins() {
-    if (this.categories.length > 0) return of(this.categories);
+
     return this.http.get<IKitchenOrigin[]>(this.baseUrl + 'types/' + 'kitchen-origins').pipe(
       map(categories => {
         this.categories = categories;

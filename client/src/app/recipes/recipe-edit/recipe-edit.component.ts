@@ -36,7 +36,7 @@ export class RecipeEditComponent implements OnInit {
   addIngredient(): void {
     this.recipe.ingredients.push({
       name: 'Ingredient',
-      amount: 1
+      amount: 'Amount'
     });
   }
 

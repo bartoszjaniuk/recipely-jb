@@ -42,11 +42,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "1 piece"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "500g"
           }
         ]
       }
@@ -87,11 +87,11 @@
         "Ingredients": [
           {
             "Name": "chicken",
-            "Amount": 5
+            "Amount": "1 kg"
           },
 		  {
             "Name": "salat",
-            "Amount": 20
+            "Amount": "1 piece"
           }
         ]
       }
@@ -140,11 +140,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "2 pieces"
           },
 		  {
-            "Name": "chicken",
-            "Amount": 10
+            "Name": "beef",
+            "Amount": "500g"
           }
         ]
       }
@@ -193,11 +193,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "3 pieces"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "100g"
           }
         ]
       }
@@ -246,11 +246,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "300g"
           }
         ]
       }
@@ -299,11 +299,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "200g"
           }
         ]
       }
@@ -352,11 +352,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "200g"
           }
         ]
       }
@@ -405,11 +405,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "200g"
           }
         ]
       }
@@ -458,11 +458,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "200g"
           }
         ]
       }
@@ -511,11 +511,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "200g"
           }
         ]
       }
@@ -564,11 +564,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "200g"
           }
         ]
       }
@@ -617,11 +617,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "200g"
           }
         ]
       }
@@ -670,11 +670,11 @@
         "Ingredients": [
           {
             "Name": "paprika",
-            "Amount": 5
+            "Amount": "200g"
           },
 		  {
             "Name": "chicken",
-            "Amount": 10
+            "Amount": "200g"
           }
         ]
       }
