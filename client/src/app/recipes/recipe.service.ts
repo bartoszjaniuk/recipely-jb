@@ -17,6 +17,8 @@ export class RecipeService {
   
   recipes: IRecipe[] = [];
   categories: ICategory[] = [];
+  kitchenOrigins: IKitchenOrigin[] = [];
+  kitchenOriginsWithRecipes: IKitchenOrigin[] = [];
   paginatedResult: PaginatedResult<IRecipe[]> = new PaginatedResult<IRecipe[]>();
 
 
@@ -99,9 +101,19 @@ export class RecipeService {
   getKitchenOrigins() {
 
     return this.http.get<IKitchenOrigin[]>(this.baseUrl + 'types/' + 'kitchen-origins').pipe(
-      map(categories => {
-        this.categories = categories;
-        return categories;
+      map(kitchenOrigins => {
+        this.kitchenOrigins = kitchenOrigins;
+        return kitchenOrigins;
+      })
+    )
+  }
+
+  getKitchenOriginsWithRecipesOnly() {
+
+    return this.http.get<IKitchenOrigin[]>(this.baseUrl + 'recipes/' + 'kitchen-origins').pipe(
+      map(kitchenOriginsWithRecipes => {
+        this.kitchenOriginsWithRecipes = kitchenOriginsWithRecipes;
+        return kitchenOriginsWithRecipes;
       })
     )
   }

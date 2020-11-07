@@ -26,7 +26,7 @@ namespace API.Controllers
             return Ok(category);
         }
 
-         [HttpGet("kitchen-origins")]
+        [HttpGet("kitchen-origins")]
         public async Task<ActionResult> GetKitchenOrigins()
         {
             var kitchenOrigins = await _recipeRepository.GetKitchenOriginsAsync();

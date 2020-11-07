@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using API.Dto;
 using API.Dto.Recipe;
@@ -60,6 +61,8 @@ namespace API.Helpers
             CreateMap<KitchenOrigin, KitchenOriginDto>();
             CreateMap<UserLike, LikeDto>();
             CreateMap<RecipePhoto, RecipePhotoForDetailDto>();
+            CreateMap<DateTime, DateTime>()
+            .ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Utc));
 
             CreateMap<Message, MessageDto>()
                 .ForMember(dest => dest.SenderPhotoUrl, opt =>

@@ -69,7 +69,7 @@ export class RecipeListComponent implements OnInit {
   }
 
   getKitchenOrigins() {
-    this.recipeService.getKitchenOrigins().subscribe(response => {
+    this.recipeService.getKitchenOriginsWithRecipesOnly().subscribe(response => {
       this.kitchenOrigins = [{id: 0, name: 'All'}, ...response];
     });
   }

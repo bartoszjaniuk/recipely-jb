@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.Dto.Recipe;
 using API.Entities;
@@ -28,6 +29,7 @@ namespace API.Interfaces.IRepositories
         Task<CategoryDto> GetCategoryAsync(int id);
 
         Task<IEnumerable<KitchenOriginDto>> GetKitchenOriginsAsync();
+        Task<IEnumerable<KitchenOriginDto>> GetKitchenOriginsWithRecipesAsync();
         Task<KitchenOriginDto> GetKitchenOriginAsync(int id);
     }
 }

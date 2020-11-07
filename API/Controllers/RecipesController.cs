@@ -27,13 +27,13 @@ namespace API.Controllers
         }
 
         [HttpGet] // Pobieranie wartości
-        public async Task<ActionResult<IEnumerable<RecipeForListDto>>> GetRecipes([FromQuery]RecipeParams recipeParams)
+        public async Task<ActionResult<IEnumerable<RecipeForListDto>>> GetRecipes([FromQuery] RecipeParams recipeParams)
         {
 
             var recipes = await _recipeRepository.GetRecipesAsync(recipeParams);
-            
+
             Response.AddPaginationHeader(recipes.CurrentPage, recipes.PageSize, recipes.TotalCountInQuery, recipes.TotalNumberOfPages);
-            
+
             return Ok(recipes);
         }
 
@@ -43,6 +43,14 @@ namespace API.Controllers
             var recipe = await _recipeRepository.GetRecipeAsync(id);
             return recipe;
 
+        }
+
+
+        [HttpGet("kitchen-origins")]
+        public async Task<ActionResult> GetKitchenOrigins()
+        {
+            var kitchenOrigins = await _recipeRepository.GetKitchenOriginsWithRecipesAsync();
+            return Ok(kitchenOrigins);
         }
 
         [HttpDelete("{id}")]

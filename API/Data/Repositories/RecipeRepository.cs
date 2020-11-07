@@ -54,7 +54,7 @@ namespace API.Data.Repositories
             {
                 query = query.Where(s => s.Name.Contains(recipeParams.Search)
                                        || s.Category.Name.Contains(recipeParams.Search)
-                                       || s.Ingredients.Select(s=> s.Name).Contains(recipeParams.Search)
+                                       || s.Ingredients.Select(s => s.Name).Contains(recipeParams.Search)
                                        );
             }
 
@@ -71,10 +71,6 @@ namespace API.Data.Repositories
             .AsNoTracking(), recipeParams.PageNumber, recipeParams.PageSize);
 
         }
-
-
-
-
 
         public async Task<bool> RecipeExists(string name)
         {
@@ -134,6 +130,13 @@ namespace API.Data.Repositories
            .FirstOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<KitchenOriginDto>> GetKitchenOriginsWithRecipesAsync()
+    {
+        return await _context.KitchenOrigins
+        .Where(k => k.Recipes.Any())
+        .ProjectTo<KitchenOriginDto>(_autoMapper.ConfigurationProvider)
+       .ToListAsync();
+    }
 
         public async Task<IEnumerable<KitchenOriginDto>> GetKitchenOriginsAsync()
         {

@@ -13,11 +13,9 @@ export class MemberMessagesComponent implements OnInit {
   @Input() username: string;
   messages: IMessage[];
   messageContent: string;
-  constructor(private messageService: MessageService) { }
+  constructor(public messageService: MessageService) { }
 
-  ngOnInit(): void {
-    this.loadMessages();
-  }
+  ngOnInit(): void {}
 
   loadMessages() {
     this.messageService.getMessageThread(this.username).subscribe(messages => {
@@ -25,9 +23,15 @@ export class MemberMessagesComponent implements OnInit {
     })
   }
 
+  // sendMessage() {
+  //   this.messageService.sendMessage(this.username, this.messageContent).subscribe(message => {
+  //     this.messages.push(message);
+  //     this.messageForm.reset();
+  //   })
+  // }
+
   sendMessage() {
-    this.messageService.sendMessage(this.username, this.messageContent).subscribe(message => {
-      this.messages.push(message);
+    this.messageService.sendMessage(this.username, this.messageContent).then(() => {
       this.messageForm.reset();
     })
   }
