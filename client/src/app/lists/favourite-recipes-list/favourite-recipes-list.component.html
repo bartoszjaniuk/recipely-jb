@@ -1,0 +1,8 @@
+<div class="text-center" *ngIf="!recipes?.length">
+    You don't have favourite recipes!
+</div>
+<div class="row recipes-body">
+    <div *ngFor="let recipe of recipes" class="col-md-4 col-sm-6 mb-4">
+        <app-fav-recipe-card [recipe]="recipe"></app-fav-recipe-card>
+    </div>
+</div>

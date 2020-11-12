@@ -19,8 +19,10 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         private readonly IRecipeRepository _recipeRepository;
         private readonly IPhotoService _photoService;
-        public RecipesController(IRecipeRepository recipeRepository, IMapper mapper, IPhotoService photoService)
+        private readonly IUserRepository _userRepository;
+        public RecipesController(IRecipeRepository recipeRepository, IMapper mapper, IPhotoService photoService, IUserRepository userRepository)
         {
+            _userRepository = userRepository;
             _photoService = photoService;
             _recipeRepository = recipeRepository;
             _mapper = mapper;
@@ -149,6 +151,47 @@ namespace API.Controllers
                 return CreatedAtRoute("GetRecipe", new { id = recipe.Id }, _mapper.Map<RecipePhotoForDetailDto>(photo));
             }
             return BadRequest("Problem adding photo");
+        }
+
+        [HttpPost("{recipeId}/addToFav")]
+        public async Task<ActionResult> AddRecipeToFav(int recipeId)
+        {
+            var currentUserId = 0;
+
+            try
+            {
+                currentUserId = User.GetUserId();
+            }
+            catch (System.Exception)
+            {
+
+                return Unauthorized();
+            }
+
+
+
+            var user = _userRepository.GetUserByIdAsync(currentUserId);
+
+            var like = await _userRepository.GetFav(recipeId);
+
+            if (like != null)
+                return BadRequest("You allready like this recipe");
+
+            if (await _recipeRepository.GetRecipe(recipeId) == null)
+                return NotFound();
+
+            like = new FavouriteRecipe
+            {
+                UserId = currentUserId,
+                RecipeId = recipeId
+            };
+
+            _userRepository.AddRecipeToFav(like);
+
+            if (await _recipeRepository.SaveAllAsync())
+                return Ok();
+
+            return BadRequest("Failed  to fav  recipe");
         }
 
         [HttpDelete("{id}/delete-photo/{photoId}")]

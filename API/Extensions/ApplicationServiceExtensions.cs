@@ -39,6 +39,7 @@ namespace API.Extensions
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<ILikesRepository, LikesRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<LogUserActivity>();
             
 

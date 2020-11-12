@@ -44,6 +44,11 @@ import { HasRoleDirective } from './_directives/has-role.directive';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
+import { CommentComponent } from './recipes/comment/comment.component';
+import { CommentInputComponent } from './_forms/comment-input/comment-input.component';
+import { MemberRecipeCardComponent } from './members/member-recipe-card/member-recipe-card.component';
+import { FavouriteRecipesListComponent } from './lists/favourite-recipes-list/favourite-recipes-list.component';
+import { FavRecipeCardComponent } from './lists/fav-recipe-card/fav-recipe-card.component';
 
 
 @NgModule({
@@ -80,7 +85,12 @@ import { RolesModalComponent } from './modals/roles-modal/roles-modal.component'
     HasRoleDirective,
     UserManagementComponent,
     PhotoManagementComponent,
-    RolesModalComponent
+    RolesModalComponent,
+    CommentComponent,
+    CommentInputComponent,
+    MemberRecipeCardComponent,
+    FavouriteRecipesListComponent,
+    FavRecipeCardComponent
   ],
   imports: [
     BrowserModule,

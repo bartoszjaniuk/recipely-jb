@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Dto.Recipe;
 using API.Dto.User;
 using API.Entities;
 using API.Helpers;
@@ -22,9 +23,15 @@ namespace API.Data.Repositories
         }
 
 
-        public void Add<T>(T entity) where T : class
+
+        public void AddRecipeToFav(FavouriteRecipe favouriteRecipe)
         {
-            _context.Add(entity);
+            _context.FavouriteRecipes.Add(favouriteRecipe);
+        }
+
+        public async Task<FavouriteRecipe> GetFav(int recipeId)
+        {
+            return await _context.FavouriteRecipes.FirstOrDefaultAsync(u => u.RecipeId == recipeId);
         }
 
         public async Task<MemberDto> GetMemberAsync(string username)
@@ -44,7 +51,7 @@ namespace API.Data.Repositories
 
             query = userParams.OrderBy switch
             {
-                "created" => query.OrderByDescending(u=>u.Created), // break is no need anymore
+                "created" => query.OrderByDescending(u => u.Created), // break is no need anymore
                 _ => query.OrderByDescending(u => u.LastActive) // default
             };
 
@@ -57,7 +64,10 @@ namespace API.Data.Repositories
 
         public async Task<AppUser> GetUserByIdAsync(int id)
         {
-            return await _context.Users.FindAsync(id);
+            return await _context.Users
+            .Where(u => u.Id == id)
+            .Include(u => u.FavRecipes)
+            .SingleOrDefaultAsync();
         }
 
         public async Task<AppUser> GetUserByUsernameAsync(string username)
@@ -65,6 +75,17 @@ namespace API.Data.Repositories
             return await _context.Users
             .Include(u => u.UserPhotos)
             .SingleOrDefaultAsync(u => u.UserName == username);
+        }
+
+        public async Task<IEnumerable<FavouriteRecipeDto>> GetUserFavRecipes(int userId)
+        {
+            return await _context.FavouriteRecipes
+            .Where(x => x.UserId == userId)
+            .ProjectTo<FavouriteRecipeDto>(_autoMapper.ConfigurationProvider)
+            .ToListAsync();
+            
+
+            
         }
 
         public async Task<IEnumerable<AppUser>> GetUsersAsync()

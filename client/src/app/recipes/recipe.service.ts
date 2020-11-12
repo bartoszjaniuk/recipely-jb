@@ -129,5 +129,9 @@ export class RecipeService {
   changeRecipePhoto(photoUrl: string) {
     this.photoUrl.next(photoUrl);
   }
+  ///api/Recipes/{recipeId}/addToFav
+  addRecipeToFavourite(recipeId: number) {
+    return this.http.post(this.baseUrl + 'recipes' + recipeId + '/addToFav', {});
+  }
   
 }

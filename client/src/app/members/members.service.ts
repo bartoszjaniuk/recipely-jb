@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { getPaginatedResult, getPaginationHeaders } from '../_helpers/paginationHelper';
+import { IFavouriteRecipe } from '../_models/favouriteRecipe';
 import { IMember } from '../_models/member';
 import { UserParams } from '../_models/userParams';
 
@@ -14,6 +15,7 @@ import { UserParams } from '../_models/userParams';
 export class MembersService {
   baseUrl = environment.apiUrl;
   members: IMember[] = [];
+  favRecipes: IFavouriteRecipe[] = [];
   memberCache = new Map();
 
   constructor(private http: HttpClient, private memberService: MembersService) { }
@@ -75,6 +77,15 @@ export class MembersService {
     let params = getPaginationHeaders(pageNumber, pageSize);
     params = params.append('predicate', predicate);
     return getPaginatedResult<Partial<IMember[]>>(this.baseUrl + 'likes', params, this.http);
+  }
+
+  getFavouriteRecipes() {
+    return this.http.get<IFavouriteRecipe[]>(this.baseUrl + 'user' + '/favouriteRecipes').pipe(
+      map(favRecipes => {
+        this.favRecipes = favRecipes;
+        return favRecipes;
+      })
+    )
   }
 
 }

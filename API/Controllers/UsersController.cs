@@ -34,12 +34,12 @@ namespace API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
-            
+
             userParams.CurrentUsername = user.UserName;
-            
+
             var users = await _userRepository.GetMembersAsync(userParams);
 
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCountInQuery, users.TotalNumberOfPages);
@@ -53,6 +53,17 @@ namespace API.Controllers
             var user = await _userRepository.GetMemberAsync(username);
             return user;
 
+        }
+
+        [HttpGet("/api/User/favouriteRecipes")] // Pobieranie wartości
+        public async Task<ActionResult> GetUserFavRecipes()
+        {
+
+            var userId = User.GetUserId();
+            
+            var userFavRecipes = await _userRepository.GetUserFavRecipes(userId);
+
+            return Ok(userFavRecipes);
         }
 
         [HttpPut]
@@ -140,8 +151,9 @@ namespace API.Controllers
             recipeToReturn.CategoryId = createdRecipe.CategoryId;
             recipeToReturn.KitchenOriginId = createdRecipe.KitchenOriginId;
 
-            return CreatedAtRoute("GetRecipe", new { controller = "Recipes", id = createdRecipe.Id}, recipeToReturn);
+            return CreatedAtRoute("GetRecipe", new { controller = "Recipes", id = createdRecipe.Id }, recipeToReturn);
         }
+
 
 
         [HttpDelete("delete-photo/{photoId}")]

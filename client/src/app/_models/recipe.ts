@@ -1,3 +1,4 @@
+import { IComment } from './comment';
 import { IIngredient } from './ingredient';
 import { IPhoto } from './photo';
 
@@ -14,4 +15,5 @@ export interface IRecipe {
     dateAdded: Date;
     recipePhotos?: IPhoto[];
     ingredients?: IIngredient[];
+    comments?: IComment[];
 }

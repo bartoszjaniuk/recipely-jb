@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using API.Dto;
+using API.Dto.Comment;
 using API.Dto.Recipe;
 using API.Dto.Recipe.RecipePhoto;
 using API.Dto.User;
@@ -33,6 +34,15 @@ namespace API.Helpers
            .MapFrom(src => src.Category.Name))
             .ForMember(dest => dest.KitchenOrigin, opt => opt
            .MapFrom(src => src.KitchenOrigin.Name));
+
+           CreateMap<FavouriteRecipe, FavouriteRecipeDto>()
+           .ForMember(dest => dest.PhotoUrl, opt => opt
+                .MapFrom(src => src.Recipe.RecipePhotos
+                    .FirstOrDefault(p => p.IsMain).Url))
+            .ForMember(dest => dest.Name, opt => opt
+                .MapFrom(src => src.Recipe.Name));
+           
+           
 
             CreateMap<Recipe, RecipeWithPhotosDto>();
 
@@ -73,11 +83,16 @@ namespace API.Helpers
                 .FirstOrDefault(photo => photo.IsMain).Url));
 
 
+            CreateMap<Comment, CommentToCreateDto>();
+            CreateMap<Comment, CommentDto>()
+                .ForMember(d => d.Username, o => o.MapFrom(s => s.Author.UserName))
+                .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.Author.KnownAs))
+                .ForMember(d => d.Image, o => o.MapFrom(s => s.Author.UserPhotos
+                .FirstOrDefault(p => p.IsMain).Url));
 
 
-
+        }
 
 
         }
     }
-}

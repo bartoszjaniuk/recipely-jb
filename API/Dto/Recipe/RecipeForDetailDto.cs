@@ -19,6 +19,7 @@ namespace API.Dto.Recipe
         public DateTime DateAdded { get; set; }
         public ICollection<RecipePhotoForDetailDto> RecipePhotos { get; set; }
         public ICollection<IngredientDto> Ingredients { get; set; }
+        public ICollection<CommentDto> Comments { get; set; }
 
     }
 }

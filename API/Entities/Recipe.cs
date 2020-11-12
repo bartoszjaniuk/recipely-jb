@@ -19,5 +19,6 @@ namespace API.Entities
         public int KitchenOriginId { get; set; }
         public ICollection<RecipePhoto> RecipePhotos { get; set; }
         public ICollection<Ingredient> Ingredients { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

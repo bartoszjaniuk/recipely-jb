@@ -1,0 +1,46 @@
+<div *ngIf="comments.length === 0">
+  No comments yet... say hi by using the message box below
+</div>
+
+<div class="row mb-3 pt-2 align-items-center mr-2" *ngFor="let comment of comments">
+  <div class="col-1">
+    <div class="row text-center">
+      <div class="col-12 ">
+        <img class="rounded-circle profile" src="{{comment.image || './assets/user.png'}}"
+          alt="{{comment.displayName}}">
+      </div>
+      <div class="col-12 ">
+        {{comment.displayName}}
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm-11 glowingBorder rounded p-3">
+    {{comment.body}}
+  </div>
+  <div class="col text-right">
+    {{comment.createdAt | date: 'medium'}}
+  </div>
+</div>
+<div class="row mb-3 pt-2 align-items-center mr-2">
+  <div class="col-1">
+  </div>
+  <div class="col-sm-11">
+    <div class="row align-items-center">
+      <div class="col myCol">
+        <form [formGroup]='commentForm' (ngSubmit)="commentForm.valid && addComment()" autocomplete="off">
+          <app-comment-input [formControl]='commentForm.controls["body"]' [label]='"Enter a comment"'></app-comment-input>
+          <div class="form-group">
+            <button [disabled]="!commentForm.valid" class="btn btn-outline-dark mr-2" type="submit">Add</button>
+            <button class="btn outline-light mr-2" (click)="cancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<br>
+<br>
+<hr>

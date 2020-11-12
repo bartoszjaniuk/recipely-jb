@@ -26,6 +26,8 @@ namespace API.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Connection> Connections { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<FavouriteRecipe> FavouriteRecipes {get; set;}
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -68,6 +70,9 @@ namespace API.Data
             .HasOne(u => u.Sender)
             .WithMany(m => m.MessagesSent)
             .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<FavouriteRecipe>()
+            .HasKey(k => new {k.UserId, k.RecipeId});
         }
 
     }

@@ -21,6 +21,12 @@ namespace API.Data.Repositories
             _context = context;
         }
 
+         public void Add<T>(T entity) where T : class
+        {
+            _context.Add(entity);
+        }
+
+
         public async Task<RecipeForDetailDto> GetRecipeAsync(int id)
         {
             return await _context.Recipes.Where(r => r.Id == id)

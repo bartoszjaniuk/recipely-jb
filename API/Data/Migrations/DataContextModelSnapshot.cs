@@ -161,6 +161,33 @@ namespace API.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("API.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("AuthorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("RecipeId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("API.Entities.Connection", b =>
                 {
                     b.Property<string>("ConnectionId")
@@ -177,6 +204,24 @@ namespace API.Data.Migrations
                     b.HasIndex("GroupName");
 
                     b.ToTable("Connections");
+                });
+
+            modelBuilder.Entity("API.Entities.FavouriteRecipe", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DateLiked")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "RecipeId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("FavouriteRecipes");
                 });
 
             modelBuilder.Entity("API.Entities.Group", b =>
@@ -479,11 +524,45 @@ namespace API.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("API.Entities.Comment", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("API.Entities.Recipe", "Recipe")
+                        .WithMany("Comments")
+                        .HasForeignKey("RecipeId");
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Recipe");
+                });
+
             modelBuilder.Entity("API.Entities.Connection", b =>
                 {
                     b.HasOne("API.Entities.Group", null)
                         .WithMany("Connections")
                         .HasForeignKey("GroupName");
+                });
+
+            modelBuilder.Entity("API.Entities.FavouriteRecipe", b =>
+                {
+                    b.HasOne("API.Entities.Recipe", "Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.AppUser", "User")
+                        .WithMany("FavRecipes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Recipe");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("API.Entities.Ingredient", b =>
@@ -627,6 +706,8 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
+                    b.Navigation("FavRecipes");
+
                     b.Navigation("LikedByUsers");
 
                     b.Navigation("LikedUsers");
@@ -659,6 +740,8 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Recipe", b =>
                 {
+                    b.Navigation("Comments");
+
                     b.Navigation("Ingredients");
 
                     b.Navigation("RecipePhotos");

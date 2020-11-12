@@ -1,0 +1,18 @@
+.profile {
+    width: 50px;
+    height: 50px;
+    border: 1px solid white;
+
+} 
+
+.myCol {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.glowingBorder {
+    -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+-webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+}
+
