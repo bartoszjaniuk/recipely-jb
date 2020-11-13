@@ -52,13 +52,17 @@
                 <div class="form-group col-6">
                     <app-text-input formControlName="name" [label]='"Name"'></app-text-input>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-5">
                     <app-text-input formControlName="amount" [label]='"Amount"'></app-text-input>
                 </div>
+                <div class="col" >
+                        <button type="button" class="btn btn-sm btn-danger p-3 rounded" 
+                        (click)="removeIngredient(ingredient.id)" 
+                         ><i class="fa fa-trash-o"></i></button>
+                  
+                </div>
             </div>
-            <button *ngIf="i" type="button" class="btn btn-sm btn-danger" 
-        (click)="removeIngredient(ingredient.id)" 
-         ><i class="fa fa-trash-o"></i></button>
+       
 
         </div>
     </div> 

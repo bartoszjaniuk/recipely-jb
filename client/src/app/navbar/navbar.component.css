@@ -51,3 +51,19 @@ li {
     outline: none;
     box-shadow: 0 0 10px #404142;
 }
+
+.icon {
+    
+    cursor: pointer;
+    outline: none;
+    color: #ffffff;
+    font-weight: 100;
+    text-shadow: 0.5px  0.5px 1px black, 0 0 3px black, 0 0 1px black;
+}
+.icon :hover {
+    color: black;
+}
+
+.icon :active {
+    color: black;
+}

@@ -3,18 +3,25 @@
     <!-- <a class="navbar-brand" [routerLink]="['/recipes']" ><img src="../../../assets/cookhat.png" alt=""></a> -->
     <a class="navbar-brand" routerLink='/'>Recipely.</a>
 
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link " [routerLink]="['/recipes']">Recipes</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="icon" routerLinkActive="active">
+        <!-- <img  src="./assets/hat.png" alt="" [routerLink]="['/recipes']" style="height: 30px; width: 70px;"> -->
+        <i class="fa fa-book fa-2x nav-item icon" [routerLink]="['/recipes']"></i> 
       </li>
-      <li class="nav-item " routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/members']">Users</a>
+      <li class="icon" routerLinkActive="active">
+        <!-- <img  class="icon" src="./assets/users.png" alt="" [routerLink]="['/members']" style="height: 30px; width: 60px;"> -->
+        <i class="fa fa-address-book fa-2x nav-item icon" [routerLink]="['/members']"></i> 
+        <!-- <a class="nav-link" [routerLink]="['/members']">Users</a> -->
       </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/likes']">Likes</a>
+      <li class="icon" routerLinkActive="active">
+        <!-- <img  class="icon" src="./assets/likes.png" alt="" [routerLink]="['/likes']" style="height: 30px; width: 70px;"> -->
+        <i class="fa fa-thumbs-up fa-2x nav-item icon" [routerLink]="['/likes']"></i> 
+        <!-- <a class="nav-link" [routerLink]="['/likes']">Likes</a> -->
       </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/my-fav-recipes']">Favourite Recipes</a>
+      <li class="icon" routerLinkActive="active">
+        <!-- <img  src="./assets/serce1.png" alt="" [routerLink]="['/my-fav-recipes']" style="height: 30px; width: 55px;"> -->
+        <i class="fa fa-heart fa-2x nav-item icon" [routerLink]="['/my-fav-recipes']"></i> 
+        <!-- <a class="nav-link" [routerLink]="['/my-fav-recipes']">Favourite Recipes</a> -->
       </li>
       <li *appHasRole='["Admin", "Moderator"]' class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/errors']">Errors</a>
@@ -38,13 +45,13 @@
             <img class="rounded-circle" src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
           </div>
           <div class="dropdown-menu mt-4" *dropdownMenu>
-              <a class="dropdown-item mb-3" [routerLink]="['/member/edit']"> <i class="fa fa-user-circle fa-lg"></i> Edit Profile</a>
+              <a class="dropdown-item mb-3" [routerLink]="['/member/edit']"> <i class="fa fa-user-circle fa-lg icon"></i> Edit Profile</a>
               
-              <a class="dropdown-item mb-3" [routerLink]="['/recipe-add']"> <i class="fa fa-book fa-lg"></i> Add Recipe</a>
+              <a class="dropdown-item mb-3" [routerLink]="['/recipe-add']"> <i class="fa fa-book fa-lg icon"></i> Add Recipe</a>
               
-              <a class="dropdown-item" [routerLink]="['/messages']"> <i class="fa fa-comment fa-lg"></i> Messages</a>
+              <a class="dropdown-item" [routerLink]="['/messages']"> <i class="fa fa-comment fa-lg icon"></i> Messages</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="logOut()"><i class="fa fa-sign-out fa-lg"></i> Logout</a>
+              <a class="dropdown-item" (click)="logOut()"><i class="fa fa-sign-out fa-lg icon"></i> Logout</a>
           </div>
         </div>
       </li>
