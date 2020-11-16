@@ -16,40 +16,48 @@ export class RecipeDetailComponent implements OnInit {
   galleryImages: NgxGalleryImage[] = [];
 
   constructor(private recipeService: RecipeService, private toastr: ToastrService,
-     private route: ActivatedRoute) { }
+    private route: ActivatedRoute) { }
 
-     ngOnInit(): void {
-      this.loadRecipe();
-  
-      this.galleryOptions = [
-        {
-          width: '500px',
-          height: '500px',
-          imagePercent: 100,
-          thumbnailsColumns: 4,
-          imageAnimation: NgxGalleryAnimation.Slide,
-          preview: false
-        }
-      ]
-    }
-  
-    getImages(): NgxGalleryImage[] {
-      const imageUrls = [];
-      for (const photo of this.recipe.recipePhotos) {
-        imageUrls.push({
-          small: photo?.url,
-          medium: photo?.url,
-          big: photo?.url
-        })
+  ngOnInit(): void {
+    this.loadRecipe();
+
+    this.galleryOptions = [
+      {
+        width: '1000px',
+        height: '500px',
+        imagePercent: 100,
+        thumbnailsColumns: 4,
+        imageAnimation: NgxGalleryAnimation.Slide,
+        preview: true
       }
-      return imageUrls;
-    }
-  
-    loadRecipe() {
-      this.recipeService.getRecipe(this.route.snapshot.params.id).subscribe(recipe => {
-        this.recipe = recipe;
-        this.galleryImages = this.getImages();
+    ]
+  }
+
+  getImages(): NgxGalleryImage[] {
+    const imageUrls = [];
+    for (const photo of this.recipe.recipePhotos) {
+      imageUrls.push({
+        small: photo?.url,
+        medium: photo?.url,
+        big: photo?.url
       })
     }
-  
+    return imageUrls;
   }
+
+  loadRecipe() {
+    this.recipeService.getRecipe(this.route.snapshot.params.id).subscribe(recipe => {
+      this.recipe = recipe;
+      this.galleryImages = this.getImages();
+    })
+  }
+  addToFav(id: number) {
+    this.recipeService.addRecipeToFavourite(id).subscribe(data => {
+      this.toastr.success('Added ' + this.recipe.name + ' to your favourites');
+    });
+  }
+
+}
+
+
+

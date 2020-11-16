@@ -19,5 +19,8 @@ namespace API.Dto.User
         public string Country { get; set; }
         public ICollection<UserPhotoDto> UserPhotos { get; set; }
         public ICollection<RecipeForListDto> Recipes { get; set; }
+        public ICollection<LikesDto> LikedByUsers { get; set; } // who has liked currently logged user
+        public ICollection<LikesDto> LikedUsers { get; set; }
+
     }
 }

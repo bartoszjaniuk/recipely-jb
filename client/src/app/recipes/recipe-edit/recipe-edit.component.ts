@@ -122,8 +122,6 @@ export class RecipeEditComponent implements OnInit {
     this.recipeService.deletePhoto(this.recipe.id, id).subscribe(() => {
       this.recipe.recipePhotos.splice(this.recipe.recipePhotos.findIndex(p => p.id === id), 1);
       this.toastr.success('Photo has been deleted');
-    }, error => {
-      this.toastr.error('Failed to delete the photo');
     });
   }
 

@@ -14,9 +14,14 @@ namespace API.Dto.Recipe
         public string Description { get; set; }
         public string PhotoUrl { get; set; }
         public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
         public int AuthorId{ get; set; } 
         public int KitchenOriginId{ get; set; }
+        public string KitchenOriginName{ get; set; }
         public DateTime DateAdded { get; set; }
+        public string Author { get; set; }
+        public string AuthorUserName { get; set; }
+        public string AuthorPhotoUrl { get; set; }
         public ICollection<RecipePhotoForDetailDto> RecipePhotos { get; set; }
         public ICollection<IngredientDto> Ingredients { get; set; }
         public ICollection<CommentDto> Comments { get; set; }

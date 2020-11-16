@@ -8,7 +8,7 @@
     margin-top: 2.4rem !important;
 }
 
-img {
+.user-logo {
     width: 50px;
     height: 50px;
     border: 1px solid white;
@@ -42,6 +42,10 @@ li {
     transition: width .4s;
 }
 
+.navbar {
+    padding-bottom: 5px;
+}
+
 .navbar li a:hover::after {
     width: 100%;
     transition: width .4s;
@@ -52,18 +56,7 @@ li {
     box-shadow: 0 0 10px #404142;
 }
 
-.icon {
-    
-    cursor: pointer;
-    outline: none;
-    color: #ffffff;
-    font-weight: 100;
-    text-shadow: 0.5px  0.5px 1px black, 0 0 3px black, 0 0 1px black;
-}
-.icon :hover {
-    color: black;
+.page-active {
+    color: #f1c40f;
 }
 
-.icon :active {
-    color: black;
-}

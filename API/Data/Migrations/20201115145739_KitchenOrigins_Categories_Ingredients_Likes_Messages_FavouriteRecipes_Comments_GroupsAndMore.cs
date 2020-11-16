@@ -3,34 +3,17 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Data.Migrations
 {
-    public partial class KitchenOrigins_Categories_Ingredients_Likes_MessagesAdded : Migration
+    public partial class KitchenOrigins_Categories_Ingredients_Likes_Messages_FavouriteRecipes_Comments_GroupsAndMore : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_UserPhotos_Users_AppUserId",
-                table: "UserPhotos");
-
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Users",
-                table: "Users");
-
-            migrationBuilder.DropColumn(
-                name: "PasswordSalt",
                 table: "Users");
 
             migrationBuilder.RenameTable(
                 name: "Users",
                 newName: "AspNetUsers");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "PasswordHash",
-                table: "AspNetUsers",
-                type: "TEXT",
-                nullable: true,
-                oldClrType: typeof(byte[]),
-                oldType: "BLOB",
-                oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "AccessFailedCount",
@@ -40,10 +23,36 @@ namespace API.Data.Migrations
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<string>(
+                name: "City",
+                table: "AspNetUsers",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
                 name: "ConcurrencyStamp",
                 table: "AspNetUsers",
                 type: "TEXT",
                 nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Country",
+                table: "AspNetUsers",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "Created",
+                table: "AspNetUsers",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DateOfBirth",
+                table: "AspNetUsers",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<string>(
                 name: "Email",
@@ -58,6 +67,31 @@ namespace API.Data.Migrations
                 type: "INTEGER",
                 nullable: false,
                 defaultValue: false);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Gender",
+                table: "AspNetUsers",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Introduction",
+                table: "AspNetUsers",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "KnownAs",
+                table: "AspNetUsers",
+                type: "TEXT",
+                nullable: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "LastActive",
+                table: "AspNetUsers",
+                type: "TEXT",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<bool>(
                 name: "LockoutEnabled",
@@ -84,6 +118,12 @@ namespace API.Data.Migrations
                 table: "AspNetUsers",
                 type: "TEXT",
                 maxLength: 256,
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "PasswordHash",
+                table: "AspNetUsers",
+                type: "TEXT",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
@@ -207,6 +247,17 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.Name);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "KitchenOrigins",
                 columns: table => new
                 {
@@ -278,6 +329,28 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserPhotos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Url = table.Column<string>(type: "TEXT", nullable: true),
+                    IsMain = table.Column<bool>(type: "INTEGER", nullable: false),
+                    PublicId = table.Column<string>(type: "TEXT", nullable: true),
+                    AppUserId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserPhotos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserPhotos_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -323,6 +396,25 @@ namespace API.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Connections",
+                columns: table => new
+                {
+                    ConnectionId = table.Column<string>(type: "TEXT", nullable: false),
+                    Username = table.Column<string>(type: "TEXT", nullable: true),
+                    GroupName = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Connections", x => x.ConnectionId);
+                    table.ForeignKey(
+                        name: "FK_Connections_Groups_GroupName",
+                        column: x => x.GroupName,
+                        principalTable: "Groups",
+                        principalColumn: "Name",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Recipes",
                 columns: table => new
                 {
@@ -356,6 +448,59 @@ namespace API.Data.Migrations
                         name: "FK_Recipes_KitchenOrigins_KitchenOriginId",
                         column: x => x.KitchenOriginId,
                         principalTable: "KitchenOrigins",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Body = table.Column<string>(type: "TEXT", nullable: true),
+                    AuthorId = table.Column<int>(type: "INTEGER", nullable: true),
+                    RecipeId = table.Column<int>(type: "INTEGER", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_AspNetUsers_AuthorId",
+                        column: x => x.AuthorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Comments_Recipes_RecipeId",
+                        column: x => x.RecipeId,
+                        principalTable: "Recipes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FavouriteRecipes",
+                columns: table => new
+                {
+                    RecipeId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    DateLiked = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FavouriteRecipes", x => new { x.UserId, x.RecipeId });
+                    table.ForeignKey(
+                        name: "FK_FavouriteRecipes_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FavouriteRecipes_Recipes_RecipeId",
+                        column: x => x.RecipeId,
+                        principalTable: "Recipes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -441,6 +586,26 @@ namespace API.Data.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_AuthorId",
+                table: "Comments",
+                column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_RecipeId",
+                table: "Comments",
+                column: "RecipeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Connections_GroupName",
+                table: "Connections",
+                column: "GroupName");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FavouriteRecipes_RecipeId",
+                table: "FavouriteRecipes",
+                column: "RecipeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ingredients_RecipeId",
                 table: "Ingredients",
                 column: "RecipeId");
@@ -480,21 +645,14 @@ namespace API.Data.Migrations
                 table: "Recipes",
                 column: "KitchenOriginId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_UserPhotos_AspNetUsers_AppUserId",
+            migrationBuilder.CreateIndex(
+                name: "IX_UserPhotos_AppUserId",
                 table: "UserPhotos",
-                column: "AppUserId",
-                principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                column: "AppUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_UserPhotos_AspNetUsers_AppUserId",
-                table: "UserPhotos");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -511,6 +669,15 @@ namespace API.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "Connections");
+
+            migrationBuilder.DropTable(
+                name: "FavouriteRecipes");
+
+            migrationBuilder.DropTable(
                 name: "Ingredients");
 
             migrationBuilder.DropTable(
@@ -523,7 +690,13 @@ namespace API.Data.Migrations
                 name: "RecipePhotos");
 
             migrationBuilder.DropTable(
+                name: "UserPhotos");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
 
             migrationBuilder.DropTable(
                 name: "Recipes");
@@ -551,7 +724,23 @@ namespace API.Data.Migrations
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
+                name: "City",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
                 name: "ConcurrencyStamp",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Country",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Created",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "DateOfBirth",
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
@@ -560,6 +749,22 @@ namespace API.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "EmailConfirmed",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Gender",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Introduction",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "KnownAs",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "LastActive",
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
@@ -576,6 +781,10 @@ namespace API.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "NormalizedUserName",
+                table: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "PasswordHash",
                 table: "AspNetUsers");
 
             migrationBuilder.DropColumn(
@@ -598,33 +807,10 @@ namespace API.Data.Migrations
                 name: "AspNetUsers",
                 newName: "Users");
 
-            migrationBuilder.AlterColumn<byte[]>(
-                name: "PasswordHash",
-                table: "Users",
-                type: "BLOB",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "TEXT",
-                oldNullable: true);
-
-            migrationBuilder.AddColumn<byte[]>(
-                name: "PasswordSalt",
-                table: "Users",
-                type: "BLOB",
-                nullable: true);
-
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Users",
                 table: "Users",
                 column: "Id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_UserPhotos_Users_AppUserId",
-                table: "UserPhotos",
-                column: "AppUserId",
-                principalTable: "Users",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
         }
     }
 }

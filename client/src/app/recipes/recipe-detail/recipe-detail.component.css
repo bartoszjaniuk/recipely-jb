@@ -1,0 +1,16 @@
+.ingredients-list {
+    list-style-type: none;
+}
+
+.ingredients-list-box {
+    background-color: cadetblue;
+}
+
+.ingredients-style {
+    box-shadow: 0 0 10px #f1c40f;
+}
+
+
+.box {
+    background-color: #f1c40f;;
+}

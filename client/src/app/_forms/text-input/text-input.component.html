@@ -12,6 +12,19 @@
     <div *ngIf="ngControl.control.errors?.maxlength" class="invalid-feedback">
         {{label}} must be at most {{ngControl.control.errors.maxlength['requiredLength']}}
     </div>
+
+    <div *ngIf="ngControl.control.errors?.pattern" class="invalid-feedback">
+        {{label}} must contain :
+        <ul>
+            <li>1 uppercase letter</li>
+            <li>1 lowercase letter</li>
+            <li>A number</li>
+            <li>A minimum length of 8.</li>
+            <li>1 special character</li>
+            
+        </ul>
+    </div>
+
     <div *ngIf="ngControl.control.errors?.isMatching" class="invalid-feedback">
         Passwords do not match
     </div>

@@ -35,14 +35,14 @@ namespace API.Helpers
             .ForMember(dest => dest.KitchenOrigin, opt => opt
            .MapFrom(src => src.KitchenOrigin.Name));
 
-           CreateMap<FavouriteRecipe, FavouriteRecipeDto>()
-           .ForMember(dest => dest.PhotoUrl, opt => opt
-                .MapFrom(src => src.Recipe.RecipePhotos
-                    .FirstOrDefault(p => p.IsMain).Url))
-            .ForMember(dest => dest.Name, opt => opt
-                .MapFrom(src => src.Recipe.Name));
-           
-           
+            CreateMap<FavouriteRecipe, FavouriteRecipeDto>()
+            .ForMember(dest => dest.PhotoUrl, opt => opt
+                 .MapFrom(src => src.Recipe.RecipePhotos
+                     .FirstOrDefault(p => p.IsMain).Url))
+             .ForMember(dest => dest.Name, opt => opt
+                 .MapFrom(src => src.Recipe.Name));
+
+
 
             CreateMap<Recipe, RecipeWithPhotosDto>();
 
@@ -59,7 +59,19 @@ namespace API.Helpers
            .ForMember(dest => dest.CategoryId, opt => opt
           .MapFrom(src => src.Category.Id))
            .ForMember(dest => dest.KitchenOriginId, opt => opt
-          .MapFrom(src => src.KitchenOrigin.Id));
+          .MapFrom(src => src.KitchenOrigin.Id))
+          .ForMember(dest => dest.Author, opt => opt
+          .MapFrom(src => src.AppUser.KnownAs))
+          .ForMember(dest => dest.AuthorPhotoUrl, opt => opt
+          .MapFrom(src => src.AppUser.UserPhotos
+          .FirstOrDefault(p => p.IsMain).Url))
+          .ForMember(dest => dest.AuthorUserName, opt => opt
+          .MapFrom(src => src.AppUser.UserName))
+          .ForMember(dest => dest.CategoryName, opt => opt
+          .MapFrom(src => src.Category.Name))
+          .ForMember(dest => dest.KitchenOriginName, opt => opt
+          .MapFrom(src => src.KitchenOrigin.Name));
+
 
             // Add photo TODO
 
@@ -70,9 +82,14 @@ namespace API.Helpers
             CreateMap<Category, CategoryDto>();
             CreateMap<KitchenOrigin, KitchenOriginDto>();
             CreateMap<UserLike, LikeDto>();
+            CreateMap<UserLike, LikesDto>()
+            .ForMember(dest => dest.LikedUserId, opt => opt
+          .MapFrom(src => src.LikedUser.Id))
+          .ForMember(dest => dest.LikerId, opt => opt
+          .MapFrom(src => src.SourceUser.Id));
             CreateMap<RecipePhoto, RecipePhotoForDetailDto>();
-            CreateMap<DateTime, DateTime>()
-            .ConvertUsing(d => DateTime.SpecifyKind(d, DateTimeKind.Utc));
+
+
 
             CreateMap<Message, MessageDto>()
                 .ForMember(dest => dest.SenderPhotoUrl, opt =>
@@ -94,5 +111,5 @@ namespace API.Helpers
         }
 
 
-        }
     }
+}

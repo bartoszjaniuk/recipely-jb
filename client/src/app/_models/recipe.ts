@@ -13,6 +13,11 @@ export interface IRecipe {
     authorId: number;
     kitchenOriginId: number;
     dateAdded: Date;
+    author: string;
+    authorPhotoUrl: string;
+    authorUserName: string;
+    kitchenOriginName: string;
+    categoryName: string;
     recipePhotos?: IPhoto[];
     ingredients?: IIngredient[];
     comments?: IComment[];

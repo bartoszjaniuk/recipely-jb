@@ -30,7 +30,9 @@ export class RegisterComponent implements OnInit {
       city: ['', Validators.required],
       country: ['', Validators.required],
       password: ['', [Validators.required, 
-        Validators.minLength(4), Validators.maxLength(8)]],
+        Validators.minLength(6), 
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')
+      ]],
       confirmPassword: ['', [Validators.required, this.matchPassword('password')]]
     })
   }
@@ -42,9 +44,11 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+
+
   register() {
     this.accountService.register(this.registerForm.value).subscribe(response => {
-      this.router.navigateByUrl('/recipes');
+      this.router.navigate([`member/edit`]);
     }, error => {
       this.validationErrors = error;
     })

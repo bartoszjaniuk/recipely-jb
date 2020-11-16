@@ -90,7 +90,8 @@ import { FavRecipeCardComponent } from './lists/fav-recipe-card/fav-recipe-card.
     CommentInputComponent,
     MemberRecipeCardComponent,
     FavouriteRecipesListComponent,
-    FavRecipeCardComponent
+    FavRecipeCardComponent,
+    
   ],
   imports: [
     BrowserModule,

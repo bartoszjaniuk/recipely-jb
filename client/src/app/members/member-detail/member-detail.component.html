@@ -15,9 +15,9 @@
       </div>
 
       <div class="row">
-        <div class="col text-center border">Posts: </div>
-        <div class="col text-center border">Followers:</div>
-        <div class="col text-center border">Following:</div>
+        <div class="col text-center border">Posts: {{member.recipes.length}} </div>
+        <div class="col text-center border">Followers: {{member.likedByUsers.length}}</div>
+        <div class="col text-center border">Following: {{member.likedUsers.length}}</div>
         <div *ngIf="(presence.onlineUsers$ | async).includes(member.username)" class="col text-center border"> 
             <i class="fa fa-user-circle text-success"></i> Online now 
         </div>
@@ -26,14 +26,13 @@
         </div>
         <div class="col text-center border">Member since: {{member.created | date: 'dd MMM yyyy'}}</div>
       </div>
-      <p class="text-center" [innerHTML]="member.introduction"></p>
+      <p class="text-center mt-3" [innerHTML]="member.introduction"></p>
     </div>
   </div>
 
   <br>
   <hr>
   <div class="tab-panel">
-    USER RECIPES GOES HERE
     <tabset class="member-tabset" #memberTabs [justified]="true">
       <tab heading="Recipes">
         <p class="text-center">User Recipes: </p>

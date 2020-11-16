@@ -8,6 +8,7 @@ import { PresenceService } from 'src/app/signalr/presence.service';
 import { IMember } from 'src/app/_models/member';
 import { IMessage } from 'src/app/_models/message';
 import { IUser } from 'src/app/_models/user';
+import { MembersService } from '../members.service';
 
 @Component({
   selector: 'app-member-detail',
@@ -18,10 +19,11 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
   @ViewChild('memberTabs', {static: true}) memberTabs: TabsetComponent;
   activeTab: TabDirective;
   member: IMember;
+  likers: Partial<IMember[]>;
   messages: IMessage[] = [];
   user: IUser;
   constructor(public presence: PresenceService, private route: ActivatedRoute,
-     private messageService: MessageService, private accountService: AccountService, private router: Router) { 
+     private messageService: MessageService, private accountService: AccountService, private router: Router, private memberService: MembersService) { 
        this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
      }
@@ -35,6 +37,7 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
       params.tab ? this.selectTab(params.tab) : this.selectTab(0);
     })
     this.messageService.createHubConnection(this.user, this.member.username);
+    console.log(this.member.lastActive)
   }
 
   selectTab(tabId: number) {
@@ -53,4 +56,7 @@ export class MemberDetailComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.messageService.stopHubConnection();
   }
+
+
 }
+
