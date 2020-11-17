@@ -1,28 +1,20 @@
 <nav class="navbar navbar-expand-md navbar-light  bg-light border ">
   <div class="container">
-    <!-- <a class="navbar-brand" [routerLink]="['/recipes']" ><img src="../../../assets/cookhat.png" alt=""></a> -->
-    <!-- <a class="navbar-brand logo-text" routerLink='/'>Recipely.</a> -->
     <a class="navbar-brand" routerLink='/'><img src="./assets/logo-recipely.png" alt="logo" style="width: 180px;"></a>
 
     <ul class="navbar-nav ml-auto">
       <li class="icon">
-        <!-- <img  src="./assets/hat.png" alt="" [routerLink]="['/recipes']" style="height: 30px; width: 70px;"> -->
         <i class="fa fa-book fa-2x nav-item icon" [routerLink]="['/recipes']" routerLinkActive='page-active'></i> 
       </li>
+      <ng-container *ngIf="(accountService.currentUser$ | async)">
       <li class="icon">
-        <!-- <img  class="icon" src="./assets/users.png" alt="" [routerLink]="['/members']" style="height: 30px; width: 60px;"> -->
         <i class="fa fa-address-book fa-2x nav-item icon" [routerLink]="['/members']" routerLinkActive='page-active'></i> 
-        <!-- <a class="nav-link" [routerLink]="['/members']">Users</a> -->
       </li>
       <li class="icon">
-        <!-- <img  class="icon" src="./assets/likes.png" alt="" [routerLink]="['/likes']" style="height: 30px; width: 70px;"> -->
         <i class="fa fa-thumbs-up fa-2x nav-item icon" [routerLink]="['/likes']" routerLinkActive='page-active'></i> 
-        <!-- <a class="nav-link" [routerLink]="['/likes']">Likes</a> -->
       </li>
       <li class="icon">
-        <!-- <img  src="./assets/serce1.png" alt="" [routerLink]="['/my-fav-recipes']" style="height: 30px; width: 55px;"> -->
         <i class="fa fa-heart fa-2x nav-item icon" [routerLink]="['/my-fav-recipes']" routerLinkActive='page-active'></i> 
-        <!-- <a class="nav-link" [routerLink]="['/my-fav-recipes']">Favourite Recipes</a> -->
       </li>
       <li *appHasRole='["Admin", "Moderator"]' class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/errors']">Errors</a>
@@ -30,6 +22,7 @@
       <li *appHasRole='["Admin", "Moderator"]' class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/admin']">Admin</a>
       </li>
+    </ng-container>
     </ul>
 
     <ul class="navbar-nav">

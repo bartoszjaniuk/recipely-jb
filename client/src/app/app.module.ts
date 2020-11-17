@@ -49,6 +49,7 @@ import { CommentInputComponent } from './_forms/comment-input/comment-input.comp
 import { MemberRecipeCardComponent } from './members/member-recipe-card/member-recipe-card.component';
 import { FavouriteRecipesListComponent } from './lists/favourite-recipes-list/favourite-recipes-list.component';
 import { FavRecipeCardComponent } from './lists/fav-recipe-card/fav-recipe-card.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -91,6 +92,7 @@ import { FavRecipeCardComponent } from './lists/fav-recipe-card/fav-recipe-card.
     MemberRecipeCardComponent,
     FavouriteRecipesListComponent,
     FavRecipeCardComponent,
+    FooterComponent,
     
   ],
   imports: [

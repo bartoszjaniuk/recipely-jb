@@ -14,6 +14,7 @@ export class RecipeDetailComponent implements OnInit {
   recipe: IRecipe;
   galleryOptions: NgxGalleryOptions[] = [];
   galleryImages: NgxGalleryImage[] = [];
+  backgroundImage = './assets/background.png';
 
   constructor(private recipeService: RecipeService, private toastr: ToastrService,
     private route: ActivatedRoute) { }

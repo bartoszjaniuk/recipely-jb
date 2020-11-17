@@ -1,3 +1,8 @@
 .myAwesomeFont {
     font-family: Menlo, Monaco, 'Courier New', monospace;
 }
+
+bg-image {
+    background-image: url('~src/assets/background.png');
+    background-repeat: y;
+}

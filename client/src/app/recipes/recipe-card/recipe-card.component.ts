@@ -18,8 +18,6 @@ export class RecipeCardComponent implements OnInit {
   addToFav(id: number) {
     this.recipeService.addRecipeToFavourite(id).subscribe(data => {
     this.toastrService.success('Added ' + this.recipe.name + ' to your favourites');
-    }, error => {
-    this.toastrService.error(error);
     });
     }
 
