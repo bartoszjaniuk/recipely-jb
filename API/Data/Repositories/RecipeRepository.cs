@@ -87,12 +87,6 @@ namespace API.Data.Repositories
                 return true;
             return false;
         }
-
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;
-        }
-
         public void Update(Recipe recipe)
         {
             _context.Entry(recipe).State = EntityState.Modified;

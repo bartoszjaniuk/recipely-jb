@@ -35,11 +35,11 @@ namespace API.Extensions
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddScoped<IPhotoService, PhotoService>();
-            services.AddScoped<IRecipeRepository, RecipeRepository>();
-            services.AddScoped<IRecipeRepository, RecipeRepository>();
-            services.AddScoped<ILikesRepository, LikesRepository>();
-            services.AddScoped<IMessageRepository, MessageRepository>();
-            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            // services.AddScoped<IRecipeRepository, RecipeRepository>();
+            // services.AddScoped<ILikesRepository, LikesRepository>();
+            // services.AddScoped<IMessageRepository, MessageRepository>();
+            // services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<LogUserActivity>();
             
 

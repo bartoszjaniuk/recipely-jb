@@ -4,7 +4,7 @@ using API.Dto;
 using API.Dto.Comment;
 using API.Entities;
 using API.Extensions;
-using API.Interfaces.IRepositories;
+using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,29 +14,24 @@ namespace API.Controllers
 
     public class CommentsController : BaseApiController
     {
-        private readonly ICommentRepository _commentRepository;
-        private readonly IUserRepository _userRepository;
-        private readonly IRecipeRepository _recipeRepository;
         private readonly IMapper _mapper;
-        public CommentsController(IUserRepository userRepository, ICommentRepository commentRepository,
-        IRecipeRepository recipeRepository, IMapper mapper)
+        private readonly IUnitOfWork _unitOfWork;
+        public CommentsController(IMapper mapper, IUnitOfWork unitOfWork)
         {
-            _recipeRepository = recipeRepository;
-            _userRepository = userRepository;
-            _commentRepository = commentRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
         [Authorize]
         [HttpPost("/api/Recipes/{recipeId}/[controller]")]
         public async Task<ActionResult<CommentDto>> CreateComment(CommentToCreateDto commentToCreateDto, int recipeId)
         {
-            var recipe = await _recipeRepository.GetRecipe(recipeId);
+            var recipe = await _unitOfWork.RecipeRepository.GetRecipe(recipeId);
 
             if (recipe == null) return NotFound();
 
             var user = User.GetUsername();
 
-            var author = await _userRepository.GetUserByUsernameAsync(user);
+            var author = await _unitOfWork.UserRepository.GetUserByUsernameAsync(user);
 
             var comment = new Comment
             {
@@ -45,9 +40,9 @@ namespace API.Controllers
                 Body = commentToCreateDto.Body,
                 CreatedAt = DateTime.Now
             };
-            _commentRepository.AddComment(comment);
+            _unitOfWork.CommentRepository.AddComment(comment);
 
-            if (await _commentRepository.SaveAllAsync()) return Ok(_mapper.Map<CommentDto>(comment));
+            if (await _unitOfWork.Complete()) return Ok(_mapper.Map<CommentDto>(comment));
 
             return BadRequest("Failed to send message");
 
@@ -56,7 +51,7 @@ namespace API.Controllers
         [HttpGet("/api/Recipes/{recipeId}/[controller]")]
         public async Task<ActionResult> GetRecipes(int recipeId)
         {
-            var comments = await _commentRepository.GetCommentsForRecipe(recipeId);
+            var comments = await _unitOfWork.CommentRepository.GetCommentsForRecipe(recipeId);
             return Ok(comments);
         }
 
@@ -65,13 +60,13 @@ namespace API.Controllers
         {
             var username = User.GetUsername();
 
-            var comment = await _commentRepository.GetComment(id);
+            var comment = await _unitOfWork.CommentRepository.GetComment(id);
 
             if (comment.Username != username) return Unauthorized();
 
-            await _commentRepository.DeleteComment(id);
+            await _unitOfWork.CommentRepository.DeleteComment(id);
 
-            if (await _commentRepository.SaveAllAsync()) return Ok();
+            if (await _unitOfWork.Complete()) return Ok();
 
             return BadRequest();
 

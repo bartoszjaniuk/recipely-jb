@@ -11,7 +11,6 @@ namespace API.Interfaces.IRepositories
     {
         void Update(AppUser appUser);
         void AddRecipeToFav (FavouriteRecipe favouriteRecipe);
-        Task<bool> SaveAllAsync();
         Task<IEnumerable<AppUser>> GetUsersAsync();
         Task<AppUser> GetUserByIdAsync(int id);
         Task<AppUser> GetUserByUsernameAsync(string username);

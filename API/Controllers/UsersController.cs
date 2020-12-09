@@ -7,7 +7,6 @@ using API.Entities;
 using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
-using API.Interfaces.IRepositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -19,27 +18,25 @@ namespace API.Controllers
     [Authorize]
     public class UsersController : BaseApiController
     {
-        private readonly IUserRepository _userRepository;
-        private readonly IMapper _autoMapper;
         private readonly IPhotoService _photoService;
-        private readonly IRecipeRepository _recipeRepository;
-        public UsersController(IUserRepository userRepository, IMapper autoMapper, IPhotoService photoService, IRecipeRepository recipeRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+        public UsersController(IPhotoService photoService, IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _recipeRepository = recipeRepository;
+            _mapper = mapper;
+            _unitOfWork = unitOfWork;
             _photoService = photoService;
-            _autoMapper = autoMapper;
-            _userRepository = userRepository;
         }
 
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
-            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
             userParams.CurrentUsername = user.UserName;
 
-            var users = await _userRepository.GetMembersAsync(userParams);
+            var users = await _unitOfWork.UserRepository.GetMembersAsync(userParams);
 
             Response.AddPaginationHeader(users.CurrentPage, users.PageSize, users.TotalCountInQuery, users.TotalNumberOfPages);
 
@@ -49,7 +46,7 @@ namespace API.Controllers
         [HttpGet("{username}", Name = "GetUser")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            var user = await _userRepository.GetMemberAsync(username);
+            var user = await _unitOfWork.UserRepository.GetMemberAsync(username);
             return user;
 
         }
@@ -59,8 +56,8 @@ namespace API.Controllers
         {
 
             var userId = User.GetUserId();
-            
-            var userFavRecipes = await _userRepository.GetUserFavRecipes(userId);
+
+            var userFavRecipes = await _unitOfWork.UserRepository.GetUserFavRecipes(userId);
 
             return Ok(userFavRecipes);
         }
@@ -70,20 +67,20 @@ namespace API.Controllers
         {
 
 
-            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
-            _autoMapper.Map(memberUpdateDto, user);
+            _mapper.Map(memberUpdateDto, user);
 
-            _userRepository.Update(user);
+            _unitOfWork.UserRepository.Update(user);
 
-            if (await _userRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
             return BadRequest("Failed to update user");
         }
 
         [HttpPut("set-main-photo/{photoId}")]
         public async Task<ActionResult> SetMainPhoto(int photoId)
         {
-            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
             var photo = user.UserPhotos.FirstOrDefault(p => p.Id == photoId);
 
@@ -94,7 +91,7 @@ namespace API.Controllers
             if (currentMain != null) currentMain.IsMain = false;
             photo.IsMain = true;
 
-            if (await _userRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
 
             return BadRequest("Failed to set main photo");
         }
@@ -104,7 +101,7 @@ namespace API.Controllers
         {
             var username = User.GetUsername();
 
-            var user = await _userRepository.GetUserByUsernameAsync(username);
+            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(username);
 
             var result = await _photoService.AddPhotoAsync(file);
 
@@ -121,9 +118,9 @@ namespace API.Controllers
             }
             user.UserPhotos.Add(photo);
 
-            if (await _userRepository.SaveAllAsync())
+            if (await _unitOfWork.Complete())
             {
-                return CreatedAtRoute("GetUser", new { username = user.UserName }, _autoMapper.Map<UserPhotoDto>(photo));
+                return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<UserPhotoDto>(photo));
             }
             return BadRequest("Problem adding photo");
         }
@@ -132,20 +129,20 @@ namespace API.Controllers
         [HttpPost("add-recipe")]
         public async Task<ActionResult> AddNewRecipe(RecipeForCreateDto recipeForCreateDto)
         {
-            var userFromRepo = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var userFromRepo = await _unitOfWork.UserRepository.GetUserByUsernameAsync(User.GetUsername());
 
             recipeForCreateDto.Name = recipeForCreateDto.Name.ToLower();
 
-            if (await _recipeRepository.RecipeExists(recipeForCreateDto.Name))
+            if (await _unitOfWork.RecipeRepository.RecipeExists(recipeForCreateDto.Name))
                 return BadRequest("Recipe with that name already exists!");
 
-            var recipeToCreate = _autoMapper.Map<Recipe>(recipeForCreateDto);
+            var recipeToCreate = _mapper.Map<Recipe>(recipeForCreateDto);
 
             recipeToCreate.AppUserId = userFromRepo.Id;
 
-            var createdRecipe = await _recipeRepository.AddNewRecipe(recipeToCreate);
+            var createdRecipe = await _unitOfWork.RecipeRepository.AddNewRecipe(recipeToCreate);
 
-            var recipeToReturn = _autoMapper.Map<RecipeForDetailDto>(createdRecipe);
+            var recipeToReturn = _mapper.Map<RecipeForDetailDto>(createdRecipe);
 
             recipeToReturn.CategoryId = createdRecipe.CategoryId;
             recipeToReturn.KitchenOriginId = createdRecipe.KitchenOriginId;
@@ -159,7 +156,7 @@ namespace API.Controllers
         public async Task<ActionResult> DeletePhoto(int photoId)
         {
             var username = User.GetUsername();
-            var user = await _userRepository.GetUserByUsernameAsync(username);
+            var user = await _unitOfWork.UserRepository.GetUserByUsernameAsync(username);
 
             var photo = user.UserPhotos.FirstOrDefault(p => p.Id == photoId);
 
@@ -173,7 +170,7 @@ namespace API.Controllers
 
             user.UserPhotos.Remove(photo);
 
-            if (await _userRepository.SaveAllAsync()) return Ok();
+            if (await _unitOfWork.Complete()) return Ok();
 
             return BadRequest("Failed to delete the photo");
         }

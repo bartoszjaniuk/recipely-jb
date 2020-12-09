@@ -7,7 +7,6 @@ using API.Entities;
 using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
-using API.Interfaces.IRepositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +16,12 @@ namespace API.Controllers
     public class RecipesController : BaseApiController
     {
         private readonly IMapper _mapper;
-        private readonly IRecipeRepository _recipeRepository;
         private readonly IPhotoService _photoService;
-        private readonly IUserRepository _userRepository;
-        public RecipesController(IRecipeRepository recipeRepository, IMapper mapper, IPhotoService photoService, IUserRepository userRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public RecipesController(IMapper mapper, IPhotoService photoService, IUnitOfWork unitOfWork)
         {
-            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
             _photoService = photoService;
-            _recipeRepository = recipeRepository;
             _mapper = mapper;
         }
 
@@ -32,7 +29,7 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<RecipeForListDto>>> GetRecipes([FromQuery] RecipeParams recipeParams)
         {
 
-            var recipes = await _recipeRepository.GetRecipesAsync(recipeParams);
+            var recipes = await _unitOfWork.RecipeRepository.GetRecipesAsync(recipeParams);
 
             Response.AddPaginationHeader(recipes.CurrentPage, recipes.PageSize, recipes.TotalCountInQuery, recipes.TotalNumberOfPages);
 
@@ -42,7 +39,7 @@ namespace API.Controllers
         [HttpGet("{id}", Name = "GetRecipe")]
         public async Task<ActionResult<RecipeForDetailDto>> GetRecipe(int id)
         {
-            var recipe = await _recipeRepository.GetRecipeAsync(id);
+            var recipe = await _unitOfWork.RecipeRepository.GetRecipeAsync(id);
             return recipe;
 
         }
@@ -51,20 +48,20 @@ namespace API.Controllers
         [HttpGet("kitchen-origins")]
         public async Task<ActionResult> GetKitchenOrigins()
         {
-            var kitchenOrigins = await _recipeRepository.GetKitchenOriginsWithRecipesAsync();
+            var kitchenOrigins = await _unitOfWork.RecipeRepository.GetKitchenOriginsWithRecipesAsync();
             return Ok(kitchenOrigins);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteRecipe(int id)
         {
-            var recipeFromRepo = await _recipeRepository.GetRecipeAsync(id);
+            var recipeFromRepo = await _unitOfWork.RecipeRepository.GetRecipeAsync(id);
 
             if (recipeFromRepo == null) return NotFound("Recipe with that id does not exist");
 
-            await _recipeRepository.DeleteRecipe(id);
+            await _unitOfWork.RecipeRepository.DeleteRecipe(id);
 
-            if (await _recipeRepository.SaveAllAsync())
+            if (await _unitOfWork.Complete())
                 return Ok();
 
             return BadRequest("Failed to delete the recipe");
@@ -73,13 +70,13 @@ namespace API.Controllers
         [HttpDelete("ingredients/{ingredientId}")]
         public async Task<ActionResult> DeleteIngredient(int ingredientId)
         {
-            var ingredientFromRepo = await _recipeRepository.GetIngredient(ingredientId);
+            var ingredientFromRepo = await _unitOfWork.RecipeRepository.GetIngredient(ingredientId);
 
             if (ingredientFromRepo == null) return NotFound("Recipe with that id does not exist");
 
-            await _recipeRepository.DeleteIngredient(ingredientId);
+            await _unitOfWork.RecipeRepository.DeleteIngredient(ingredientId);
 
-            if (await _recipeRepository.SaveAllAsync())
+            if (await _unitOfWork.Complete())
                 return Ok();
 
             return BadRequest("Failed to delete the ingredient");
@@ -88,14 +85,14 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateRecipe(int id, RecipeForUpdateDto recipeForUpdateDto)
         {
-            var recipeFromRepo = await _recipeRepository.GetRecipe(id);
+            var recipeFromRepo = await _unitOfWork.RecipeRepository.GetRecipe(id);
 
 
             _mapper.Map(recipeForUpdateDto, recipeFromRepo);
 
-            _recipeRepository.Update(recipeFromRepo);
+            _unitOfWork.RecipeRepository.Update(recipeFromRepo);
 
-            if (await _recipeRepository.SaveAllAsync()) return NoContent();
+            if (await _unitOfWork.Complete()) return NoContent();
             return BadRequest("Failed to update user");
         }
 
@@ -103,7 +100,7 @@ namespace API.Controllers
         public async Task<ActionResult> SetMainPhoto(int id, int recipeId)
         {
 
-            var recipeFromRepo = await _recipeRepository.GetRecipe(recipeId);
+            var recipeFromRepo = await _unitOfWork.RecipeRepository.GetRecipe(recipeId);
 
             var photo = recipeFromRepo.RecipePhotos.FirstOrDefault(p => p.Id == id);
 
@@ -115,7 +112,7 @@ namespace API.Controllers
             photo.IsMain = true;
 
 
-            if (await _recipeRepository.SaveAllAsync())
+            if (await _unitOfWork.Complete())
             {
                 return NoContent();
             }
@@ -128,7 +125,7 @@ namespace API.Controllers
         [HttpPost("{id}/add-photo")]
         public async Task<ActionResult<RecipePhotoForDetailDto>> AddPhoto(IFormFile file, int id)
         {
-            var recipe = await _recipeRepository.GetRecipe(id);
+            var recipe = await _unitOfWork.RecipeRepository.GetRecipe(id);
 
             var result = await _photoService.AddPhotoAsync(file);
 
@@ -146,7 +143,7 @@ namespace API.Controllers
             }
             recipe.RecipePhotos.Add(photo);
 
-            if (await _recipeRepository.SaveAllAsync())
+            if (await _unitOfWork.Complete())
             {
                 return CreatedAtRoute("GetRecipe", new { id = recipe.Id }, _mapper.Map<RecipePhotoForDetailDto>(photo));
             }
@@ -170,14 +167,14 @@ namespace API.Controllers
 
 
 
-            var user = _userRepository.GetUserByIdAsync(currentUserId);
+            var user = _unitOfWork.UserRepository.GetUserByIdAsync(currentUserId);
 
-            var like = await _userRepository.GetFav(recipeId);
+            var like = await _unitOfWork.UserRepository.GetFav(recipeId);
 
             if (like != null)
                 return BadRequest("You allready like this recipe");
 
-            if (await _recipeRepository.GetRecipe(recipeId) == null)
+            if (await _unitOfWork.RecipeRepository.GetRecipe(recipeId) == null)
                 return NotFound();
 
             like = new FavouriteRecipe
@@ -186,9 +183,9 @@ namespace API.Controllers
                 RecipeId = recipeId
             };
 
-            _userRepository.AddRecipeToFav(like);
+            _unitOfWork.UserRepository.AddRecipeToFav(like);
 
-            if (await _recipeRepository.SaveAllAsync())
+            if (await _unitOfWork.Complete())
                 return Ok();
 
             return BadRequest("Failed  to fav  recipe");
@@ -197,7 +194,7 @@ namespace API.Controllers
         [HttpDelete("{id}/delete-photo/{photoId}")]
         public async Task<ActionResult> DeletePhoto(int id, int photoId)
         {
-            var recipeFromRepo = await _recipeRepository.GetRecipe(id);
+            var recipeFromRepo = await _unitOfWork.RecipeRepository.GetRecipe(id);
 
             var photo = recipeFromRepo.RecipePhotos.FirstOrDefault(p => p.Id == photoId);
 
@@ -211,7 +208,7 @@ namespace API.Controllers
 
             recipeFromRepo.RecipePhotos.Remove(photo);
 
-            if (await _recipeRepository.SaveAllAsync()) return Ok();
+            if (await _unitOfWork.Complete()) return Ok();
 
             return BadRequest("Failed to delete the photo");
         }

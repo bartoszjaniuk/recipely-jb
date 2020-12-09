@@ -11,6 +11,5 @@ namespace API.Interfaces.IRepositories
         Task<bool> DeleteComment(int commentId);
         Task<CommentDto> GetComment(int id);
         Task<IEnumerable<CommentDto>> GetCommentsForRecipe(int recipeId);
-        Task<bool> SaveAllAsync();
     }
 }

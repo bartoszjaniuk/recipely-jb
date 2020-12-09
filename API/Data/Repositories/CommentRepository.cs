@@ -53,10 +53,5 @@ namespace API.Data.Repositories
             .ProjectTo<CommentDto>(_autoMapper.ConfigurationProvider)
            .ToListAsync();
         }
-
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;
-        }
     }
 }
