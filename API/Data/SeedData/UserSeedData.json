@@ -18,35 +18,43 @@
     ],
     "Recipes": [
       {
-        "Name": "Ramen",
-        "PreparationTime": 90,
-        "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
-        "NumberOfCalories": 500,
-        "DateAdded": "2017-08-11",
+        "Name": "Taco Meat",
+        "PreparationTime": 15,
+        "Description": "<h2 class=\"section-headline\" style=\"font-family: &quot;CopperPot Bold&quot;; font-size: 24px; line-height: 32px; letter-spacing: normal; margin-bottom: 0px; overflow: hidden; color: rgba(0, 0, 0, 0.95); display: inline-block; padding-top: 16px; text-transform: none;\">Directions</h2><span style=\"color: rgba(0, 0, 0, 0.95); font-family: &quot;Source Sans Pro&quot;, Times, serif; font-size: medium; letter-spacing: normal;\"></span><fieldset class=\"instructions-section__fieldset\" style=\"border-width: initial; border-style: none; color: rgba(0, 0, 0, 0.95); font-family: &quot;Source Sans Pro&quot;, Times, serif; font-size: medium; letter-spacing: normal;\"><legend class=\"visually-hidden instructions-section__legend\" style=\"border-width: 0px; border-style: initial; padding-top: 34px; position: absolute; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px -1px 0px; font-family: &quot;CopperPot Bold&quot;; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: 0px;\">Instructions Checklist</legend><ul class=\"instructions-section\" data-tracking-label=\"instructions section\" style=\"font-size: 17px; letter-spacing: 0.5px; line-height: 28px; margin-top: 20px; margin-bottom: 16px; list-style: none; padding-left: 0px;\"><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 0px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-0\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-0\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 1</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">Heat a large skillet over medium-high heat. Cook and stir beef in the hot skillet until browned and crumbly, 5 to 7 minutes.</p></div></div></li><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 40px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-1\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-1\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 2</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">Season beef with onion powder, garlic salt, celery salt, and cumin. Pour tomato sauce over the beef, stir to coat, and simmer until thickened, slightly, about 5 minutes.</p></div></div></li></ul></fieldset>",
+        "NumberOfCalories": 188,
+        "DateAdded": "2020-08-11",
         "RecipePhotos": [
           {
-            "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
+            "Url": "https://cdn.pixabay.com/photo/2019/09/26/04/01/tacos-pastor-4505032_960_720.jpg",
             "IsMain": true
           },
           {
-            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
-            "IsMain": false
-          },
-          {
-            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
+            "Url": "https://cdn.pixabay.com/photo/2015/11/02/20/27/taco-1018962_960_720.jpg",
             "IsMain": false
           }
         ],
-        "CategoryId": 3,
-        "KitchenOriginId": 3,
+        "CategoryId": 8,
+        "KitchenOriginId": 50,
         "Ingredients": [
           {
-            "Name": "paprika",
-            "Amount": "1 piece"
+            "Name": "lean ground beef",
+            "Amount": "1 pound"
           },
-		  {
-            "Name": "chicken",
-            "Amount": "500g"
+          {
+            "Name": "onion powder",
+            "Amount": "1/2 teaspoon"
+          },
+          {
+            "Name": "garlic salt",
+            "Amount": "1/2 teaspoon"
+          },
+          {
+            "Name": "celery salt",
+            "Amount": "1/2 teaspoon"
+          },
+          {
+            "Name": "ground cumin",
+            "Amount": "1/2 teaspoon"
           }
         ]
       }
@@ -72,65 +80,64 @@
     "Recipes": [
       {
         "Name": "Pizza",
-        "PreparationTime": 30,
+        "PreparationTime": 120,
         "Description": "<ul class=\"grouped-list__list list\" style=\"box-sizing: inherit; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; color: rgb(51, 51, 51); padding: 0px; font-family: corporate-s, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; letter-spacing: normal;\"><li class=\"pb-xs pt-xs list-item\" style=\"font-size: 18px; box-sizing: inherit; list-style-type: none; overflow-wrap: break-word; padding-bottom: 10px !important; padding-top: 10px !important;\"><span class=\"mb-xxs heading-6\" style=\"box-sizing: inherit; font-weight: 700; letter-spacing: 0px; margin-top: 0px; margin-right: 0px; margin-left: 0px; font-size: 1rem; line-height: 1.375rem; margin-bottom: 5px !important;\">STEP 1</span><div class=\"editor-content\" style=\"box-sizing: inherit;\"><p style=\"box-sizing: inherit; margin-right: 0px; margin-left: 0px; font-size: 1.125rem; line-height: 1.6875rem;\">Make the base: Put the flour into a&nbsp;large bowl, then stir in the yeast and salt. Make a well, pour in 200ml warm water and the olive oil and bring together with a wooden spoon until you have a soft, fairly wet dough. Turn onto a lightly floured surface and knead for 5 mins until smooth. Cover with a tea towel and set aside. You can leave the dough to rise if you like, but it’s not essential for a thin crust.</p></div></li><li class=\"pb-xs pt-xs list-item\" style=\"font-size: 18px; box-sizing: inherit; list-style-type: none; overflow-wrap: break-word; padding-bottom: 10px !important; padding-top: 10px !important;\"><span class=\"mb-xxs heading-6\" style=\"box-sizing: inherit; font-weight: 700; letter-spacing: 0px; margin-top: 0px; margin-right: 0px; margin-left: 0px; font-size: 1rem; line-height: 1.375rem; margin-bottom: 5px !important;\">STEP 2</span><div class=\"editor-content\" style=\"box-sizing: inherit;\"><p style=\"box-sizing: inherit; margin-right: 0px; margin-left: 0px; font-size: 1.125rem; line-height: 1.6875rem;\">Make the sauce: Mix the passata, basil and crushed garlic together, then season to taste. Leave to stand at room temperature while you get on with shaping the base.</p></div></li><li class=\"pb-xs pt-xs list-item\" style=\"font-size: 18px; box-sizing: inherit; list-style-type: none; overflow-wrap: break-word; padding-bottom: 10px !important; padding-top: 10px !important;\"><span class=\"mb-xxs heading-6\" style=\"box-sizing: inherit; font-weight: 700; letter-spacing: 0px; margin-top: 0px; margin-right: 0px; margin-left: 0px; font-size: 1rem; line-height: 1.375rem; margin-bottom: 5px !important;\">STEP 3</span></li><li class=\"pb-xs pt-xs list-item\" style=\"box-sizing: inherit; list-style-type: none; overflow-wrap: break-word; padding-bottom: 10px !important; padding-top: 10px !important;\"><span style=\"font-size: 16px;\"><b>Roll out</b></span><span style=\"font-size: 18px;\">&nbsp;</span><span style=\"font-size: 1.125rem; background-color: transparent;\">the dough: if you’ve let the dough rise, give it a quick knead, then split into two balls. On a floured surface, roll out the dough into large rounds, about 25cm across, using a rolling pin. The dough needs to be very thin as it will rise in the oven. Lift the rounds onto two floured baking sheets.</span></li><li class=\"pb-xs pt-xs list-item\" style=\"font-size: 18px; box-sizing: inherit; list-style-type: none; overflow-wrap: break-word; padding-bottom: 10px !important; padding-top: 10px !important;\"><span class=\"mb-xxs heading-6\" style=\"box-sizing: inherit; font-weight: 700; letter-spacing: 0px; margin-top: 0px; margin-right: 0px; margin-left: 0px; font-size: 1rem; line-height: 1.375rem; margin-bottom: 5px !important;\">STEP 4</span><div class=\"editor-content\" style=\"box-sizing: inherit;\"><p style=\"box-sizing: inherit; margin-right: 0px; margin-left: 0px; font-size: 1.125rem; line-height: 1.6875rem;\">Top and bake: heat the oven to 240C/220C fan/gas 8. Put another baking sheet or an upturned baking tray in the oven on the top shelf. Smooth sauce over bases with the back of a spoon. Scatter with cheese and tomatoes, drizzle with olive oil and season. Put one pizza, still on its baking sheet, on top of the preheated sheet or tray. Bake for 8-10 mins until crisp. Serve with a little more olive oil, and basil leaves if using. Repeat step for remaining pizza.</p></div></li></ul>",
         "NumberOfCalories": 1000,
-        "DateAdded": "2017-04-03",
+        "DateAdded": "2020-04-03",
         "RecipePhotos": [
           {
             "Url": "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg",
             "IsMain": true
           },
-		  {
+          {
             "Url": "https://cdn.pixabay.com/photo/2014/04/22/02/56/pizza-329523_960_720.jpg",
             "IsMain": false
           },
-		  {
+          {
             "Url": "https://cdn.pixabay.com/photo/2014/07/08/12/34/pizza-386717_960_720.jpg",
             "IsMain": false
           }
-		  
         ],
-        "CategoryId": 5,
-        "KitchenOriginId": 2,
+        "CategoryId": 7,
+        "KitchenOriginId": 200,
         "Ingredients": [
           {
             "Name": "strong bread flour",
             "Amount": "300g"
           },
-		  {
+          {
             "Name": "instant yeast",
             "Amount": "1 tsp"
           },
-		  {
+          {
             "Name": "salt",
             "Amount": "1 tsp"
           },
-		  {
+          {
             "Name": "olive oil, plus extra for drizzling",
             "Amount": "1 tbsp"
           },
-		  {
+          {
             "Name": "passata",
             "Amount": "100 ml"
           },
-		  {
+          {
             "Name": "handful fresh basil",
             "Amount": "1 tsp"
           },
-		  {
+          {
             "Name": "garlic clove, crushed",
             "Amount": "1"
           },
-		  {
+          {
             "Name": "ball mozzarella, sliced",
             "Amount": "125 g"
           },
-		  {
+          {
             "Name": "cherry tomatoes",
             "Amount": "handful"
           },
-		  		  {
+          {
             "Name": "chicken",
             "Amount": "150 g"
           }
@@ -138,7 +145,7 @@
       }
     ]
   },
-    {
+  {
     "UserName": "Rebekah",
     "Gender": "female",
     "DateOfBirth": "1973-04-18",
@@ -159,39 +166,43 @@
       {
         "Name": "Burger",
         "PreparationTime": 40,
-        "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
-        "NumberOfCalories": 500,
-        "DateAdded": "2017-08-11",
+        "Description": "<h2 class=\"section-headline\" style=\"font-family: &quot;CopperPot Bold&quot;; font-size: 24px; line-height: 32px; letter-spacing: normal; margin-bottom: 0px; overflow: hidden; color: rgba(0, 0, 0, 0.95); display: inline-block; padding-top: 16px; text-transform: none;\">Directions</h2><span style=\"color: rgba(0, 0, 0, 0.95); font-family: &quot;Source Sans Pro&quot;, Times, serif; font-size: medium; letter-spacing: normal;\"></span><fieldset class=\"instructions-section__fieldset\" style=\"border-width: initial; border-style: none; color: rgba(0, 0, 0, 0.95); font-family: &quot;Source Sans Pro&quot;, Times, serif; font-size: medium; letter-spacing: normal;\"><legend class=\"visually-hidden instructions-section__legend\" style=\"border-width: 0px; border-style: initial; padding-top: 34px; position: absolute; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px -1px 0px; font-family: &quot;CopperPot Bold&quot;; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: 0px;\">Instructions Checklist</legend><ul class=\"instructions-section\" data-tracking-label=\"instructions section\" style=\"font-size: 17px; letter-spacing: 0.5px; line-height: 28px; margin-top: 20px; margin-bottom: 16px; list-style: none; padding-left: 0px;\"><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 0px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-0\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-0\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 1</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">In a large bowl, mix the ground beef, blue cheese, chives, hot pepper sauce, Worcestershire sauce, black pepper, salt, and mustard. Cover, and refrigerate for 2 hours.</p></div></div></li><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 40px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-1\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-1\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 2</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">Preheat grill for high heat. Gently form the burger mixture into about 12 patties.</p></div></div></li><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 40px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-2\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-2\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 3</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">Oil the grill grate. Grill patties 5 minutes per side, or until well done. Serve on rolls.</p></div></div></li></ul></fieldset>",
+        "NumberOfCalories": 800,
+        "DateAdded": "2020-08-11",
         "RecipePhotos": [
           {
-            "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
+            "Url": "https://cdn.pixabay.com/photo/2019/01/29/18/05/burger-3962997_960_720.jpg",
             "IsMain": true
           },
           {
-            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
-            "IsMain": false
-          },
-          {
-            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
+            "Url": "https://cdn.pixabay.com/photo/2017/12/09/23/04/bread-3008950_960_720.jpg",
             "IsMain": false
           }
         ],
-        "CategoryId": 6,
-        "KitchenOriginId": 1,
+        "CategoryId": 7,
+        "KitchenOriginId": 78,
         "Ingredients": [
           {
-            "Name": "paprika",
-            "Amount": "2 pieces"
+            "Name": "lean ground beef",
+            "Amount": "3 pounds"
           },
-		  {
-            "Name": "beef",
-            "Amount": "500g"
+          {
+            "Name": "blue cheese, crumbled",
+            "Amount": "4 ounces"
+          },
+          {
+            "Name": "dry mustard",
+            "Amount": "1 teaspoon"
+          },
+          {
+            "Name": "French rolls or hamburger buns",
+            "Amount": "12"
           }
         ]
       }
     ]
   },
-    {
+  {
     "UserName": "Oceana",
     "Gender": "female",
     "DateOfBirth": "1973-04-18",
@@ -211,40 +222,44 @@
     "Recipes": [
       {
         "Name": "Pasta",
-        "PreparationTime": 35,
-        "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
-        "NumberOfCalories": 500,
-        "DateAdded": "2017-08-11",
+        "PreparationTime": 150,
+        "Description": "<h2 class=\"section-headline\" style=\"font-family: &quot;CopperPot Bold&quot;; font-size: 24px; line-height: 32px; letter-spacing: normal; margin-bottom: 0px; overflow: hidden; color: rgba(0, 0, 0, 0.95); display: inline-block; padding-top: 16px; text-transform: none;\">Directions</h2><span style=\"color: rgba(0, 0, 0, 0.95); font-family: &quot;Source Sans Pro&quot;, Times, serif; font-size: medium; letter-spacing: normal;\"></span><fieldset class=\"instructions-section__fieldset\" style=\"border-width: initial; border-style: none; color: rgba(0, 0, 0, 0.95); font-family: &quot;Source Sans Pro&quot;, Times, serif; font-size: medium; letter-spacing: normal;\"><legend class=\"visually-hidden instructions-section__legend\" style=\"border-width: 0px; border-style: initial; padding-top: 34px; position: absolute; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); height: 1px; width: 1px; margin: -1px -1px 0px; font-family: &quot;CopperPot Bold&quot;; font-size: 18px; line-height: 24px; font-weight: 600; letter-spacing: 0px;\">Instructions Checklist</legend><ul class=\"instructions-section\" data-tracking-label=\"instructions section\" style=\"font-size: 17px; letter-spacing: 0.5px; line-height: 28px; margin-top: 20px; margin-bottom: 16px; list-style: none; padding-left: 0px;\"><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 0px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-0\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-0\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 1</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">In a&nbsp;<a href=\"https://www.pjatr.com/t/8-9049-131940-87165?sid=arrecipeoptimizationworldsbestlasagna0420&amp;url=https%3A%2F%2Fwww.lecreuset.com%2Fround-dutch-oven\" target=\"_blank\" rel=\"sponsored\" class=\"external-link\" aria-describedby=\"external-disclaimer\" title=\"(opens new window)\" style=\"color: rgb(89, 89, 89); line-height: 28px; letter-spacing: 0px; padding: 2px 0px; box-shadow: rgba(0, 0, 0, 0.65) 0px -2px 0px inset; transition: all 0.1s ease-in-out 0s;\">Dutch oven</a>, cook sausage, ground beef, onion, and garlic over medium heat until well browned. Stir in crushed tomatoes, tomato paste, tomato sauce, and water. Season with sugar, basil, fennel seeds, Italian seasoning, 1 teaspoon salt, pepper, and 2 tablespoons parsley. Simmer, covered, for about 1 1/2 hours, stirring occasionally.</p></div></div></li><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 40px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-1\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-1\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 2</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">Bring a large pot of lightly salted water to a boil. Cook lasagna noodles in boiling water for 8 to 10 minutes. Drain noodles, and rinse with cold water. In a&nbsp;<a href=\"https://shop-links.co/1705196683799950687\" target=\"_blank\" rel=\"sponsored\" class=\"external-link\" aria-describedby=\"external-disclaimer\" title=\"(opens new window)\" style=\"color: rgb(89, 89, 89); line-height: 28px; letter-spacing: 0px; padding: 2px 0px; box-shadow: rgba(0, 0, 0, 0.65) 0px -2px 0px inset; transition: all 0.1s ease-in-out 0s;\">mixing bowl</a>, combine ricotta cheese with egg, remaining parsley, and 1/2 teaspoon salt.</p></div></div></li><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 40px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-2\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-2\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 3</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">Preheat oven to 375 degrees F (190 degrees C).</p></div></div></li><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 40px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-3\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-3\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 4</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">To assemble, spread 1 1/2 cups of meat sauce in the bottom of a 9x13-inch&nbsp;<a href=\"https://www.amazon.com/Cuisinart-CI1136-24CR-Enameled-Roasting-Cardinal/dp/B0018A94QM/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=arrecipeoptimizationworldsbestlasagna0420-20&amp;linkId=4420e8ad818b2e6926ab24bf4a7dac0a&amp;language=en_US\" data-ecommerce=\"true\" target=\"_blank\" rel=\"sponsored\" data-tracking-affiliate-name=\"www.amazon.com\" data-tracking-affiliate-link-text=\"baking dish\" data-tracking-affiliate-link-url=\"https://www.amazon.com/Cuisinart-CI1136-24CR-Enameled-Roasting-Cardinal/dp/B0018A94QM/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=arrecipeoptimizationworldsbestlasagna0420-20&amp;linkId=4420e8ad818b2e6926ab24bf4a7dac0a&amp;language=en_US\" data-tracking-affiliate-network-name=\"Amazon\" class=\"external-link\" aria-describedby=\"external-disclaimer\" title=\"(opens new window)\" style=\"color: rgb(89, 89, 89); line-height: 28px; letter-spacing: 0px; padding: 2px 0px; box-shadow: rgba(0, 0, 0, 0.65) 0px -2px 0px inset; transition: all 0.1s ease-in-out 0s;\">baking dish</a>. Arrange 6 noodles lengthwise over meat sauce. Spread with one half of the ricotta cheese mixture. Top with a third of mozzarella cheese slices. Spoon 1 1/2 cups meat sauce over mozzarella, and sprinkle with 1/4 cup Parmesan cheese. Repeat layers, and top with remaining mozzarella and Parmesan cheese. Cover with foil: to prevent sticking, either spray foil with cooking spray, or make sure the foil does not touch the cheese.</p></div></div></li><li class=\"subcontainer instructions-section-item\" data-tracking-zone=\"recipe-interaction\" style=\"list-style: none; margin-bottom: 32px; margin-top: 40px; position: relative;\"><label class=\"checkbox-list\" for=\"recipe-instructions-label-0-4\"><input class=\"checkbox-list-input\" type=\"checkbox\" value=\"\" data-tracking-label=\"directions clicked\" id=\"recipe-instructions-label-0-4\" style=\"font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: normal; position: absolute; top: 0px; left: 0px; opacity: 0;\"><span class=\"checkbox-list-checkmark\" style=\"position: relative; padding-left: 32px; cursor: pointer;\"><span class=\"checkbox-list-text\" style=\"font-size: 16px; line-height: 24px; letter-spacing: 0px; font-weight: 700;\">Step 5</span></span></label><div class=\"section-body\" style=\"font-size: 18px; line-height: 28px; letter-spacing: 0px; margin-top: 8px;\"><div class=\"paragraph\"><p style=\"letter-spacing: 0px; line-height: 28px; margin-bottom: 16px;\">Bake in preheated oven for 25 minutes. Remove foil, and bake an additional 25 minutes. Cool for 15 minutes before serving.</p></div></div></li></ul></fieldset>",
+        "NumberOfCalories": 700,
+        "DateAdded": "2020-11-11",
         "RecipePhotos": [
           {
-            "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
-            "IsMain": true
+            "Url": "https://cdn.pixabay.com/photo/2017/02/15/15/17/meal-2069021_960_720.jpg",
+            "IsMain": false
           },
           {
-            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
-            "IsMain": true
-          },
-          {
-            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
+            "Url": "https://cdn.pixabay.com/photo/2019/05/27/18/42/polska-food-4233326_960_720.jpg",
             "IsMain": true
           }
         ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
+        "CategoryId": 10,
+        "KitchenOriginId": 200,
         "Ingredients": [
           {
-            "Name": "paprika",
-            "Amount": "3 pieces"
+            "Name": "garlic, crushed",
+            "Amount": "2 cloves"
           },
-		  {
-            "Name": "chicken",
-            "Amount": "100g"
+          {
+            "Name": "lasagna noodles",
+            "Amount": "12"
+          },
+          {
+            "Name": "sweet Italian sausage",
+            "Amount": "1 pound"
+          },
+          {
+            "Name": "minced onion",
+            "Amount": "1/2 cup"
           }
         ]
       }
     ]
   },
-    {
+  {
     "UserName": "Alisa",
     "Gender": "female",
     "DateOfBirth": "1973-04-18",
@@ -261,43 +276,9 @@
         "IsMain": true
       }
     ],
-    "Recipes": [
-      {
-        "Name": "Rameno",
-        "PreparationTime": 170,
-        "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
-        "NumberOfCalories": 500,
-        "DateAdded": "2017-08-11",
-        "RecipePhotos": [
-          {
-            "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
-            "IsMain": true
-          },
-          {
-            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
-            "IsMain": true
-          },
-          {
-            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
-            "IsMain": true
-          }
-        ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
-        "Ingredients": [
-          {
-            "Name": "paprika",
-            "Amount": "200g"
-          },
-		  {
-            "Name": "chicken",
-            "Amount": "300g"
-          }
-        ]
-      }
-    ]
+    "Recipes": []
   },
-    {
+  {
     "UserName": "Adele",
     "Gender": "female",
     "DateOfBirth": "1973-04-18",
@@ -314,43 +295,9 @@
         "IsMain": true
       }
     ],
-    "Recipes": [
-      {
-        "Name": "Akatsuki",
-        "PreparationTime": 1,
-        "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
-        "NumberOfCalories": 500,
-        "DateAdded": "2017-08-11",
-        "RecipePhotos": [
-          {
-            "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
-            "IsMain": true
-          },
-          {
-            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
-            "IsMain": true
-          },
-          {
-            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
-            "IsMain": true
-          }
-        ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
-        "Ingredients": [
-          {
-            "Name": "paprika",
-            "Amount": "200g"
-          },
-		  {
-            "Name": "chicken",
-            "Amount": "200g"
-          }
-        ]
-      }
-    ]
+    "Recipes": []
   },
-      {
+  {
     "UserName": "Jackson",
     "Gender": "male",
     "DateOfBirth": "1973-04-18",
@@ -367,43 +314,9 @@
         "IsMain": true
       }
     ],
-    "Recipes": [
-      {
-        "Name": "Ramen",
-        "PreparationTime": 90,
-        "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
-        "NumberOfCalories": 500,
-        "DateAdded": "2017-08-11",
-        "RecipePhotos": [
-          {
-            "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
-            "IsMain": true
-          },
-          {
-            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
-            "IsMain": true
-          },
-          {
-            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
-            "IsMain": true
-          }
-        ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
-        "Ingredients": [
-          {
-            "Name": "paprika",
-            "Amount": "200g"
-          },
-		  {
-            "Name": "chicken",
-            "Amount": "200g"
-          }
-        ]
-      }
-    ]
+    "Recipes": []
   },
-      {
+  {
     "UserName": "Blake",
     "Gender": "male",
     "DateOfBirth": "1973-04-18",
@@ -420,41 +333,7 @@
         "IsMain": true
       }
     ],
-    "Recipes": [
-      {
-        "Name": "Ramen",
-        "PreparationTime": 90,
-        "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
-        "NumberOfCalories": 500,
-        "DateAdded": "2017-08-11",
-        "RecipePhotos": [
-          {
-            "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
-            "IsMain": true
-          },
-          {
-            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
-            "IsMain": true
-          },
-          {
-            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
-            "IsMain": true
-          }
-        ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
-        "Ingredients": [
-          {
-            "Name": "paprika",
-            "Amount": "200g"
-          },
-		  {
-            "Name": "chicken",
-            "Amount": "200g"
-          }
-        ]
-      }
-    ]
+    "Recipes": []
   },
   {
     "UserName": "Bruce",
@@ -473,41 +352,7 @@
         "IsMain": true
       }
     ],
-    "Recipes": [
-      {
-        "Name": "Ramen",
-        "PreparationTime": 90,
-        "Description": "Sunt minim elit labore elit proident aliqua sint veniam esse et qui consectetur in Lorem. Pariatur aliqua nisi nostrud duis esse est est quis ut aliqua ad. Laborum enim commodo esse eu id. Commodo nostrud tempor magna id consequat dolor nulla proident anim tempor aliqua veniam sint sit.\r\n",
-        "NumberOfCalories": 500,
-        "DateAdded": "2017-08-11",
-        "RecipePhotos": [
-          {
-            "Url": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ramen_01.jpg",
-            "IsMain": true
-          },
-          {
-            "Url": "https://ocdn.eu/pulscms-transforms/1/orKktkpTURBXy80NjdkMGJiMGQxM2NlNzUwMWNiMDdjMWI0NTc4MTUxMC5qcGeTlQMAJ80E580CwZMFzQMUzQG8lQfZMi9wdWxzY21zL01EQV8vMTQwYjFjZmU3ZjBhYzUyZWRjMDEwZDcwOTc4ZTg0YmUucG5nAMIA",
-            "IsMain": true
-          },
-          {
-            "Url": "https://inspirowanesmakiem.pl/wp-content/uploads/2019/02/ramen-930x530.jpg",
-            "IsMain": true
-          }
-        ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
-        "Ingredients": [
-          {
-            "Name": "paprika",
-            "Amount": "200g"
-          },
-		  {
-            "Name": "chicken",
-            "Amount": "200g"
-          }
-        ]
-      }
-    ]
+    "Recipes": []
   },
   {
     "UserName": "Mosh",
@@ -547,54 +392,54 @@
             "IsMain": true
           }
         ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
+        "CategoryId": 11,
+        "KitchenOriginId": 138,
         "Ingredients": [
           {
             "Name": "duck legs",
             "Amount": "2 pcs"
           },
-		  {
+          {
             "Name": "turkey knuckle",
             "Amount": "200g"
           },
-		  {
+          {
             "Name": "onion",
             "Amount": "1 pc."
           },
-		  {
+          {
             "Name": "black pepper",
             "Amount": "10 grains"
           },
-		  {
+          {
             "Name": "carrots",
             "Amount": "2 pcs."
           },
-		  {
+          {
             "Name": "parsley",
             "Amount": "a few sprigs"
           },
-		  {
+          {
             "Name": "savoy cabbage",
             "Amount": "2 leaves"
           },
-		  {
+          {
             "Name": "ginger",
             "Amount": "4 slices"
           },
-		  {
+          {
             "Name": "celery",
             "Amount": "2 stalks"
           },
-		  {
+          {
             "Name": "soy sauce",
             "Amount": "5 tbsp"
           },
-		  {
+          {
             "Name": "dried mushrooms",
             "Amount": "5 pcs."
           },
-		  {
+          {
             "Name": "chow mein pasta",
             "Amount": "250g"
           }
@@ -640,22 +485,22 @@
             "IsMain": false
           }
         ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
+        "CategoryId": 10,
+        "KitchenOriginId": 235,
         "Ingredients": [
           {
             "Name": "garlic",
             "Amount": "2 cloves"
           },
-		  {
+          {
             "Name": "dried spaghetti",
             "Amount": "1 pound "
           },
-		   {
+          {
             "Name": "olive oil",
             "Amount": "1/4 cup"
           },
-		   {
+          {
             "Name": "sardines or mackerel",
             "Amount": "4 (4-ounce) cans "
           }
@@ -697,14 +542,14 @@
             "IsMain": false
           }
         ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
+        "CategoryId": 10,
+        "KitchenOriginId": 200,
         "Ingredients": [
           {
             "Name": "paprika",
             "Amount": "200g"
           },
-		  {
+          {
             "Name": "chicken",
             "Amount": "200g"
           }
@@ -732,7 +577,7 @@
     "Recipes": [
       {
         "Name": "Pecan Pie Cheesecake",
-        "PreparationTime": 90,
+        "PreparationTime": 200,
         "Description": "<h3 class=\"jsx-2401602051 Recipe__instructionsHeading\" style=\"box-sizing: inherit; padding: 1.25rem 0px 0px; margin-right: 0px; margin-bottom: 0.75rem; margin-left: 0px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; font-size: var(--baseFontSize); letter-spacing: 0.05em; color: rgb(0, 0, 0);\">INSTRUCTIONS</h3><div style=\"box-sizing: inherit; color: rgb(0, 0, 0); font-family: Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, serif; font-size: medium; letter-spacing: normal;\"><div class=\"Recipe__instructionsGroup\" style=\"box-sizing: inherit; margin-bottom: 1.25rem;\"><ol class=\"Recipe__instructions\" style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; list-style: none; counter-reset: listCounter 0;\"><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0px; border-top: none; padding-top: 0px;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\"><strong style=\"box-sizing: inherit;\">Make the crust:&nbsp;</strong>Take 2 pounds cream cheese out of their wrappers and let sit at room temperature while you prepare the crust, at least 30 minutes. Arrange a rack in the lower-middle position of the oven and heat the oven to 350°F.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Use your fingers to coat a small pat of butter all over the bottom and sides of a 9-inch or 10-inch springform pan. Cut 2 large pieces of aluminum foil (each about 18-inches long) and place them on a work surface on top of each other in a cross. Set the springform pan in the middle and fold the edges of the foil up and around the sides of the pan. The foil gives you extra protection against water getting into the pan during the water bath step.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">If using whole graham crackers, process 12 rectangles in a food processor with the blade attachment (or in a ziptop plastic bag using a rolling pin) until they form fine crumbs, you should have 1 1/2 to 1 2/3 cups.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Place the graham cracker crumbs in a medium bowl. Melt 5 tablespoons unsalted butter in the microwave or on the stovetop, then stir this into the crumbs until they’re evenly moistened. Transfer the crumbs into the pan and use the bottom of a measuring cup to press it evenly into the bottom (not up the sides).</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Place the crust in the oven (be careful not to tear the foil). Bake until the crust is fragrant and just starting to brown around the edges, 8 to 10 minutes. Meanwhile, place 1 1/2 cups pecans on a baking sheet and bake it at the same time until fragrant and lightly toasted, checking on them after 5 minutes. Let the crust cool on a wire rack until the sides of the pan are cool enough to comfortably touch before you prepare the filling, at least 20 minutes.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\"><strong style=\"box-sizing: inherit;\">Make the filling:&nbsp;</strong>Place the cream cheese, 1 cup granulated sugar, 1 tablespoon cornstarch or 2 tablespoons flour, and 1/4 teaspoon kosher salt in the bowl of a stand mixer fitted with a paddle attachment. (Alternatively, use an electric handheld mixer and large bowl.) Mix on medium-low speed until the mixture is creamy like thick frosting and smooth, about 5 minutes. Scrape down the beater and the sides of the bowl with a spatula.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Add 1/2 cup sour cream and 1 teaspoon vanilla extract and beat on medium-low speed until combined and creamy. Scrape down the beater and sides of the bowl again. With the mixer on medium-low speed, beat in 3 large eggs and 1 large egg yolk one at a time. Wait until the previous egg is almost completely mixed into the batter before adding the next one.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Stir the whole batter a few times by hand, being sure to scrape the bottom of the bowl, to make sure everything is incorporated. The finished batter should be thick, creamy, and silky. Don't worry if you see a few specks of un-mixed cream cheese here and there; they will melt into the batter during baking and won't affect the finished cheesecake.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Place the pan in a roasting pan or other baking dish big enough to hold it. Bring about 8 cups of water to a boil and pour the water into the roasting pan so it goes about halfway up the sides of the springform pan, being careful not to splash any water onto the cheesecake. Carefully place the roasting pan in the oven.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Bake the cheesecake for 50 to 60 minutes. Cakes baked in a 10-inch pan will take 50 to 55 minutes; cakes in a 9-inch pan will take 55 to 60 minutes. The cheesecake is done when the outer 2 to 3 inches look slightly puffed and set, but the inner circle still jiggles (like Jell-O) when you gently shake the pan. Some spots of toasted golden color are fine, but if you see any cracks starting to form, move on to the next step right away.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Leave the cheesecake in the oven. Turn off the oven and crack the door open or prop it open with a wooden spoon. Let the cheesecake cool slowly for 1 hour.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Remove the cheesecake from the oven and from the water bath, unwrap the foil, and transfer it to a cooling rack. Run a thin-bladed knife around the edge of the cake to make sure it's not sticking to the sides (which can cause cracks as it cools). Let the cheesecake cool completely on the rack, about 1 1/2 hours.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Chill the cheesecake, uncovered, for at least 4 hours or up to 3 days in the refrigerator. This step is crucial for letting the cheesecake set and achieving perfect cheesecake texture — don't rush it.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\"><strong style=\"box-sizing: inherit;\">Make the pecan pie topping:&nbsp;</strong>Coarsely chop about 1 cup of the toasted pecans, and leave the remaining 1/2 cup whole.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Place 6 tablespoons unsalted butter, 3/4 cup packed dark brown sugar, and 1/2 teaspoon kosher salt in a large saucepan over medium heat. Cook, whisking frequently, until the butter is completely melted and the mixture is completely smooth and bubbling all over, 6 to 8 minutes. Whisk in 1/2 cup heavy cream until completely combined and bubbling again.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Remove from the heat and stir in the chopped and whole pecans and 1/2 teaspoon vanilla extract. Set aside to cool to room temperature, 30 to 45 minutes.</p></div></li><li class=\"Recipe__instructionStep\" style=\"box-sizing: inherit; font-size: calc(var(--baseFontSize) * 1.125); line-height: 1.5; position: relative; margin-top: 0.75rem; border-top: 1px solid rgb(214, 209, 209); padding-top: 0.75rem;\"><div class=\"Recipe__instructionStepContent\" style=\"box-sizing: inherit; margin-bottom: 0.75rem; line-height: 1.55;\"><p style=\"box-sizing: inherit; padding: 0px; margin-right: 0px; margin-left: 0px; display: inline;\">Take the cheesecake out of the refrigerator and unmold it. You can serve the cake right from the bottom of the springform pan, or use a large off-set spatula to gently unstick the crust from the pan and transfer it to a serving platter. Spoon the pecan pie topping over the cheesecake before slicing.</p></div></li></ol></div></div>",
         "NumberOfCalories": 700,
         "DateAdded": "2017-08-11",
@@ -746,34 +591,34 @@
             "IsMain": false
           }
         ],
-        "CategoryId": 2,
-        "KitchenOriginId": 1,
+        "CategoryId": 12,
+        "KitchenOriginId": 77,
         "Ingredients": [
           {
             "Name": "full-fat cream cheese",
             "Amount": "2 pounds"
           },
-		  {
+          {
             "Name": "granulated sugar",
             "Amount": "1 cup "
           },
-		    {
+          {
             "Name": "kosher salt",
             "Amount": "1/4 teaspoon"
           },
-		    {
+          {
             "Name": "sour cream",
             "Amount": "1/2 cup "
           },
-		  		    {
+          {
             "Name": "vanilla extract",
             "Amount": "1 teaspoon"
           },
-		  		    {
+          {
             "Name": "eggs",
             "Amount": "3 large "
           },
-		  		  		    {
+          {
             "Name": "egg yolk",
             "Amount": "1 large "
           }

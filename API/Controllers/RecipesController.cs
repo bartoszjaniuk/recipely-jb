@@ -185,8 +185,7 @@ namespace API.Controllers
 
             _unitOfWork.UserRepository.AddRecipeToFav(like);
 
-            if (await _unitOfWork.Complete())
-                return Ok();
+            if (await _unitOfWork.Complete()) return Ok();
 
             return BadRequest("Failed  to fav  recipe");
         }

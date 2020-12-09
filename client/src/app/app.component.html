@@ -1,15 +1,29 @@
 <ngx-spinner>
-    <p> Loading... </p>
+  <p>Loading...</p>
 </ngx-spinner>
 <app-navbar></app-navbar>
 <div class="row">
-    <div class="col" style="background-image: url('./assets/background.png'); background-repeat: repeat-y ; opacity: 0.2; background-position:left; ">
-    </div>
-    <div class="col-7">
-        <router-outlet></router-outlet>
-    </div>
-    <div class="col" style="background-image: url('./assets/background.png'); background-repeat: repeat-y ; opacity: 0.2; background-position:right;">
-    </div>
+  <div
+    class="col"
+    style="
+      background-image: url('./assets/background.png');
+      background-repeat: repeat-y;
+      opacity: 0.2;
+      background-position: left;
+    "
+  ></div>
+  <div class="col-7">
+    <router-outlet></router-outlet>
+  </div>
+  <div
+    class="col"
+    style="
+      background-image: url('./assets/background.png');
+      background-repeat: repeat-y;
+      opacity: 0.2;
+      background-position: right;
+    "
+  ></div>
 </div>
-<app-footer></app-footer>
 
+<app-footer></app-footer>
