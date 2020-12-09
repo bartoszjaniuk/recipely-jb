@@ -76,3 +76,5 @@ D:\Magisterka\recipely\API\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.
 D:\Magisterka\recipely\API\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
 D:\Magisterka\recipely\API\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
 D:\Magisterka\recipely\API\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+D:\Magisterka\recipely\API\bin\Debug\net5.0\Npgsql.dll
+D:\Magisterka\recipely\API\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
