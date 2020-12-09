@@ -71,6 +71,7 @@ export class RecipeAddComponent implements OnInit {
 
   addRecipe() {
     this.recipeService.addNewRecipe(this.recipeForm.value).subscribe((result: any) => {
+      console.log(this.recipe);
       const id = result.id;
       this.router.navigate([`member/edit/recipes/${id}/edit`]);
     }, error => {

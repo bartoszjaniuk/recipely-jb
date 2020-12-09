@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Authorize]
+
     public class CommentsController : BaseApiController
     {
         private readonly ICommentRepository _commentRepository;
@@ -26,7 +26,7 @@ namespace API.Controllers
             _commentRepository = commentRepository;
             _mapper = mapper;
         }
-
+        [Authorize]
         [HttpPost("/api/Recipes/{recipeId}/[controller]")]
         public async Task<ActionResult<CommentDto>> CreateComment(CommentToCreateDto commentToCreateDto, int recipeId)
         {

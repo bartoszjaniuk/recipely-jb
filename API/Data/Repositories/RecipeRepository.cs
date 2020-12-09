@@ -59,8 +59,11 @@ namespace API.Data.Repositories
             if (!string.IsNullOrEmpty(recipeParams.Search))
             {
                 query = query.Where(s => s.Name.Contains(recipeParams.Search)
+                                       || s.Name.ToLower().Contains(recipeParams.Search)
                                        || s.Category.Name.Contains(recipeParams.Search)
+                                       || s.Category.Name.ToLower().Contains(recipeParams.Search)
                                        || s.Ingredients.Select(s => s.Name).Contains(recipeParams.Search)
+                                       || s.Ingredients.Select(s => s.Name.ToLower()).Contains(recipeParams.Search)
                                        );
             }
 

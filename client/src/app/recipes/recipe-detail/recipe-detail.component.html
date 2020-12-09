@@ -60,9 +60,9 @@
       <div [innerHTML]="recipe.description" style="font-size: 120%;"></div>
     </div>
     <div class="col-4 d-flex justify-content-center ">
-      <div class="ingredients-style p-5">
+      <div class="p-5">
         <p class="font-Dancing-Script text-center" style="font-size: larger;">Ingredients</p>
-        <ul style="padding-left: 0;">
+        <ul style="padding-left: 0;" class="ingredients-style p-5">
           <li *ngFor="let ingredient of recipe.ingredients; let i = index" class="ingredients-list">
            {{i + 1}}. {{ ingredient.name}} ({{ingredient.amount}}),
           </li>
