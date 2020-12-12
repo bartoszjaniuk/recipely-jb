@@ -21,9 +21,7 @@ namespace API.Data.Repositories
             _autoMapper = autoMapper;
             _context = context;
         }
-
-
-
+        
         public void AddRecipeToFav(FavouriteRecipe favouriteRecipe)
         {
             _context.FavouriteRecipes.Add(favouriteRecipe);

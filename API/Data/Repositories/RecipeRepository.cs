@@ -78,7 +78,6 @@ namespace API.Data.Repositories
             .CreateAsync(query
             .ProjectTo<RecipeForListDto>(_autoMapper.ConfigurationProvider)
             .AsNoTracking(), recipeParams.PageNumber, recipeParams.PageSize);
-
         }
 
         public async Task<bool> RecipeExists(string name)
