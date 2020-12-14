@@ -46,6 +46,7 @@ namespace API.Data.Repositories
 
 
             query = query.Where(u => u.UserName != userParams.CurrentUsername);
+            query = query.Where(u => u.UserName != "admin");
 
             query = userParams.OrderBy switch
             {

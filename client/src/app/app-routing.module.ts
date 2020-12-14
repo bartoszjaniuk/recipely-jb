@@ -18,37 +18,53 @@ import { StartupComponent } from './startup/startup.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
+import { UserGuard } from './_guards/user.guard';
 import { MemberDetailResolver } from './_resolvers/member-detailed.resolver';
 
 const routes: Routes = [
-  {path: '', component: RecipeListComponent},
+  { path: '', component: RecipeListComponent },
   {
     path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      {path: 'likes', component: LikeListsComponent},
-      {path: 'messages', component: MessagesComponent},
-      {path: 'admin', component: AdminPanelComponent, canActivate: [AdminGuard]},
-      {path: 'recipe-add', component: RecipeAddComponent}, 
-      {path: 'my-fav-recipes', component: FavouriteRecipesListComponent}    
-    ]
+      { path: 'likes', component: LikeListsComponent },
+      { path: 'messages', component: MessagesComponent },
+      {
+        path: 'admin',
+        component: AdminPanelComponent,
+        canActivate: [AdminGuard],
+      },
+      { path: 'recipe-add', component: RecipeAddComponent },
+      { path: 'my-fav-recipes', component: FavouriteRecipesListComponent },
+    ],
   },
-  {path: 'recipes', component: RecipeListComponent},
-  {path: 'recipes/:id', component: RecipeDetailComponent},
-  {path: 'member/edit/recipes/:id/edit', component: RecipeEditComponent},
-  {path: 'members', component: MemberListComponent},
-  {path: 'members/:username', component: MemberDetailComponent, resolve: {member: MemberDetailResolver}},
-  {path: 'member/edit', component: MemberEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
-  {path: 'startup', component: StartupComponent},
-  {path: 'errors', component: TestErrorsComponent},
-  {path: 'not-found', component: NotFoundComponent},
-  {path: 'server-error', component: ServerErrorComponent},
-  {path: '**', component: NotFoundComponent, pathMatch: 'full'}
+  { path: 'recipes', component: RecipeListComponent },
+  { path: 'recipes/:id', component: RecipeDetailComponent },
+  {
+    path: 'member/edit/recipes/:id/edit',
+    component: RecipeEditComponent,
+  },
+  { path: 'members', component: MemberListComponent },
+  {
+    path: 'members/:username',
+    component: MemberDetailComponent,
+    resolve: { member: MemberDetailResolver },
+  },
+  {
+    path: 'member/edit',
+    component: MemberEditComponent,
+    canDeactivate: [PreventUnsavedChangesGuard],
+  },
+  { path: 'startup', component: StartupComponent },
+  { path: 'errors', component: TestErrorsComponent },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: 'server-error', component: ServerErrorComponent },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

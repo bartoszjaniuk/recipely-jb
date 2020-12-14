@@ -1,81 +1,136 @@
 <div class="container">
+  <form
+    class="justify-content-between p-5 mt-5 formShadow"
+    [formGroup]="recipeForm"
+    (ngSubmit)="recipeForm.valid && addRecipe()"
+    autocomplete="off"
+  >
+    <p class="h4 mb-4">Add new recipe</p>
+    <app-text-input
+      [formControl]="recipeForm.controls['name']"
+      [label]="'Name'"
+    ></app-text-input>
+    <app-text-input
+      [formControl]="recipeForm.controls['preparationTime']"
+      [label]="'Preparation Time'"
+      [type]="'number'"
+    >
+    </app-text-input>
+    <div class="form-group">
+      <app-editor-input
+        [formControl]="recipeForm.controls['description']"
+        [label]="'Description'"
+      ></app-editor-input>
+    </div>
 
-    <form class=" justify-content-between p-5 mt-5 formShadow" [formGroup]='recipeForm'
-        (ngSubmit)="recipeForm.valid && addRecipe()" autocomplete="off">
-        <p class="h4 mb-4">Add new recipe</p>
-        <app-text-input [formControl]='recipeForm.controls["name"]' [label]='"Name"'></app-text-input>
+    <app-text-input
+      [formControl]="recipeForm.controls['numberOfCalories']"
+      [label]="'Number of calories'"
+      [type]="'number'"
+    >
+    </app-text-input>
 
-        <app-text-input [formControl]='recipeForm.controls["preparationTime"]' [label]='"Preparation Time"'
-            [type]='"number"'>
-        </app-text-input>
-        <div class="form-group">
-            <app-editor-input [formControl]='recipeForm.controls["description"]' [label]='"Description"' ></app-editor-input>
+    <div class="form-group">
+      <select
+        class="form-control size"
+        formControlName="categoryId"
+        placeholder="Category"
+      >
+        <option value="" disabled selected>Category</option>
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          recipeForm.get('categoryId').touched &&
+          recipeForm.get('categoryId').hasError('required')
+        "
+      >
+        You must select category
+      </div>
+    </div>
+    <div class="form-group">
+      <select
+        class="form-control size"
+        formControlName="kitchenOriginId"
+        placeholder="Kitchen Origin"
+      >
+        <option value="" disabled selected>Kitchen Origin</option>
+        <option
+          *ngFor="let kitchenOrigin of kitchenOrigins"
+          [value]="kitchenOrigin.id"
+        >
+          {{ kitchenOrigin.name }}
+        </option>
+      </select>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          recipeForm.get('kitchenOriginId').touched &&
+          recipeForm.get('kitchenOriginId').hasError('required')
+        "
+      >
+        You must select kitchen origin
+      </div>
+    </div>
+    <div class="row mt-5" *ngIf="validationErrors.length > 0">
+      <ul class="text-danger">
+        <li *ngFor="let error of validationErrors">
+          {{ error }}
+        </li>
+      </ul>
+    </div>
+    <p class="text-center" style="font-weight: bold">Ingredients</p>
+    <div formArrayName="ingredients">
+      <div
+        *ngFor="
+          let ingredient of recipeForm.get('ingredients')['controls'];
+          let i = index
+        "
+      >
+        <div formGroupName="{{ i }}" class="row">
+          <div class="form-group col-6">
+            <app-text-input
+              formControlName="name"
+              [label]="'Name'"
+            ></app-text-input>
+          </div>
+          <div class="form-group col-5">
+            <app-text-input
+              formControlName="amount"
+              [label]="'Amount'"
+            ></app-text-input>
+          </div>
+          <div class="col">
+            <button
+              type="button"
+              class="btn btn-sm btn-danger p-3 rounded"
+              (click)="removeIngredient(ingredient.id)"
+            >
+              <i class="fa fa-trash-o"></i>
+            </button>
+          </div>
         </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="addIngredient()">
+      New Ingredient
+    </button>
 
-        <app-text-input [formControl]='recipeForm.controls["numberOfCalories"]' [label]='"Number of calories"'
-            [type]='"number"'>
-        </app-text-input>
-
-        <div class="form-group ">
-            <select class="form-control size" formControlName="categoryId" placeholder="Category">
-                <option value="" disabled selected>Category</option>
-                <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-            </select>
-            <div class="invalid-feedback"
-                *ngIf="recipeForm.get('categoryId').touched && recipeForm.get('categoryId').hasError('required')"> You
-                must select category
-            </div>
-        </div>
-
-        <div class="form-group">
-            <select class="form-control size" formControlName="kitchenOriginId" placeholder="Kitchen Origin">
-                <option value="" disabled selected>Kitchen Origin</option>
-                <option *ngFor="let kitchenOrigin of kitchenOrigins" [value]="kitchenOrigin.id">{{kitchenOrigin.name}}
-                </option>
-            </select>
-            <div class="invalid-feedback"
-                *ngIf="recipeForm.get('kitchenOriginId').touched && recipeForm.get('kitchenOriginId').hasError('required')">
-                You must select kitchen origin
-            </div>
-        </div>
-        <div class="row mt-5" *ngIf="validationErrors.length > 0">
-            <ul class="text-danger">
-                <li *ngFor="let error of validationErrors">
-                    {{error}}
-                </li>
-            </ul>
-        </div>
-        <div formArrayName="ingredients">
-        
-        <div *ngFor="let ingredient of recipeForm.get('ingredients')['controls']; let i = index;">
-            <div formGroupName={{i}} class="row">
-                <div class="form-group col-6">
-                    <app-text-input formControlName="name" [label]='"Name"'></app-text-input>
-                </div>
-                <div class="form-group col-5">
-                    <app-text-input formControlName="amount" [label]='"Amount"'></app-text-input>
-                </div>
-                <div class="col" >
-                        <button type="button" class="btn btn-sm btn-danger p-3 rounded" 
-                        (click)="removeIngredient(ingredient.id)" 
-                         ><i class="fa fa-trash-o"></i></button>
-                  
-                </div>
-            </div>
-       
-
-        </div>
-    </div> 
-        <button type="button" class="btn btn-primary" (click)="addIngredient()">
-            New Ingredient
-        </button>
-
-        <ng-container *ngFor="let ingredient of ingredients">
-            {{ingredient.name}}
-        </ng-container>
-        <div class="form-group text-center">
-            <button [disabled]="!recipeForm.valid" class="btn btn-outline-dark mr-2" type="submit">Add</button>
-            <button class="btn outline-light mr-2" (click)="cancel()">Cancel</button>
-        </div>
-    </form>
+    <ng-container *ngFor="let ingredient of ingredients">
+      {{ ingredient.name }}
+    </ng-container>
+    <div class="form-group text-center">
+      <button
+        [disabled]="!recipeForm.valid"
+        class="btn btn-outline-dark mr-2"
+        type="submit"
+      >
+        Add
+      </button>
+      <button class="btn outline-light mr-2" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
 </div>

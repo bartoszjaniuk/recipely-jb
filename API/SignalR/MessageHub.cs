@@ -46,6 +46,12 @@ namespace API.SignalR
         await Clients.Caller.SendAsync("ReceiveMessageThread", messages);
     }
 
+      private string GetGroupName(string caller, string other)
+    {
+        var stringCompare = string.CompareOrdinal(caller, other) < 0;
+        return stringCompare ? $"{caller}-{other}" : $"{other}-{caller}";
+    }
+
     public override async Task OnDisconnectedAsync(Exception exception)
     {
         var group = await RemoveFromMessageGroup();
@@ -128,10 +134,6 @@ namespace API.SignalR
         throw new HubException("Failed to remove from group");
     }
 
-    private string GetGroupName(string caller, string other)
-    {
-        var stringCompare = string.CompareOrdinal(caller, other) < 0;
-        return stringCompare ? $"{caller}-{other}" : $"{other}-{caller}";
-    }
+  
 }
 }

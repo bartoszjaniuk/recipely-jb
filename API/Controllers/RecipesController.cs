@@ -85,15 +85,19 @@ namespace API.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateRecipe(int id, RecipeForUpdateDto recipeForUpdateDto)
         {
+            var currentUser = User.GetUsername();
+            
             var recipeFromRepo = await _unitOfWork.RecipeRepository.GetRecipe(id);
 
+            
+            if (currentUser != recipeFromRepo.AppUser.UserName) return Unauthorized("You are not allowed to be here!");
 
             _mapper.Map(recipeForUpdateDto, recipeFromRepo);
 
             _unitOfWork.RecipeRepository.Update(recipeFromRepo);
 
             if (await _unitOfWork.Complete()) return NoContent();
-            return BadRequest("Failed to update user");
+            return BadRequest("Failed to update recipe");
         }
 
         [HttpPut("{recipeId}/set-main-photo/{id}")]
@@ -165,14 +169,12 @@ namespace API.Controllers
                 return Unauthorized();
             }
 
-
-
-            var user = _unitOfWork.UserRepository.GetUserByIdAsync(currentUserId);
+            var user = await _unitOfWork.UserRepository.GetUserByIdAsync(currentUserId);
 
             var like = await _unitOfWork.UserRepository.GetFav(recipeId);
 
             if (like != null)
-                return BadRequest("You allready like this recipe");
+                return BadRequest("You already like this recipe");
 
             if (await _unitOfWork.RecipeRepository.GetRecipe(recipeId) == null)
                 return NotFound();
@@ -185,8 +187,11 @@ namespace API.Controllers
 
             _unitOfWork.UserRepository.AddRecipeToFav(like);
 
-            if (await _unitOfWork.Complete()) return Ok();
-
+            if (await _unitOfWork.Complete()) 
+            {
+                return Ok();
+            }
+            
             return BadRequest("Failed  to fav  recipe");
         }
 

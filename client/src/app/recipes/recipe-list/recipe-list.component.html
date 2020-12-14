@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <div class="row">
-    <section class="col-3">
+    <section class="col-sm-3">
       <ng-container *ngIf="categories && kitchenOrigins">
         <h5 class="text-warning ml-3 mt-4 mb-3">Sort</h5>
         <select
-          class="custom-select mb-4"
+          class="custom-select mb-4 border-bottom border-warning"
           (change)="onSortSelected($event.target.value)"
         >
           <option
@@ -43,12 +43,12 @@
         </ul>
       </ng-container>
     </section>
-    <section class="col-9">
+    <section class="col-sm-3 col-md-9">
       <div class="d-flex justify-content-between align-items-center pb-2">
         <div class="form-inline" *ngIf="recipes">
           <input
             (keyup.enter)="onSearch()"
-            class="form-control mr-2"
+            class="form-control mr-2 border-bottom border-warning"
             #search
             style="width: 300px"
             placeholder="Search by recipe, ingredient or category"

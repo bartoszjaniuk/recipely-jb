@@ -50,7 +50,7 @@ import { MemberRecipeCardComponent } from './members/member-recipe-card/member-r
 import { FavouriteRecipesListComponent } from './lists/favourite-recipes-list/favourite-recipes-list.component';
 import { FavRecipeCardComponent } from './lists/fav-recipe-card/fav-recipe-card.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
@@ -93,7 +93,6 @@ import { FooterComponent } from './footer/footer.component';
     FavouriteRecipesListComponent,
     FavRecipeCardComponent,
     FooterComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -104,15 +103,15 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     SharedModule,
     NgxSpinnerModule,
-    NgxGalleryModule
+    NgxGalleryModule,
+    CollapseModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   entryComponents: [RolesModalComponent],
-  
 })
-export class AppModule { }
+export class AppModule {}

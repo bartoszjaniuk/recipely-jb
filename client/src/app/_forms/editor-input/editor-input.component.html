@@ -1,5 +1,15 @@
 <div class="form-group">
-    <angular-editor [class.is-invalid]="ngControl.touched && ngControl.invalid" [formControl]="ngControl.control" [config]="editorConfig" placeholder={{label}}></angular-editor>
-    <div *ngIf="ngControl.control.errors?.required" class="invalid-feedback">Please enter a {{label}}</div>
-    <div *ngIf="ngControl.control.errors?.minlength" class="invalid-feedback">
-</div> 
+  <angular-editor
+    [class.is-invalid]="ngControl.touched && ngControl.invalid"
+    [formControl]="ngControl.control"
+    [config]="editorConfig"
+    placeholder="{{ label }}"
+  ></angular-editor>
+  <div *ngIf="ngControl.control.errors?.required" class="invalid-feedback">
+    Please enter a {{ label }}
+  </div>
+  <div
+    *ngIf="ngControl.control.errors?.minlength"
+    class="invalid-feedback"
+  ></div>
+</div>

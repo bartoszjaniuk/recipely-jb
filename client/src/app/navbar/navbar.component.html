@@ -1,59 +1,105 @@
-<nav class="navbar navbar-expand-md navbar-light  bg-light border ">
+<nav class="navbar navbar-expand-md navbar-light bg-light border">
   <div class="container">
-    <a class="navbar-brand" routerLink='/'><img src="./assets/logo-recipely.png" alt="logo" style="width: 180px;"></a>
-
-    <ul class="navbar-nav ml-auto">
-      <li class="icon">
-        <i class="fa fa-book fa-2x nav-item icon" [routerLink]="['/recipes']" routerLinkActive='page-active'></i> 
-      </li>
-      <ng-container *ngIf="(accountService.currentUser$ | async)">
-      <li class="icon">
-        <i class="fa fa-address-book fa-2x nav-item icon" [routerLink]="['/members']" routerLinkActive='page-active'></i> 
-      </li>
-      <li class="icon">
-        <i class="fa fa-thumbs-up fa-2x nav-item icon" [routerLink]="['/likes']" routerLinkActive='page-active'></i> 
-      </li>
-      <li class="icon">
-        <i class="fa fa-heart fa-2x nav-item icon" [routerLink]="['/my-fav-recipes']" routerLinkActive='page-active'></i> 
-      </li>
-      <li *appHasRole='["Admin", "Moderator"]' class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/errors']">Errors</a>
-      </li>
-      <li *appHasRole='["Admin", "Moderator"]' class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/admin']">Admin</a>
-      </li>
-    </ng-container>
-    </ul>
-
-    <ul class="navbar-nav">
-      <ng-container *ngIf="(accountService.currentUser$ | async) === null">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/startup']">Sign in</a>
+    <a class="navbar-brand" routerLink="/"
+      ><img src="./assets/logo-recipely.png" alt="logo" style="width: 180px"
+    /></a>
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggler collapsed"
+        (click)="isCollapsed = !isCollapsed"
+        aria-expanded="false"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+      <ul class="navbar-nav ml-auto">
+        <li class="icon">
+          <i
+            class="fa fa-book fa-2x nav-item icon"
+            [routerLink]="['/recipes']"
+            routerLinkActive="page-active"
+          ></i>
         </li>
-      </ng-container>
+        <ng-container *ngIf="accountService.currentUser$ | async">
+          <li class="icon">
+            <i
+              class="fa fa-address-book fa-2x nav-item icon"
+              [routerLink]="['/members']"
+              routerLinkActive="page-active"
+            ></i>
+          </li>
+          <li class="icon">
+            <i
+              class="fa fa-thumbs-up fa-2x nav-item icon"
+              [routerLink]="['/likes']"
+              routerLinkActive="page-active"
+            ></i>
+          </li>
+          <li class="icon">
+            <i
+              class="fa fa-heart fa-2x nav-item icon"
+              [routerLink]="['/my-fav-recipes']"
+              routerLinkActive="page-active"
+            ></i>
+          </li>
+          <li
+            *appHasRole="['Admin', 'Moderator']"
+            class="nav-item"
+            routerLinkActive="active"
+          >
+            <a class="nav-link" [routerLink]="['/errors']">Errors</a>
+          </li>
+          <li
+            *appHasRole="['Admin', 'Moderator']"
+            class="nav-item"
+            routerLinkActive="active"
+          >
+            <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+          </li>
+        </ng-container>
+      </ul>
 
-      
-      <li class="nav-item" *ngIf="(accountService.currentUser$ | async) as user">
-        <div class="dropdown" dropdown>
-          <div dropdownToggle class="nav-link navbar-image">
-            <img class="rounded-circle user-logo" src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
-          </div>
-          <div class="dropdown-menu mt-4" *dropdownMenu>
-              <a class="dropdown-item mb-3" [routerLink]="['/member/edit']"> <i class="fa fa-user-circle fa-lg icon"></i> Edit Profile</a>
-              
-              <a class="dropdown-item mb-3" [routerLink]="['/recipe-add']"> <i class="fa fa-book fa-lg icon"></i> Add Recipe</a>
-              
-              <a class="dropdown-item" [routerLink]="['/messages']"> <i class="fa fa-comment fa-lg icon"></i> Messages</a>
+      <ul class="navbar-nav">
+        <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['/startup']">Sign in</a>
+          </li>
+        </ng-container>
+
+        <li
+          class="nav-item"
+          *ngIf="accountService.currentUser$ | async as user"
+        >
+          <div class="dropdown" dropdown>
+            <div dropdownToggle class="nav-link navbar-image">
+              <img
+                class="rounded-circle user-logo"
+                src="{{ user.photoUrl || './assets/user.png' }}"
+                alt="{{ user.username }}"
+              />
+            </div>
+            <div class="dropdown-menu mt-4" *dropdownMenu>
+              <a class="dropdown-item mb-3" [routerLink]="['/member/edit']">
+                <i class="fa fa-user-circle fa-lg icon"></i> Edit Profile</a
+              >
+
+              <a class="dropdown-item mb-3" [routerLink]="['/recipe-add']">
+                <i class="fa fa-book fa-lg icon"></i> Add Recipe</a
+              >
+
+              <a class="dropdown-item" [routerLink]="['/messages']">
+                <i class="fa fa-comment fa-lg icon"></i> Messages</a
+              >
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="logOut()"><i class="fa fa-sign-out fa-lg icon"></i> Logout</a>
+              <a class="dropdown-item" (click)="logOut()"
+                ><i class="fa fa-sign-out fa-lg icon"></i> Logout</a
+              >
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-
-
-
-
+        </li>
+      </ul>
+    </div>
   </div>
-
 </nav>

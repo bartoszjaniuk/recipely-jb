@@ -19,14 +19,14 @@
     </div>
   </div>
   <div class="row border-bottom mt-2">
-    <div class="col-8 d-flex justify-content-center">
+    <div class="col-sm col-md-7 d-flex justify-content-center">
       <img
         src="{{ recipe.photoUrl || './assets/image.png' }}"
         class="img-fluid"
         alt="Responsive image"
       />
     </div>
-    <div class="col-4">
+    <div class="col-sm col-md-4">
       <div class="d-flex flex-column" style="border-bottom: black 1px solid">
         <div class="d-flex justify-content-center">
           <div class="p-2">
@@ -82,10 +82,10 @@
   </div>
 
   <div class="row font-Oswald">
-    <div class="col-8">
+    <div class="col-sm-3 col-md-8">
       <div [innerHTML]="recipe.description" style="font-size: 120%"></div>
     </div>
-    <div class="col-4 d-flex justify-content-center">
+    <div class="col-sm-3 col-md-4 d-flex justify-content-center">
       <div class="p-5">
         <p class="font-Dancing-Script text-center" style="font-size: larger">
           Ingredients

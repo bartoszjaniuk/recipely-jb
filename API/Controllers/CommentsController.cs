@@ -49,7 +49,7 @@ namespace API.Controllers
         }
 
         [HttpGet("/api/Recipes/{recipeId}/[controller]")]
-        public async Task<ActionResult> GetRecipes(int recipeId)
+        public async Task<ActionResult> GetComments(int recipeId)
         {
             var comments = await _unitOfWork.CommentRepository.GetCommentsForRecipe(recipeId);
             return Ok(comments);

@@ -13,7 +13,6 @@ namespace API.Dto
         [Required] public string Country { get; set; }
 
         [Required]
-        [StringLength(15, MinimumLength = 4)]
         public string Password { get; set; }
     }
 }
