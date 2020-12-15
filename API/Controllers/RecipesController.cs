@@ -88,9 +88,7 @@ namespace API.Controllers
             var currentUser = User.GetUsername();
             
             var recipeFromRepo = await _unitOfWork.RecipeRepository.GetRecipe(id);
-
             
-            if (currentUser != recipeFromRepo.AppUser.UserName) return Unauthorized("You are not allowed to be here!");
 
             _mapper.Map(recipeForUpdateDto, recipeFromRepo);
 
